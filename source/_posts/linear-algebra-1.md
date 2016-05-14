@@ -1,0 +1,343 @@
+title: 线性代数拾遗（一 ）：线性方程组、向量方程和矩阵方程
+tags:
+  - 数学
+  - 线性代数
+  - 线性代数拾遗
+  - 基础概念
+category: 线性代数
+mathjax: true
+date: 2016-05-03 22:55:27
+---
+
+{% asset_img banner.jpeg %}
+
+# 前言
+线性代数在各大理工科，乃至经济金融领域的使用之广泛，毋庸置疑。 一直以来，我虽也知道线性代数的重要，但从内心上其实一直是犯怵的（尤其是学习论文、算法中，基本只要看到对方把算法向量化之后就蒙圈了），当年在学校学习过程中很多也是靠着死记硬背过来的，对它的直观意义一直都没能有很好的理解。
+
+最近，这么一本书进入了我的视线：《线性代数及其应用》，听书名感觉平平，但只翻了几页就感觉十分过瘾，仿佛打通了任督二脉。以往很多死记硬背的知识点在这本书的解释下，变成了可以直观推导出来的结果。这本书不仅对线性代数的基本概念阐述地很直观形象，而且还有许多现实生活中的应用，特别是经济、物理、计算机领域，真正让人领略到线性代数作为现代数学的魅力。
+
+我特将自己的读书总结和体会记录于此，也是希望借此加深自己的理解。
+
+注意，这个系列假设你已经有了线性代数基础，像是行变换、将矩阵转换为行阶梯形式这种基本技巧已经掌握。本文不再赘述具体操作步骤，主要关注于概念的直观理解。
+
+<!-- more -->
+# 线性方程组、向量方程和矩阵方程
+## 一、线性方程组
+线性代数，最基本的问题，就是解线性方程组了。线性方程组就是一组形如 $a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b$ 的方程。一个线性方程组中的变量是相同的，如果第一个方程是关于 $x_1 \cdots x_n$ 的，那么其他的也都应该如此（这些变量不一定都出现，因为系数可以有 0）。
+### 1.1 线性方程组的矩阵形式
+方程组
+
+{% math %}
+\left\{
+\begin{equation}\label{initial}
+\begin{array}{ccl}
+x_1 &-& 2x_2 &+& x_3 &= 0 \\
+    && 2x_2 &-& 8x_3 &= 8 \\
+{-4x_1} &+& 5x_2 &+& 9x_3 &= {-9}
+\end{array}
+\end{equation}
+\right.
+{% endmath %}
+
+可以通过増广矩阵形式描述：
+{% math %}
+\begin{bmatrix}
+1 & -2 & 1 & 0\\
+0 & 2 & -8 & 8\\
+-4 & 5 & 9 & -9\\
+\end{bmatrix}
+{% endmath %}
+增广矩阵去掉最后一列，就是该方程组的系数矩阵。
+
+矩阵形式只是线性方程组的一种表示形式。今后的很多关于线性方程组的计算，都将在矩阵形式上进行操作，然而你也需要知道，在这些操作进行的同时，线性方程组也在进行类似的变换。比如，将增广矩阵的第一、二行对换，那么同时，它所代表的线性方程组中，第一、二个方程也进行了对调。
+
+### 1.2 线性方程组的解
+解一个线性方程组，就是通过对其矩阵形式行变换（三种方式：交换方程的先后顺序，一个方程左右同乘以某数，和两个方程相加） 转换为行阶梯形式。比如
+
+{% math %}
+\begin{bmatrix}
+1 & -2 & 1 & 0 & \\
+0 & 2 & -8 & 8 & \\
+-4 & 5 & 9 & -9 &
+\end{bmatrix}
+\text{转化为行阶梯形式：}
+\begin{bmatrix}
+1 & -2 & 1 & 0 & \\
+0 & 1 & -4 & 4 & \\
+0 & 0 & 1 & 3
+\end{bmatrix}
+\text{和最简形式：}
+\begin{bmatrix}
+1 & 0 & 0 & 29 & \\
+0 & 1 & 0 & 16 & \\
+0 & 0 & 1 & 3
+\end{bmatrix}
+{% endmath %}
+
+上面最简形式的矩阵对应的线性方程组是
+
+{% math %}
+\left\{
+\begin{array}{ccl}
+x_1 && && &= 29 \\
+    && x_2 && &= 16 \\
+&& && x_3 &= 3
+\end{array}
+\right.
+{% endmath %}
+
+这个线性方程组和一开始的方程组是等价的，只是处于不同的状态，它们的解也是相同的，而显然行最简形式的方程组最容易解，所以我们一般都**将线性方程组的増广矩阵转化为行最简形式继而求解**。
+
+### 1.3 解的存在性和唯一性
+还记得线性代数时经常讨论的“无解““唯一解”“无穷多解”吧？
+
+首先来看刚才的方程组，经过行变换后，方程组的解已经很显然了：$x_1 = 29, x_2 =16, x_3 = 3$。这个方程组的解就只有一个，是唯一解。
+
+#### 1.3.1 无解
+我们再来看一个方程组：
+{% math %}
+\left\{
+\begin{array}{cccl}
+&& x_2 &-& 4x_3 &= 8 \\
+2x_1 &-& 3x_2 &+& 2x_3 &= 1\\
+5x_1 &-& 8x_2 &+& 7x_3 &= 1
+\end{array}
+\right.
+{% endmath %}
+
+它的增广矩阵
+{% math %}
+\begin{bmatrix}
+0 & 1 & -4 & 8 & \\
+2 & -3 & 2 & 1 & \\
+5 & -8 & 7 & 1
+\end{bmatrix}
+\text{ 行变换得到：}
+\begin{bmatrix}
+2 & -3 & 2 & 1 & \\
+0 & 1 & -4 & 8 & \\
+0 & 0 & 0 & 5/2
+\end{bmatrix}
+{% endmath %}
+
+变换后的矩阵所对应的方程组为
+{% math %}
+\left\{
+\begin{array}{cccl}
+2x_1 &-& 3x_2 &+& 2x_3 &= 1 \\
+&& x_2 &-& 4x_3 &= 8\\
+&& && 0 &= 5/2
+\end{array}
+\right.
+{% endmath %}
+
+显然，第三个方程 $0=5/2$ 是无解的。对比这个方程组和它对应的增广矩阵，我们可以发现，**当增广矩阵的行阶梯形式存在 $[0\ \cdots\ 0\ b]$ 形式的行时，方程组无解。**
+
+#### 1.3.2 有解
+当增广矩阵变换为行阶梯形式后，不存在 $[0\ \cdots\ 0\ b]$ 形式的行，则说明方程有解。我们接下来讨论下它的解具体会是怎么样的。
+
+假设现在有这样一个已经化为行最简形式的增广矩阵：
+
+{% math %}
+\begin{bmatrix}
+1 & 0 & -5 & 1 & \\
+0 & 1 & 1 & 4 & \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+{% endmath %}
+
+这个矩阵有 4 列，故而有 3 个变量。相对应的方程组为：
+
+{% math %}
+\left\{
+\begin{array}{cccl}
+x_1 && &-& 5x_3 &= 1 \\
+&& x_2 &+& x_3 &= 4\\
+&& && 0 &= 0
+\end{array}
+\right.
+{% endmath %}
+
+观察这个方程组，$x_1$ 和 $x_2$ 只存在于一个方程中（对应行最简形式中的主元位置），$x_3$ 存在于两个方程中。那么我们可以通过 $x_3$ 来表示 $x_1$ 和 $x_2$：
+
+{% math %}
+\left\{
+\begin{aligned}
+x_1 &=\: 5x_3 \:+\: 1 \\
+x_2 &=\: x_3 \:+\: 4 \\
+x_3 &\: \text{是自由变量}
+\end{aligned}
+\right.
+{% endmath %}
+
+上面列出来的实际上就是这个方程组的解集了。**$x_1$ 和 $x_2$ 被称为“基本变量”；$x_3$被称为“自由变量”，因为它在解集里不受任何约束，而基本变量需要自由变量来表示； 也就是说，自由变量确定了一个值，基本变量也就随之确定了一个值。上面这个解集形式也被称为方程组的“通解”，因为它给出了方程组所有解的显示表示。**
+
+需要注意的是，我们需要先将增广矩阵变换为行最简形式，才能知道谁是自由变量，谁是基本变量。
+
+**因为自由变量能取任意值，所以，存在自由变量的线性方程组有无穷多解，而没有自由变量的线性方程组则只有一个唯一解（就像本文第一个方程组那样）。**
+
+总结一下：
+
+- 当增广矩阵的行阶梯形式（当然行最简形式也可以）**存在$[0\ \cdots\ 0\ b]$ 形式**时，方程组无解；
+- 当增广矩阵的行最简形式**不存在自由变量**时，方程组有唯一解；
+- 当增广矩阵的行最简形式**存在自由变量**时，方程组有无穷多解；
+
+## 二、向量方程
+n 维空间中的点可用 n 维向量表示。
+
+向量之间可以线性组合：
+{% math %}
+\begin{equation}
+\mathbf{y} = c_1 \mathbf{v_1} + \cdots + c_p \mathbf{v_p}
+\end{equation}
+{% endmath %}
+
+那么，假如有三个向量：$\mathbf{a_1} = [1, -2, -5]^T, \mathbf{a_2} = [2, 5, 6]^T, \mathbf{b} = [7, 4, -3]^T$，想要知道 $\mathbf{b}$ 是否能通过 $\mathbf{a_1}$ 和 $\mathbf{a_2}$ 线性表示，实际上就是求线性方程 $x_1 \mathbf{a_1} + x_2 \mathbf{a_2} = \mathbf{b}$ 是否有解的问题。
+
+把这个方程展开来看，就是：
+{% math %}
+\begin{equation}
+x_1 \begin{bmatrix}1\\-2\\-5\end{bmatrix} + x_2 \begin{bmatrix}2\\5\\6\end{bmatrix}
+= \begin{bmatrix}7\\4\\-3\end{bmatrix}
+\end{equation}
+{% endmath %}
+
+等同于
+{% math %}
+\begin{equation}
+\begin{bmatrix}x_1\\-2x_1\\-5x_1\end{bmatrix} +  \begin{bmatrix}2x_2\\5x_2\\6x_2\end{bmatrix}
+= \begin{bmatrix}7\\4\\-3\end{bmatrix}
+\end{equation}
+{% endmath %}
+
+和
+{% math %}
+\begin{equation}
+\begin{bmatrix}x_1 + 2x_2\\-2x_1+5x_2\\-5x_1+6x_2\end{bmatrix}
+= \begin{bmatrix}7\\4\\-3\end{bmatrix}
+\end{equation}
+{% endmath %}
+
+所以这个问题其实和一个线性方程组是等价的，这个线性方程组对应的増广矩阵就是（{% math %}[\mathbf{a_1}, \mathbf{a_2}, \mathbf{b}]{% endmath %}）：
+
+{% math %}
+\begin{bmatrix}
+1 & 2 & 7 \\
+-2 & 5 & 4 \\
+-5 & -6 & -3
+\end{bmatrix}
+{% endmath %}
+
+化简为行最简形式就是：
+
+{% math %}
+\begin{bmatrix}
+1 & 0 & 3 \\
+0 & 1 & 2 \\
+0 & 0 & 0
+\end{bmatrix}
+{% endmath %}
+
+可以看出，这个线性方程组的解为 $x_1 = 3$ 和 $x_2 = 2$。继而我们就知道了 $\bf{b}$ 和 $\bf{a_1}$, $\bf{a_2}$ 的关系：
+
+{% math %}
+\begin{equation}
+3 \begin{bmatrix}1\\-2\\-5\end{bmatrix} + 2 \begin{bmatrix}2\\5\\6\end{bmatrix}
+= \begin{bmatrix}7\\4\\-3\end{bmatrix}
+\end{equation}
+{% endmath %}
+
+我们反过来回顾这一过程，可以发现，之前我们线性方程组的的增广矩阵表示形式，其实也可以看做是列向量组成的形式，在这个例子中，增广矩阵可以表示为 {% math %}[\mathbf{a_1}, \mathbf{a_2}, \mathbf{b}]{% endmath %}。**把增广矩阵按列拆开看，我们就可以得到线性方程组的向量方程表示形式。**
+
+向量方程是线性方程组另一种重要的表现形式，它能帮助我们将矩阵、线性方程组的抽象概念同几何的直观联系起来。
+
+在几何中，n 个向量 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 的所有线性组合 $c_1 \mathbf{v_1} + c_2 \mathbf{v_2} + \cdots + c_p \mathbf{v_p}$ 成为一个空间，称作由 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 张成的 $R^n$ 的子空间，记作 {% math %}\operatorname{Span}\left\{\mathbf{v_1}, \cdots, \mathbf{v_p}\right\}{% endmath %}。
+
+一个向量张成的空间是一根直线，两个向量张成的空间是一个平面。
+
+## 三、矩阵方程
+向量的线性组合可以看作向量与矩阵的乘积，比如一个 $m\times n$ 的矩阵 $\mathbf{A}$，各列为 $\mathbf{a_1}, \cdots, \mathbf{a_n}$，而 $x$ 为 $n$ 维向量，则有：
+
+{% math %}
+\begin{equation}
+\mathbf{A}\mathbf{x} = [\mathbf{a_1}\ \mathbf{a_2}\ \cdots \mathbf{a_n}]
+\begin{bmatrix}x_1\\ \vdots\\ x_n\end{bmatrix}
+= x_1 \mathbf{a_1} + x_2 \mathbf{a_2} + \cdots + x_n \mathbf{a_n}
+\end{equation}
+{% endmath %}
+
+这种形如 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 的形式，就称为矩阵方程。
+
+由矩阵方程的定义，我们可以得出：**方程$\mathbf{A}\mathbf{x}=\mathbf{b}$有解当且仅当$\mathbf{b}$为$\mathbf{A}$中列的线性组合。**又因为我们之前提到，这些列向量的所有线性组合构成了{% math %}\operatorname{Span}\left\{\mathbf{a_1}, \cdots, \mathbf{a_n}\right\}{% endmath %}，向量 $\mathbf{b}$  是否存在于这个空间，就等价于 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有解。
+
+下面我们来讨论下任意 $\mathbf{b} \in R^m$ 的情况。
+
+设
+{% math %}
+\begin{equation}
+\mathbf{A} = \begin{bmatrix}1&3&4\\ -4&2&-6\\ -3&-2&-7\end{bmatrix}, \mathbf{b} = \begin{bmatrix}b1\\b2\\b3\end{bmatrix}
+\end{equation}
+{% endmath %}
+
+求方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 是否对 $b_1, b_2, b_3$ 的所有取值都有解？
+
+我们首先对增广矩阵化简：
+{% math %}
+\begin{bmatrix}
+1 & 3 & 4 & b_1 \\
+-4 & 2 & -6 & b_2 \\
+-3 & -2 & -7 & b_3
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 & 3 & 4 & b_1 \\
+0 & 14 & 10 & b_2+4b_1 \\
+0 & 0 & 0 & b_1-\frac{1}{2}b_2+b_3
+\end{bmatrix}
+{% endmath %}
+
+可以看出，当$\mathbf{b}$ 取某些值时，$b_1-\frac{1}{2}b_2+b_3$ 不等于0，于是就会有无解的情况。只有当
+$$b_1-\frac{1}{2}b_2+b_3=0$$
+时方程才有解。注意，这个式子在几何中表示三维中的一个平面， 结合$\mathbf{A}\mathbf{x}=\mathbf{b}$，这个平面就是$\mathbf{A}$ 中列向量线性组合构成的集合。
+
+本来 $\mathbf{b}$ 是三维的向量，如果没有限制的话它可以表示整个三维空间，然而，在这个空间中，一大部分都不满足使 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有解。这仅剩的一个平面就是 $\mathbf{A}$ 的列向量所能张成的全部空间。  这些三维列向量最终张成了一个二维平面。
+
+观察行最简形式矩阵，可以知道，之所以 $\mathbf{b}$ 的一些取值造成矩阵方程无解，是因为系数矩阵 $\mathbf{A}$ 中最后一行没有主元，在行最简形式中变成了形如 [0 0 0 b] 的行。**如果系数矩阵 $\mathbf{A}$ 中每一行都有主元的话，那么就不会出现无解的情况。**
+
+反过来看，当 n 个 m 维列向量能张成 $R^m$ 时，就说明对任意 $\mathbf{b} \in R^m$，方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 都有解，也就是说，$R^m$ 空间中的任意向量，都可以由 $\mathbf{A}$ 的列线性表示。
+
+总结一下，就是以下四点相互等价。
+
+1. 对任意 $\mathbf{b}\in R^m$，方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 都有解。
+2. 任意 $\mathbf{b}\in R^m$ 都是$\mathbf{A}$ 中列的一个线性组合。
+3. $\mathbf{A}$ 的列张成 $R^m$。
+4. $\mathbf{A}$ 中每一行都有主元位置。
+
+## 四、三种等价形式
+矩阵方程
+{% math %} \begin{equation}
+\mathbf{A}\mathbf{x} = \mathbf{b}
+\end{equation} {% endmath %}
+
+和向量方程
+{% math %} \begin{equation}
+x_1 \mathbf{a_1} + x_2 \mathbf{a_2} + \cdots + x_n \mathbf{a_n} = \mathbf{b}
+\end{equation} {% endmath %}
+
+以及下列增广矩阵对应的线性方程组具有相同的解集
+{% math %} \begin{equation}
+[\mathbf{a_1}\ \mathbf{a_2}\ \cdots\ \mathbf{a_n}\ \mathbf{b}]
+\end{equation} {% endmath %}
+
+
+> 矩阵方程、向量方程和线性方程组是三种不同但却相互等价的形式。在现实生活中构造一个数学模型时，我们可以在任何情况下自由选择其中任何一种最自然、最便利的陈述形式。
+
+以上三种形式就是我们在解线性方程组时的三个工具，结合具体问题，我们可以通过不同角度观察问题，进而求解。 另外，这三种形式的求解，都是对增广矩阵进行行化简，因此，増广矩阵的行变换是一切的基础。
+
+参考资料：
+---
+- 线性代数及其应用：第3版/（美）莱（Lay, D.C.）著；沈复兴等译. ——北京：人民邮电出版社，2007.7
+
+版权声明：
+---
+本文中所有文字、图片版权均属本人所有，如需转载请注明来源。

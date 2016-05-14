@@ -1,0 +1,47 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+1.1 数学定义	convolution.md	/^### 1.1 数学定义$/;"	k
+1.2 直观解释	convolution.md	/^### 1.2 直观解释$/;"	k
+1.3 例子	convolution.md	/^### 1.3 例子$/;"	k
+1.4 分析	convolution.md	/^### 1.4 分析$/;"	k
+1.5 总结	convolution.md	/^### 1.5 总结$/;"	k
+2.1 数学定义	convolution.md	/^### 2.1 数学定义$/;"	k
+2.1 由复数极坐标得到直角坐标	complex.md	/^### 2.1 由复数极坐标得到直角坐标$/;"	k
+2.2 图像处理中的二维卷积	convolution.md	/^### 2.2 图像处理中的二维卷积$/;"	k
+3.1 复数波和实数波	complex.md	/^### 3.1 复数波和实数波$/;"	k
+4.1 线性回归的目标函数	logistic-regression.md	/^### 4.1 线性回归的目标函数$/;"	k
+4.2 Logistic 回归的目标函数	logistic-regression.md	/^### 4.2 Logistic 回归的目标函数$/;"	k
+4.3 优化目标函数求参	logistic-regression.md	/^### 4.3 优化目标函数求参$/;"	k
+CDF	think-statistics-note.md	/^### CDF$/;"	k
+PMF、CDF、PDF 的关系	think-statistics-note.md	/^### PMF、CDF、PDF 的关系$/;"	k
+一、一维卷积	convolution.md	/^## 一、一维卷积$/;"	i
+一、复数的直角坐标表示	complex.md	/^## 一、复数的直角坐标表示$/;"	i
+一、问题的引入	logistic-regression.md	/^## 一、问题的引入$/;"	i
+三、假设函数的直观解释	logistic-regression.md	/^## 三、假设函数的直观解释$/;"	i
+三、复数的复指数表示与欧拉公式	complex.md	/^## 三、复数的复指数表示与欧拉公式$/;"	i
+二、Logistic 函数（Logistic Function）	logistic-regression.md	/^## 二、Logistic 函数（Logistic Function）$/;"	i
+二、二维卷积	convolution.md	/^## 二、二维卷积$/;"	i
+二、复数的极坐标表示	complex.md	/^## 二、复数的极坐标表示$/;"	i
+五、用求得的参数进行分类	logistic-regression.md	/^## 五、用求得的参数进行分类$/;"	i
+偏度（skewness）	think-statistics-note.md	/^### 偏度（skewness）$/;"	k
+利用CDF生成随机样本	think-statistics-note.md	/^### 利用CDF生成随机样本$/;"	k
+参考资料：	complex.md	/^### 参考资料：$/;"	k
+变量分布	think-statistics-note.md	/^### 变量分布$/;"	k
+四、寻求优化参数 $\theta$	logistic-regression.md	/^## 四、寻求优化参数 $\\theta$ $/;"	i
+核密度估计（kernel density estimation, KDE）	think-statistics-note.md	/^### 核密度估计（kernel density estimation, KDE）$/;"	k
+概率质量函数（Probability Mass Function，PMF）	think-statistics-note.md	/^### 概率质量函数（Probability Mass Function，PMF）$/;"	k
+汇总统计量	think-statistics-note.md	/^### 汇总统计量$/;"	k
+百分位秩（percentile rank）	think-statistics-note.md	/^### 百分位秩（percentile rank）$/;"	k
+直方图	think-statistics-note.md	/^### 直方图$/;"	k
+矩（moment）	think-statistics-note.md	/^### 矩（moment）$/;"	k
+第一章 探索性数据分析	think-statistics-note.md	/^## 第一章 探索性数据分析$/;"	i
+第三章 概率质量函数	think-statistics-note.md	/^## 第三章 概率质量函数$/;"	i
+第二章 分布	think-statistics-note.md	/^## 第二章 分布$/;"	i
+第五章 分布建模	think-statistics-note.md	/^## 第五章 分布建模$/;"	i
+第六章 概率密度函数（Probability density function, PDF）	think-statistics-note.md	/^## 第六章 概率密度函数（Probability density function, PDF）$/;"	i
+第四章 累积分布函数（cumulative distribution function，CDF）	think-statistics-note.md	/^## 第四章 累积分布函数（cumulative distribution function，CDF）$/;"	i
+重编码（recode）：	think-statistics-note.md	/^### 重编码（recode）：$/;"	k
