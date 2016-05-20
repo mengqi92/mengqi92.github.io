@@ -11,10 +11,10 @@ keywords: "机器学习,图像处理,统计,数据分析"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-# rss:
+rss:
 
 # Specify the date when the site was setup
-since: 2015.10
+since: 2015
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -167,8 +167,8 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggler.
-  display: post
-  #display: always
+  # display: post
+  display: always
   # display: hide
   #display: remove
 
