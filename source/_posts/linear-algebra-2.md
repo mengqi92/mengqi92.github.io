@@ -17,7 +17,7 @@ mathjax: true
 
 <!-- more -->
 
-# 齐次线性方程组
+# 一、齐次线性方程组
 形如 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 的线性方程组称为`齐次方程组`。显然，$\mathbf{x}=\mathbf{0}$ 是方程的解，这个解太平凡了，以致于就叫`平凡解`。我们平常更关心的是它还有没有别的解，即`非平凡解`。下面以一个例子分析一下：
 
 例：判断下列齐次方程组是否有非平凡解，表示其解集。
@@ -55,7 +55,7 @@ mathjax: true
 
 从最后的行最简形式，我们可以得到解：{% math %}x_1 = \frac{4}{3} x_3, x_2 =0{% endmath %}，其中 $x_3$ 是自由变量。所以 $\mathbf{x}$ 的通解就是 {% math %}\mathbf{x} = \begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix} = x_3\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix} = x_3\mathbf{v}{% endmath %}。也就是说，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 的解是三维空间（因为向量 $\mathbf{v}$ 是三维的）中的一条直线（因为只有一个自由变量）。进一步推广，我们不难想象，如果解集中有 $p$ 个自由变量，则解集就是 $m$ 维空间（$m$ 为 $\mathbf{A}$ 的行数）中，$p$ 个向量张成的空间。**如果没有自由变量（也就是 $\mathbf{A}$ 各列线性无关），那么就有 0 个向量张成的空间，即 $\operatorname{Span}\{\mathbf{0}\}$，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 也就只有平凡解。**
 
-# 非齐次线性方程组
+# 二、非齐次线性方程组
 `非齐次线性方程组`形如 $\mathbf{A}\mathbf{x}=\mathbf{b}$，
 为了方便对比，我们把上面那个例子改为一个非齐次方程组进行分析：
 {% math %}
@@ -101,7 +101,7 @@ mathjax: true
 
 结合之前总结的齐次线性方程组解的性质，当方程组含有 $p$ 个自由变量时，齐次方程组的解集是 $p$ 个向量的张成空间，而非齐次方程组解集只是这个空间进行了平移（前提是非齐次方程组有解），并没有改变这个空间的基本性质（比如空间的维度）。
 
-# 列空间
+# 三、列空间
 矩阵{% math %} \mathbf{A} = [\mathbf{a_1} \mathbf{a_2} \cdots \mathbf{a_n}] {% endmath %}的各个列向量线性组合组成的集合，就是$\mathbf{A}$的列空间。记作 $\operatorname{Col}\mathbf{A}$，即
 {% math %}
 \begin{equation*}
@@ -117,18 +117,18 @@ mathjax: true
 
 更进一步，非齐次线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 中，如果 $\mathbf{A}$已知，$\mathbf{x}$和$\mathbf{b}$ 未知，此时我们关注的问题是 $\mathbf{A}$ 的列向量能张成多少维；如果 $\mathbf{A}$ 和 $\mathbf{b}$ 已知，我们关注的问题就是 $\mathbf{A}$ 中 $n$ 个列向量如何线性表示能表示成 $\mathbf{b}$，这时候我们如果提前知道 $\mathbf{A}$ 的列空间达不到 $\mathbf{b}$ 的维数，那么这些列向量就一定无法线性组合出 $\mathbf{b}$。
 
-# 零空间
+# 四、零空间
 齐次方程 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 的全部解组成的集合，称为矩阵 $\mathbf{A}$ 的零空间，记作 $\operatorname{Nul} \mathbf{A}$。
 
 当 $\mathbf{A}$ 中的列向量线性无关时，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有零解，这时 $\mathbf{A}$ 的零空间就是 $\mathbf{0}$；而只要 $\mathbf{A}$ 中的列向量线性相关，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 就存在非零解，这时 $\mathbf{A}$ 的零空间就是一个维度大于 0 的空间。
 
 关于列空间和零空间的讨论先在这里打住，之后会进一步讨论它们之间的关系和各自的意义。目前只要知道列空间是由 $\mathbf{A}$ 的列向量张成的，而零空间的意义更隐晦一些，是 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 的所有解组成的空间。从列空间能看出 $\mathbf{A}$ 各列的线性相关关系，列向量越相关，列空间维度越低。从零空间也能看出 $\mathbf{A}$ 各列的线性相关性，列向量越相关，零空间维度越高。而负责量化描述 $\mathbf{A}$ 列向量有多么线性相关的，是一个叫做`秩`的东西。
 
-参考资料：
+# 参考资料：
 ---
 - 线性代数及其应用：第3版/（美）莱（Lay, D.C.）著；沈复兴等译. ——北京：人民邮电出版社，2007.7
 - 麻省理工学院的[线性代数公开课](http://open.163.com/special/opencourse/daishu.html)
 
-版权声明：
+# 版权声明：
 ---
 本文中所有文字、图片版权均属本人所有，如需转载请注明来源。

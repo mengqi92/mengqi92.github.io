@@ -1,3 +1,4 @@
+---
 title: Gabor 特征总结
 tags:
   - 图像处理

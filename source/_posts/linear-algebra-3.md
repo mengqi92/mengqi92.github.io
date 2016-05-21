@@ -1,3 +1,4 @@
+---
 title: 线性代数拾遗（三）：线性变换以及矩阵的意义
 tags:
   - 数学
@@ -9,6 +10,7 @@ mathjax: true
 date: 2016-05-20 21:11:00
 ---
 
+{% asset_img banner.jpeg %}
 
 {% post_link linear-algebra-2 上一章 %}我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。 
 
@@ -16,7 +18,7 @@ date: 2016-05-20 21:11:00
 
 <!-- more -->
 
-# 变换 
+# 一、变换 
 假如有如 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 形式的方程：
 {% math %}
 \begin{bmatrix}
@@ -53,7 +55,7 @@ date: 2016-05-20 21:11:00
 \begin{bmatrix} x_1 \\ x_2 \\ 0 \end{bmatrix}
 {% endmath %} 
 
-# 线性变换
+# 二、线性变换
 线性变换是一类满足线性条件的变换。所谓的线性条件就是：
 $$T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \\ \text{和}\\ T(c \mathbf{u}) = c T(\mathbf{u})$$
  
@@ -62,8 +64,8 @@ $$T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \\ \text{和}\\ T(c \
 我们假设有一个二维向量 $\mathbf{x}=\begin{bmatrix}x_1\\ x_2 \end{bmatrix}= x_1 \mathbf{e}_1 + x_2 \mathbf{e}_2$，其中 {% math %}\mathbf{e}_1=\begin{bmatrix}1\\ 0\end{bmatrix}, \mathbf{e}_2=\begin{bmatrix}0\\ 1\end{bmatrix}{% endmath %} 是 2$\times$ 2 单位矩阵 $\mathbf{I}_n$ 的列向量。由于线性变换保持加法和数乘运算，所以
 
 {% math %}
-\begin{equation*}
-T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) & T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x}
+\begin{equation}
+T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) & T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x} \nonumber
 \end{equation}
 {% endmath %}
 
@@ -73,15 +75,15 @@ T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\math
 
 > 线性变换强调它作为映射的性质，而矩阵变换则描述了映射是怎样实现的。
 
-# 几何中的线性变换
+# 三、几何中的线性变换
 借助上面线性变换的性质，我们就很容易理解图形学中一些专门用于变换的矩阵了，比如 2 维平面上的旋转矩阵：
 {% math %}
-\begin{equation*}
+\begin{equation}
 \mathbf{A}=
 \begin{bmatrix}
 \cos\varphi & -\sin\varphi \\
 \sin\varphi & \cos\varphi
-\end{bmatrix}
+\end{bmatrix} \nonumber
 \end{equation}
 {% endmath %}
 
@@ -91,27 +93,27 @@ T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\math
  
 {% asset_img rotation.png 旋转变换 %}
 
-# 存在性和唯一性问题
+# 四、存在性和唯一性问题
 有了线性变换的概念，我们再来回顾之前两章讨论的解的存在性和唯一性的问题。
 
-## 解的存在性
+## 4.1 解的存在性
 
 非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 可以看做是一个 $ \mathbf{x} $ 所在空间到 $ \mathbf{b} $ 所在空间的映射。
 对映射 $T=R^n\rightarrow R^m$ ，如果 $R^n$ 中任意向量 $\mathbf{b}$ 都是 $R^n$ 中至少一个 $\mathbf{x}$ 的像，则称 $T$ 是 $R^n$ 到 $R^m$ 上的映射（或叫`满射`），这时，非线性方程组对于任意的 $ \mathbf{b} $ 都有解。反过来，如果存在 $ \mathbf{b} $ 使得非线性方程组无解，那么 $T$ 就不是 $R^n$ 到 $R^m$ 上的满射。它们的几何表示如下图所示：
 
 {% asset_img existence.png 满射 %}
  
-## 解的唯一性
+## 4.2 解的唯一性
 如果任意的 $ \mathbf{b}\in R^m $ 都是 $R^n$ 中最多一个向量 $ \mathbf{x} $ 的像，那么就称 $T$ 是`一对一映射`。
 
 一对一映射也就是非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 对任意 $ \mathbf{b} $ 要么无解，要么有唯一解。也就是说，当 方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，$T$ 就不是一对一映射，这时齐次方程组 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有平凡解。
 
 {% asset_img uniqueness.png 一对一映射 %}
  
-参考文献:
+# 参考文献:
 ---
 - 线性代数及其应用：第3版/（美）莱（Lay, D.C.）著；沈复兴等译. ——北京：人民邮电出版社，2007.7
 
-版权声明：
+# 版权声明：
 ---
 本文中所有文字、图片版权均属本人所有，如需转载请注明来源。

@@ -1,3 +1,4 @@
+---
 title: Ein 和 Eout，假设模型以及开放思维
 tags:
   - 随笔
