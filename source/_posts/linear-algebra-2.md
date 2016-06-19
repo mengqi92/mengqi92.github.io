@@ -7,6 +7,7 @@ tags:
  - 基础概念
 category: 线性代数
 mathjax: true
+date: 2016-05-14
 ---
 
 {% asset_img banner.jpeg %}
