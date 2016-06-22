@@ -53,7 +53,7 @@ digraph {
 {% math %}
 \begin{equation}
 \mathbf{x}_{i+1} = \begin{bmatrix} c_{i+1} \\ r_{i+1} \end{bmatrix}
-= c_i \begin{bmatrix} 0.95 \\ 0.05 \end{bmatrix} + r_i \begin{bmatrix} 0.95 \\ 0.05 \end{bmatrix}
+= c_i \begin{bmatrix} 0.95 \\ 0.05 \end{bmatrix} + r_i \begin{bmatrix} 0.03 \\ 0.97 \end{bmatrix}
 = \begin{bmatrix} 0.95 & 0.03 \\ 0.05 & 0.97 \end{bmatrix}\begin{bmatrix} c_i \\ r_i \end{bmatrix}
 \end{equation}
 {% endmath %}
