@@ -38,7 +38,7 @@ post_asset_folder: true # 静态资源按文章管理
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
 tab_replace:
@@ -51,6 +51,7 @@ category_map:
   图像处理: cv
   函数式编程: fp
   自然语言处理: nlp
+  线性代数: linear-algebra
   随笔: nonsense
 tag_map:
   读书笔记: notes
@@ -67,13 +68,13 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+math:
+  engine: 'mathjax'
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next #landscape
-
-# livereload:
-  # port: 35729
+theme: next # landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
