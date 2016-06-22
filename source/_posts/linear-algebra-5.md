@@ -1,3 +1,4 @@
+---
 title: 线性代数拾遗（五）：矩阵变换的应用
 tags:
   - 线性代数拾遗
@@ -6,9 +7,7 @@ tags:
   - 基础概念
 categories: 线性代数
 mathjax: true
-date: 2016-06-22 17:53:00
 ---
-
 {% asset_img banner.jpeg %}
 
 {% post_link linear-algebra-2 上一章 %}用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵“封装”的作用，将解三个方程组的问题转换为解{% math %}\mathbf{A}\mathbf{x}=\mathbf{0}{% endmath %}。而我们知道，矩阵不仅可以封装数据，还可以表示线性变换，那这一章就来介绍一下矩阵变换在现实生活中的应用。
@@ -37,7 +36,7 @@ digraph {
 
 {% math %}
 \begin{equation}
-\begin{bmatrix} 0.95\, \mathbf{r}_{i} \\ 0.05\, \mathbf{r}_{i} \end{bmatrix}
+\begin{bmatrix} 0.95\, c_i \\ 0.05\, c_i \end{bmatrix}
 \end{equation}
 {% endmath %}
 
@@ -45,7 +44,7 @@ digraph {
 
 {% math %}
 \begin{equation}
-\begin{bmatrix} 0.03\, \mathbf{s}_{i} \\ 0.97\, \mathbf{s}_{i} \end{bmatrix}
+\begin{bmatrix} 0.03\, r_i \\ 0.97\, r_i \end{bmatrix}
 \end{equation}
 {% endmath %}
 
