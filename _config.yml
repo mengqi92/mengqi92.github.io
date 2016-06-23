@@ -38,9 +38,9 @@ post_asset_folder: true # 静态资源按文章管理
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
 tab_replace:
 
 # Category & Tag
@@ -50,6 +50,7 @@ category_map:
   机器学习: ml
   图像处理: cv
   函数式编程: fp
+  编程: programming
   自然语言处理: nlp
   线性代数: linear-algebra
   随笔: nonsense
@@ -87,5 +88,6 @@ deploy:
 # 备份
 backup:
   type: git
+  theme: next
   repository:
     coding: git@git.coding.net:mengqipei/blog.git
