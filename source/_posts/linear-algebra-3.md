@@ -31,7 +31,7 @@ date: 2016-05-20 21:11:00
 {% endmath %} 
 以往我们都是将其看成是几个列向量的线性组合，即{% math %}1\begin{bmatrix}4 \\ 2\end{bmatrix} + 1\begin{bmatrix}-3 \\ 0\end{bmatrix} + 1\begin{bmatrix}1 \\ 5\end{bmatrix} + 1\begin{bmatrix}3 \\ 1\end{bmatrix} = \begin{bmatrix} 5 \\ 8 \end{bmatrix}{% endmath %}，这次我们换个角度，把 $\mathbf{A}$ 看作一个整体，整个方程就是一个 4 维向量 $\mathbf{x}$ 乘以矩阵 $\mathbf{A}$ 后得到一个 2 维向量 $\mathbf{b}$。 以这个观点来看的话，**矩阵 $\mathbf{A}$ 就相当于一个从一个向量集映射到另一个向量集的函数！**。
 
-假设 $\mathbf{x}$ 是 $n$ 维向量，$\mathbf{b}$ 是 $m$ 维向量，则 $\mathbf{A}$ 就是一个 $R^n$ 到 $R^m$ 的变换。这个变换的`定义域`是 $R^n$，`上域`是 $R^m$，记作 $T: R^n \rightarrow R^m$。$\mathbf{x}$ 是 $R^n$ 空间中的一个向量，$T(\mathbf{x})$ 就是其变换到 $R^m$ 空间中的`像`，而全体像 $T(\mathbf{x})$ 的集合就称为变换 $T$ 的`值域`。图示如下：
+假设 $\mathbf{x}$ 是 $n$ 维向量，$\mathbf{b}$ 是 $m$ 维向量，则 $\mathbf{A}$ 就是一个 $R^n$ 到 $R^m$ 的变换。这个变换的`定义域`是 $R^n$，`上域`是 $R^m$，记作 $T: R^n \rightarrow R^m$。$\mathbf{x}$ 是 $R^n$ 空间中的一个向量，$T(\mathbf{x})$ 就是其变换到 $R^m$ 空间中的`像`，而全体`像` $T(\mathbf{x})$ 的集合就称为变换 $T$ 的`值域`。图示如下：
 
 {% asset_img linear-transformation.png 变换$T$ %}
 
