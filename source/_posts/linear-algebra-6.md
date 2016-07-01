@@ -48,7 +48,7 @@ mathjax: true
 \mathbf{x}_1 =  \begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}, \mathbf{x}_2 = \begin{bmatrix} 0.37 \\ 0.45 \\ 0.18 \end{bmatrix}, \mathbf{x}_3 =  \begin{bmatrix} 0.329 \\ 0.525 \\ 0.146 \end{bmatrix}, \cdots, \mathbf{x}_7 = \begin{bmatrix} 0.3016 \\ 0.5953 \\ 0.1031 \end{bmatrix}, \mathbf{x}_8 = \begin{bmatrix} 0.3008 \\ 0.5977 \\ 0.1016 \end{bmatrix}, \mathbf{x}_9 = \begin{bmatrix} 0.3004 \\ 0.5988 \\ 0.1008 \end{bmatrix} \cdots \nonumber
 \end{equation}
 {% endmath %}
-。我们可以发现，这个选举结果向量 $\mathbf{x}$ 越来越逼近于向量 {% math %}\mathbf{q} = \begin{bmatrix}0.3\\ 0.6\\ 0.1\end{bmatrix}{% endmath %}。事实上，当我们把迁移矩阵乘上这个向量：
+我们可以发现，这个选举结果向量 $\mathbf{x}$ 越来越逼近于向量 {% math %}\mathbf{q} = \begin{bmatrix}0.3\\ 0.6\\ 0.1\end{bmatrix}{% endmath %}。事实上，当我们把迁移矩阵乘上这个向量：
 {% math %}
 \begin{equation}
 \mathbf{P}\mathbf{q}=
@@ -70,7 +70,7 @@ mathjax: true
 # 二、特征值与特征向量
 当我们把一个矩阵看作是一个线性变换：$\mathbf{x} \mapsto \mathbf{A}\mathbf{x}$ 时，我们将矩阵理解成为一种运动，一种能使向量 $\mathbf{x}$ 向着向量 $\mathbf{A}\mathbf{x}$ 移动的“力”。一般来说，向量 $\mathbf{x}$ 经 $\mathbf{A}$ 进行变换有可能是朝着各个方向移动。然而，总有某些特殊向量，线性变换在这些向量上的作用是十分简单的。
 
-比如：已知向量 {% math %}\mathbf{u}=\begin{bmatrix}-1\\ 1\end{bmatrix}, \mathbf{v}=\begin{bmatrix}2\\ 1\end{bmatrix}{% endmath %}，矩阵 {% math %}\begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}{% endmath %} 表示的线性变换分别应用于（即矩阵左乘）向量 $\mathbf{u}$ 和 $\mathbf{v}$ 后的结果如下图所示：
+比如：已知向量 {% math %}\mathbf{u}=\begin{bmatrix}-1\\ 1\end{bmatrix}, \mathbf{v}=\begin{bmatrix}2\\ 1\end{bmatrix}{% endmath %}，矩阵 {% math %} \mathbf{A} = \begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}{% endmath %} 表示的线性变换分别应用于（即矩阵左乘）向量 $\mathbf{u}$ 和 $\mathbf{v}$ 后的结果如下图所示：
 
 {% asset_img eigenvector.png 线性变换应用于不同的向量 %}
 
