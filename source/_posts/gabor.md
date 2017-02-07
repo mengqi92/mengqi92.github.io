@@ -130,7 +130,7 @@ $$ \omega(x, y, \sigma_x, \sigma_y) = K \exp(-\pi \left (x-x\_0)^2 / \sigma\_x^2
 考虑全面的话，高斯函数还要有（顺时针）旋转，即：
 $$\begin{cases}
 (x-x\_0)\_r = (x-x\_0)\cos \theta + (y-y\_0)\sin \theta \\\
-(y-y\_0)\_r = -(y-y\_0)\sin \theta + (y-y\_0)\cos \theta
+(y-y\_0)\_r = -(x-x\_0)\sin \theta + (y-y\_0)\cos \theta
 \end{cases}$$
 
 加入旋转参数后的二维高斯函数为：
