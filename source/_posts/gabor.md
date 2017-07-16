@@ -124,7 +124,7 @@ $$ s(x,y) = \exp \left(i \left(2\pi (u\_0 x + v\_0 y) \right) \right) $$
 
 ### 2.2.3 二维高斯函数
 二维高斯函数定义如下：
-$$ \omega(x, y, \sigma_x, \sigma_y) = K \exp(-\pi \left (x-x\_0)^2 / \sigma\_x^2 + (y-y\_0)^2 / \sigma\_y^2\right ) \tag{5}\label{5}$$
+$$ \omega(x, y, \sigma_x, \sigma_y) = K \exp\left(-\pi \left( (x-x\_0)^2 / \sigma\_x^2 + (y-y\_0)^2 / \sigma\_y^2 \right) \right) \tag{5}\label{5}$$
 其中，$\sigma_x, \sigma_y$ 分别为两个方向上的尺度参数（scaling parameters），用来控制高斯函数在两个方向上的“展布”形状。$(x\_0, y\_0)$ 为高斯函数的中心点。$K$ 为常数。
 
 考虑全面的话，高斯函数还要有（顺时针）旋转，即：
@@ -134,7 +134,7 @@ $$\begin{cases}
 \end{cases}$$
 
 加入旋转参数后的二维高斯函数为：
-$$ \omega\_r(x, y, \theta, \sigma\_x, \sigma\_y) = K \exp(-\pi \left (x-x\_0)\_r^2 / \sigma\_x^2 + (y-y\_0)\_r^2 / \sigma\_y^2\right )$$
+$$ \omega\_r(x, y, \theta, \sigma\_x, \sigma\_y) = K \exp\left(-\pi \left( (x-x\_0)\_r^2 / \sigma\_x^2 + (y-y\_0)\_r^2 / \sigma\_y^2\right) \right)$$
 
 {% asset_img 2d-gaussian.png 二维高斯 %}
 
