@@ -46,7 +46,7 @@ O_s &= [0.4, 0.5, 0.2]
 
 其中，$O_c$, $O_e$, $O_s$ 分别表示煤炭、电力、钢铁各个部门消耗三种资源的量。
 
-各种资源的单位价格也可以用符号定义。例如用 $p_c$, $p_e$, $p_s$ 分别来表示煤炭、电力、钢铁三种资源的价格，那么煤炭部门的总支出就是 {% math %}0 \cdot p_c+0.6 p_e+0.4 p_s = O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}{% endmath %}. 同理，电力部门和钢铁部门的总收入是 {% math %}O_e \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}, O_s \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}{% endmath %}. 
+各种资源的单位价格也可以用符号定义。例如用 $p_c$, $p_e$, $p_s$ 分别来表示煤炭、电力、钢铁三种资源的价格，那么煤炭部门的总支出就是 {% math %}0 \cdot p_c+0.4 p_e+0.6 p_s = O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}{% endmath %}. 同理，电力部门和钢铁部门的总支出是 {% math %}O_e \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}, O_s \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}{% endmath %}. 
 
 也就是说，煤炭部门每生产出 1 单位价值为 $p_c$ 的煤炭，它就需要消耗价值为 $O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$ 的资源。要使煤炭部门收支平衡，就需要：
 
