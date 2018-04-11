@@ -19,19 +19,12 @@ script:
 after_script:
     - cd ./public
     - git init
-    - git config user.name "Mengqi Pei"
-    - git config user.email "mengqipei@gmail.com"
+    - git config --global push.default matching
+    - git config user.name "${GITHUB_USER}"
+    - git config user.email "${GITHUB_EMAIL}"
     - git add .
     - git commit -m "updated by travis"
-    - git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:master
+    - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
 branches:
     only:
         - blog
-
-deploy:
-    provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
-    on:
-        branch: master
