@@ -1,0 +1,37 @@
+language: node_js
+node_js: stable
+cache:
+    directories:
+        - node_modules
+
+env:
+    global:
+        - GITHUB_REF: github.com/mengqi92/mengqi92.github.io.git
+
+before_install:
+    - npm install -g hexo
+    - npm install -g hexo-cli
+install:
+    - npm install
+script:
+    - hexo cl
+    - hexo g
+after_script:
+    - cd ./public
+    - git init
+    - git config user.name "Mengqi Pei"
+    - git config user.email "mengqipei@gmail.com"
+    - git add .
+    - git commit -m "updated by travis"
+    - git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:master
+branches:
+    only:
+        - blog
+
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    on:
+        branch: master
