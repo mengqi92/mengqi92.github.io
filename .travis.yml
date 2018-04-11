@@ -11,7 +11,7 @@ env:
 addons:
   apt:
     packages:
-      - dot
+      - graphviz
 
 before_install:
   - npm install -g hexo
