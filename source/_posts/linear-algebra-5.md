@@ -6,7 +6,7 @@ tags:
   - 线性代数
   - 数学
   - 基础概念
-categories: 线性代数
+category: 线性代数
 mathjax: true
 ---
 {% asset_img banner.jpeg %}

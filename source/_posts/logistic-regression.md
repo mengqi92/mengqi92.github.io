@@ -1,11 +1,11 @@
 ---
 title: Logistic 回归
-date: 2015-10-05 14:50
+date: 2015-10-05 14:50:00
 category: 机器学习
 tags:
-- 机器学习
-- Logistic 回归
-- Logistic Regression
+  - 机器学习
+  - Logistic 回归
+  - Logistic Regression
 mathjax: true
 ---
 
