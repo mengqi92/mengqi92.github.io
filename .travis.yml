@@ -1,5 +1,5 @@
 language: node_js
-node_js: "6"
+node_js: "6.12"
 cache:
   directories:
     - node_modules
@@ -29,7 +29,7 @@ after_script:
   - git config user.email "${GITHUB_EMAIL}"
   - git add .
   - git commit -m "updated by travis"
-  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
+  - git push --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
 branches:
   only:
     - blog
