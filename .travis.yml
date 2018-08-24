@@ -29,7 +29,7 @@ after_script:
   - git config user.email "${GITHUB_EMAIL}"
   - git add .
   - git commit -m "updated by travis"
-  - git push "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
+  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
 branches:
   only:
     - blog
