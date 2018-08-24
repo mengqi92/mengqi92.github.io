@@ -71,6 +71,7 @@ pagination_dir: page
 
 math:
   engine: 'mathjax'
+  src: "https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
