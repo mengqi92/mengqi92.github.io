@@ -20,7 +20,7 @@ install:
   - npm install
 script:
   - hexo cl
-  - hexo g
+  - hexo g --debug -b
 after_script:
   - cd ./public
   - git init
