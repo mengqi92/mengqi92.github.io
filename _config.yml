@@ -76,7 +76,7 @@ math:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-reloaded # landscape
+theme: next # landscape
 
 search:
   path: search.xml
