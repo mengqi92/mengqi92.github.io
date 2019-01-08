@@ -156,7 +156,7 @@ site_state: true
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: aHR0cHM6Ly9naXRodWIuY29tL21lbmdxaTky || github
-  E-Mail: bWVuZ3FpcGVpQGdtYWlsLmNvbQ== || envelope
+  E-Mail: bWFpbHRvOm1lbmdxaXBlaUBnbWFpbC5jb20= || envelope
   Twitter: aHR0cHM6Ly90d2l0dGVyLmNvbS9tZW5ncWlwZWk= || twitter
   weibo: aHR0cDovL3dlaWJvLmNvbS91LzIyNjQ0MjIzODM= || weibo
 
@@ -728,7 +728,7 @@ bookmark:
 # External URL with BASE64 encrypt & decrypt.
 # Usage: {% exturl text url "title" %}
 # Alias: {% extlink text url "title" %}
-exturl: false
+exturl: true
 
 # Note tag (bs-callout).
 note:
