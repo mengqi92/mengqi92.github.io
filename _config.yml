@@ -91,10 +91,3 @@ deploy:
   theme: next
   repository: git@github.com:mengqi92/mengqi92.github.io.git
   branch: master
-
-# 备份
-backup:
-  type: git
-  theme: next
-  repository:
-    coding: git@git.coding.net:mengqipei/blog.git
