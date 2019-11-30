@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/avatar/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="4Fw5av3MAK9VoBQQanNGeiDwK9jEJjQBL6jk3PSY-B4">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://mengqi92.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: true,
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="在学习机器学习和图像处理的过程中，经常会遇到卷积这个概念。我每次遇到这个概念都有点似懂非懂的样子。有时候清楚它的直观解释，但又搞不清公式中是如何体现的。究其原因，还是我没有完全搞懂这个概念。 维基百科上有一个动态图来演示这个概念，但对于我来说还是有些复杂。于是自己在网上找了很多文章来研究，终于有了比较直观的印象，这里就趁热把我理解的解释一下，作为总结。 一、一维卷积1.1 数学定义维基百科上，卷">
+<meta name="keywords" content="机器学习,图像处理,基础概念,Gabor 特征,数学,卷积">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我对卷积的理解">
+<meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;index.html">
+<meta property="og:site_name" content="Mengqi&#39;s blog">
+<meta property="og:description" content="在学习机器学习和图像处理的过程中，经常会遇到卷积这个概念。我每次遇到这个概念都有点似懂非懂的样子。有时候清楚它的直观解释，但又搞不清公式中是如何体现的。究其原因，还是我没有完全搞懂这个概念。 维基百科上有一个动态图来演示这个概念，但对于我来说还是有些复杂。于是自己在网上找了很多文章来研究，终于有了比较直观的印象，这里就趁热把我理解的解释一下，作为总结。 一、一维卷积1.1 数学定义维基百科上，卷">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;banner.jpeg">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;conv-effect-function.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;conv-effect-day1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;conv-effect-day2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;conv-effect-day3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;2d-convolution.png">
+<meta property="og:updated_time" content="2019-11-30T16:28:17.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;convolution&#x2F;banner.jpeg">
+
+<link rel="canonical" href="http://mengqi92.github.io/2015/10/06/convolution/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>我对卷积的理解 | Mengqi's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68396368-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-68396368-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8800f71adfa983d80f6c943ceb1ee330";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Mengqi's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mengqi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">a paranoid android.</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2015/10/06/convolution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar/astronaut.png">
+      <meta itemprop="name" content="Mengqi">
+      <meta itemprop="description" content="机器学习、图像处理、统计分析、函数式编程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我对卷积的理解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-10-06 20:05:00" itemprop="dateCreated datePublished" datetime="2015-10-06T20:05:00+00:00">2015-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cv/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img class data-src="/2015/10/06/convolution/banner.jpeg">
+<p>在学习机器学习和图像处理的过程中，经常会遇到卷积这个概念。我每次遇到这个概念都有点似懂非懂的样子。有时候清楚它的直观解释，但又搞不清公式中是如何体现的。究其原因，还是我没有完全搞懂这个概念。 维基百科上有一个动态图来演示这个概念，但对于我来说还是有些复杂。于是自己在网上找了很多文章来研究，终于有了比较直观的印象，这里就趁热把我理解的解释一下，作为总结。</p>
+<h2 id="一、一维卷积"><a href="#一、一维卷积" class="headerlink" title="一、一维卷积"></a>一、一维卷积</h2><h3 id="1-1-数学定义"><a href="#1-1-数学定义" class="headerlink" title="1.1 数学定义"></a>1.1 数学定义</h3><p>维基百科上，卷积的形式化定义如下：</p>
+<script type="math/tex; mode=display">f(x)\*g(x) = \int\_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1}</script><h3 id="1-2-直观解释"><a href="#1-2-直观解释" class="headerlink" title="1.2 直观解释"></a>1.2 直观解释</h3><p>先来分析一下这个公式：</p>
+<ol>
+<li>$f(x)*g(x)$ 表示 $f(x)$ 和 $g(x)$ 的卷积，注意此处自变量为 $x$；</li>
+<li>它是对 $(-\infty, \infty)$ 区间上对 $\tau$ 求积分；</li>
+<li>积分对象为两个函数的乘积：$f(\tau)$ 和 $g(x-\tau)$。</li>
+<li>等式右边只有 $g(x-\tau)$ 提到了 $x$，其他部分都在关注 $\tau$</li>
+</ol>
+<p>这样一个公式恐怕还是难以理解，接下来将通过一个例子来进行解释。</p>
+<a id="more"></a>
+<h3 id="1-3-例子"><a href="#1-3-例子" class="headerlink" title="1.3 例子"></a>1.3 例子</h3><p>试想小明有一段时间每天都要去输液，输的药会在身体里残留直至失效，药效随着时间是不断衰落的。 这里为简便起见，假设药效 4 天就失效，而且药效持续函数是离散的。如下图所示：</p>
+<img class title="药效持续函数" data-src="/2015/10/06/convolution/conv-effect-function.png">
+<p>图中，横坐标为天数，纵坐标为药效。输液当天（day=0）药效为 100%，第二天减弱为 80%，第三天减弱为 40%，第四天减弱为 0。</p>
+<p>现在先定义一些符号：<br>记天数为 $t$，每天输液的药量为 $\operatorname{m}(t)$, 药效函数为 $\operatorname{eff}(t)$，小明身上残留的药效为 $\operatorname{rest}(t)$<br>其中药效函数：</p>
+<script type="math/tex; mode=display">\operatorname{eff}(t) = 
+\begin{cases} 100 \% & \text{t=0}  \\\
+80 \% & \text{t=1}  \\\
+40 \% & \text{t=2}  \\\
+0  \% & \text{t>=3}  \\\
+\end{cases}</script><p>下面观察一下小明从第一天起，连续三天输液后身上所留下的药效（假设每天药量固定为10）。</p>
+<ul>
+<li>第一天，小明去医院输完液后，药效为 10（$ \operatorname{rest}(t) = \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。</li>
+</ul>
+<img class title="第一天累积的药效示意" data-src="/2015/10/06/convolution/conv-effect-day1.png">
+<ul>
+<li>第二天，小明去医院准备输液<ul>
+<li>输液前，他身上带着前一天的药效，此时已经衰减为 10$\cdot$ 80%=8，即 $ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $。</li>
+<li>输液后，他身上携带的药效为：8 + 10 = 18（$ \operatorname{rest}(t) = \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）</li>
+</ul>
+</li>
+</ul>
+<img class title="第二天累积的药效示意" data-src="/2015/10/06/convolution/conv-effect-day2.png">
+<ul>
+<li>第三天，小明去医院准备输液<ul>
+<li>输液前，他身上带着前两天的药效，第一天的此时已衰减为 10$\cdot$ 40%=4（$ \operatorname{m}(t-2)\cdot \operatorname{eff}(2) $），第二天的此时衰减为 10$\cdot$ 80%=8（$ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $）。</li>
+<li>输液后，他身上携带的药效为：4 + 8 + 10 = 22（$ \operatorname{rest}(t) = \operatorname{m}(t-2)\cdot \operatorname{eff}(2) + \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。</li>
+</ul>
+</li>
+</ul>
+<img class title="第三天累积的药效示意" data-src="/2015/10/06/convolution/conv-effect-day3.png">
+<h3 id="1-4-分析"><a href="#1-4-分析" class="headerlink" title="1.4 分析"></a>1.4 分析</h3><p>从上面的分析我们可以得到，小明第 t 天身上残留的药效 $\operatorname{rest}(t) = \sum_{i=1}^n \operatorname{m}(t-i) \operatorname{eff}(i)$，其中 $n$ 为药效有效的最大天数。 我们不难想象，但药效函数 $\operatorname{eff}(t)$ 为连续时，上式中的求和就应改为积分；而当药效能无限期有效时，上式中 $n$ 就为 $\infty$。 无限期有效的药效函数，所对应的 $\operatorname{rest}(t) = \int_{-\infty}^\infty \operatorname{m}(t-\tau) \operatorname{eff}(\tau) \,d\tau$（本例中严格来说应该是 $\int_0^\infty$ ，这里推广到了 $(-\infty, \infty)$）。推导到这里，基本就是维基百科上卷积的定义了。</p>
+<h3 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h3><p>我之前对卷积概念的困惑主要是因为对公式 $\ref{1}$ 的那个 $\tau$ 的意义理解错了，总以为 $\tau$ 是随着坐标轴变化的量。 事实上，在上面举的例子中，<strong>$\tau$ 是作为沿着纵坐标遍历的量：它的作用是对“纵向”上，历次函数 $\operatorname{eff}(t)$ 在当前点($t$)残余量($\operatorname{rest}(t)$)的求和。积分也是对纵向上的积分，而非横向上沿自变量的积分</strong>。</p>
+<p>横坐标变化的量始终为 $t$，而且在卷积中并没有明显体现出 $t$ 的变化。</p>
+<p>最后重新回顾一下上面的整个过程：比较三天以来的示意图可以发现，如果我们以“当天”而不是第 $t$ 天为参考的话，就会看到 $\operatorname{eff}(t)$ 随着时间是在向左平移（深蓝的线表示当天，前几天的线都在其左边），然后各天衰落后的药量残余等于 $\operatorname{eff}(t)$ 值乘上初始的药量值，最后将各天的药量残余求个和。整个过程的核心就是<strong>“（反转），移动，乘积，求和”</strong>，这里面“反转”的概念也好理解，就是本来 $\operatorname{eff}(t)$ 是<strong>“朝着右边”</strong>走的函数，$t=0,t=1,\cdots$，$\operatorname{eff}(t)$ 是形容<strong>t 天后的药量的</strong>，然而实际例子中我们是以当天为参考系，我们是在<strong>“朝着左边”</strong>看的，因而要“反转”。我认为这个“反转”是一个很自然的过程，不算是整个卷积的核心。 此外，在计算机领域，至少我接触到的图像处理、机器学习方面用到的卷积，其卷积核（就是例子中不断平移的函数 $\operatorname{eff}(t)$）一般是对称的，所以这个反转的概念也不是那么必要。</p>
+<h2 id="二、二维卷积"><a href="#二、二维卷积" class="headerlink" title="二、二维卷积"></a>二、二维卷积</h2><h3 id="2-1-数学定义"><a href="#2-1-数学定义" class="headerlink" title="2.1 数学定义"></a>2.1 数学定义</h3><script type="math/tex; mode=display">f(x, y)\* g(x, y) = \int\_{\tau\_1=-\infty}^\infty \int\_{\tau\_2=-\infty}^{\infty} f(\tau\_1, \tau\_2) \cdot g(x-\tau\_1, y-\tau\_2)\,d\tau\_1 d\tau\_2 \tag{2}</script><p>二维卷积在图像处理中会经常遇到，图像处理中用到的大多是二维卷积的离散形式：</p>
+<script type="math/tex; mode=display">f[x,y] * g[x,y] = \sum\_{n\_1=-\infty}^\infty \sum\_{n\_2=-\infty}^\infty f[n\_1, n\_2] \cdot g[x-n\_1, y-n\_2] \tag{3}</script><h3 id="2-2-图像处理中的二维卷积"><a href="#2-2-图像处理中的二维卷积" class="headerlink" title="2.2 图像处理中的二维卷积"></a>2.2 图像处理中的二维卷积</h3><p>二维卷积就是一维卷积的扩展，原理差不多。核心还是<strong>（反转），移动，乘积，求和</strong>。这里二维的反转就是将卷积核沿反对角线翻转，比如：</p>
+<script type="math/tex; mode=display">\begin{bmatrix} 
+    a & b & c \\\
+    d & e & f \\\
+    g & h & i \\\
+    \end{bmatrix}
+\text{翻转为} \begin{bmatrix}
+    i & h & g \\\
+    f & e & d \\\
+    c & b & a \\\
+    \end{bmatrix}</script><p>之后，卷积核在二维平面上平移，并且卷积核的每个元素与被卷积图像对应位置相乘，再求和。通过卷积核的不断移动，我们就有了一个新的图像，这个图像完全由卷积核在各个位置时的乘积求和的结果组成。</p>
+<p>举一个最简单的均值滤波的例子：</p>
+<script type="math/tex; mode=display">\text{这是一个 3x3 的均值滤波核，也就是卷积核：}
+\begin{bmatrix}
+    1/9 & 1/9 & 1/9 \\\
+    1/9 & 1/9 & 1/9 \\\
+    1/9 & 1/9 & 1/9 \\\
+\end{bmatrix} \\\
+\text{这是被卷积图像，这里简化为一个二维 5x5 矩阵：}
+\begin{bmatrix}
+    3 & 3 & 3 & 3 & 3 \\\
+    4 & 4 & 4 & 4 & 4 \\\
+    5 & 5 & 5 & 5 & 5 \\\
+    6 & 6 & 6 & 6 & 6 \\\
+    7 & 7 & 7 & 7 & 7 \\\
+\end{bmatrix} \\\</script><p>当卷积核运动到图像右下角处（卷积中心和图像对应图像第 4 行第 4 列）时，它和图像卷积的结果如下图所示：</p>
+<img class title="二维卷积示例" data-src="/2015/10/06/convolution/2d-convolution.png">
+<p>可以看出，二维卷积在图像中的效果就是：对图像的每个像素的邻域（邻域大小就是核的大小）加权求和得到该像素点的输出值。滤波器核在这里是作为一个“权重表”来使用的。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU1JThEJUI3JUU3JUE3JUFG" title="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF">中文维基百科/卷积<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ncmFwaGljcy5zdGFuZm9yZC5lZHUvY291cnNlcy9jczE3OC9hcHBsZXRzL2NvbnZvbHV0aW9uLmh0bWw=" title="https://graphics.stanford.edu/courses/cs178/applets/convolution.html">斯坦福大学CS178课程资料（有一个卷积的在线Applet演示）<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2NvbGFoLmdpdGh1Yi5pby9wb3N0cy8yMDE0LTA3LVVuZGVyc3RhbmRpbmctQ29udm9sdXRpb25z" title="http://colah.github.io/posts/2014-07-Understanding-Convolutions">Understanding Convolution（用图和例子从一维卷积一直讲到了CNN）<i class="fa fa-external-link"></i></span></li>
+</ol>
+<h2 id="版权声明："><a href="#版权声明：" class="headerlink" title="版权声明："></a>版权声明：</h2><p>本文中所有文字、图片版权均属本人所有，如需转载请注明来源。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mengqi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/http:/mengqi92.github.io/2015/10/06/convolution/" title="我对卷积的理解">http://mengqi92.github.io/2015/10/06/convolution/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLzQuMC9udWxs"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag"># 基础概念</a>
+              <a href="/tags/Gabor-%E7%89%B9%E5%BE%81/" rel="tag"># Gabor 特征</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E5%8D%B7%E7%A7%AF/" rel="tag"># 卷积</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/10/06/complex/" rel="prev" title="复数的几种表示形式">
+      <i class="fa fa-chevron-left"></i> 复数的几种表示形式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/10/11/gabor/" rel="next" title="Gabor 特征总结">
+      Gabor 特征总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、一维卷积"><span class="nav-number">1.</span> <span class="nav-text">一、一维卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-数学定义"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 数学定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-直观解释"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 直观解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-例子"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-分析"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-总结"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、二维卷积"><span class="nav-number">2.</span> <span class="nav-text">二、二维卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-数学定义"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数学定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-图像处理中的二维卷积"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 图像处理中的二维卷积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明："><span class="nav-number">4.</span> <span class="nav-text">版权声明：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mengqi"
+      src="/avatar/astronaut.png">
+  <p class="site-author-name" itemprop="name">Mengqi</p>
+  <div class="site-description" itemprop="description">机器学习、图像处理、统计分析、函数式编程</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21lbmdxaTky" title="Github → https:&#x2F;&#x2F;github.com&#x2F;mengqi92"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1lbmdxaXBlaUBnbWFpbC5jb20=" title="E-Mail → mailto:mengqipei@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9tZW5ncWlwZWk=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mengqipei"><i class="fa fa-fw fa-twitter"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8yMjY0NDIyMzgz" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2264422383"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLzQuMC9udWxs"><img src="/images/cc-by-nc.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy5mdXppaGFvLm9yZw==" title="http:&#x2F;&#x2F;www.fuzihao.org">切问录</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL2J1d2VucWkuZ2l0aHViLmlv" title="http:&#x2F;&#x2F;buwenqi.github.io">Wenqi's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mengqi</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>

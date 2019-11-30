@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/avatar/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="4Fw5av3MAK9VoBQQanNGeiDwK9jEJjQBL6jk3PSY-B4">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://mengqi92.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: true,
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="上一章用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵“封装”的作用，将解三个方程组的问题转换为解$$\mathbf{A}\mathbf{x}&#x3D;\mathbf{0}$$。而我们知道，矩阵不仅可以封装数据，还可以表示线性变换，那这一章就来介绍一下矩阵变换在现实生活中的应用。">
+<meta name="keywords" content="基础概念,数学,线性代数拾遗,线性代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数拾遗（五）：矩阵变换的应用">
+<meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;06&#x2F;22&#x2F;linear-algebra-5&#x2F;index.html">
+<meta property="og:site_name" content="Mengqi&#39;s blog">
+<meta property="og:description" content="上一章用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵“封装”的作用，将解三个方程组的问题转换为解$$\mathbf{A}\mathbf{x}&#x3D;\mathbf{0}$$。而我们知道，矩阵不仅可以封装数据，还可以表示线性变换，那这一章就来介绍一下矩阵变换在现实生活中的应用。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;06&#x2F;22&#x2F;linear-algebra-5&#x2F;banner.jpeg">
+<meta property="og:updated_time" content="2019-11-30T16:28:17.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;06&#x2F;22&#x2F;linear-algebra-5&#x2F;banner.jpeg">
+
+<link rel="canonical" href="http://mengqi92.github.io/2016/06/22/linear-algebra-5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>线性代数拾遗（五）：矩阵变换的应用 | Mengqi's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68396368-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-68396368-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8800f71adfa983d80f6c943ceb1ee330";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Mengqi's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mengqi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">a paranoid android.</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2016/06/22/linear-algebra-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar/astronaut.png">
+      <meta itemprop="name" content="Mengqi">
+      <meta itemprop="description" content="机器学习、图像处理、统计分析、函数式编程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性代数拾遗（五）：矩阵变换的应用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-22 00:00:00" itemprop="dateCreated datePublished" datetime="2016-06-22T00:00:00+00:00">2016-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">线性代数</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img class data-src="/2016/06/22/linear-algebra-5/banner.jpeg">
+<a href="/2016/05/14/linear-algebra-2/" title="上一章">上一章</a>用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵“封装”的作用，将解三个方程组的问题转换为解$$\mathbf{A}\mathbf{x}=\mathbf{0}$$。而我们知道，矩阵不仅可以封装数据，还可以表示线性变换，那这一章就来介绍一下矩阵变换在现实生活中的应用。
+
+<a id="more"></a>
+<h1 id="一、社会学例子"><a href="#一、社会学例子" class="headerlink" title="一、社会学例子"></a>一、社会学例子</h1><p>这个例子同样来自于《线性代数及其应用》这本书。</p>
+<p>假如我们要研究一个城市的人口迁入、迁出的问题。用 $c_i$ 和 $r_i$ 分别表示第 $i$ 年该城市市区和郊区的人口数，$c_0$和$r_0$就是初始年（最开始进行观测的那一年）市区和郊区的人口数。再用 $\mathbf{x}_i$ 表示第 $i$ 年的人口向量：<script type="math/tex">\mathbf{x}_i = \begin{bmatrix}c_i \\ r_i \end{bmatrix}</script>。</p>
+<p>设人口统计学研究表明，每年有 5% 的城市人口迁移到郊区（其余 95% 继续留在城市），有 3% 的郊区人口移居城市（其余 97% 继续留在郊区），如下图所示：</p>
+<div class="diagram">
+    <div class="diagram-container">
+        <svg width="113pt" height="131pt" viewbox="0.00 0.00 112.60 131.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 127)">
+<title>城市人口迁移示意图</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-127 108.595,-127 108.595,4 -4,4"/>
+<!-- city -->
+<g id="node1" class="node"><title>city</title>
+<ellipse fill="none" stroke="black" cx="27.2976" cy="-105" rx="27.0966" ry="18"/>
+<text text-anchor="middle" x="27.2976" y="-101.3" font-family="Times,serif" font-size="14.00">城区</text>
+</g>
+<!-- city&#45;&gt;city -->
+<g id="edge2" class="edge"><title>city&#45;&gt;city</title>
+<path fill="none" stroke="black" d="M51.9923,-112.752C63.0402,-113.49 72.5952,-110.906 72.5952,-105 72.5952,-101.032 68.2819,-98.5632 62.1005,-97.5944"/>
+<polygon fill="black" stroke="black" points="62.1063,-94.0926 51.9923,-97.248 61.8665,-101.089 62.1063,-94.0926"/>
+<text text-anchor="middle" x="88.5952" y="-101.3" font-family="Times,serif" font-size="14.00">95%</text>
+</g>
+<!-- rural -->
+<g id="node2" class="node"><title>rural</title>
+<ellipse fill="none" stroke="black" cx="27.2976" cy="-18" rx="27.0966" ry="18"/>
+<text text-anchor="middle" x="27.2976" y="-14.3" font-family="Times,serif" font-size="14.00">郊区</text>
+</g>
+<!-- city&#45;&gt;rural -->
+<g id="edge1" class="edge"><title>city&#45;&gt;rural</title>
+<path fill="none" stroke="black" d="M14.9598,-88.5321C11.0767,-82.7456 7.28502,-75.8964 5.29758,-69 2.806,-60.3542 5.18287,-51.2494 9.16186,-43.2132"/>
+<polygon fill="black" stroke="black" points="12.3156,-44.755 14.3731,-34.3619 6.28344,-41.2035 12.3156,-44.755"/>
+<text text-anchor="middle" x="16.7976" y="-57.8" font-family="Times,serif" font-size="14.00">5%</text>
+</g>
+<!-- rural&#45;&gt;city -->
+<g id="edge3" class="edge"><title>rural&#45;&gt;city</title>
+<path fill="none" stroke="black" d="M27.9302,-36.1236C28.214,-45.7781 28.4538,-58.0614 28.2976,-69 28.2611,-71.5529 28.2097,-74.2101 28.1492,-76.8689"/>
+<polygon fill="black" stroke="black" points="24.6493,-76.8231 27.8835,-86.9122 31.6469,-77.0083 24.6493,-76.8231"/>
+<text text-anchor="middle" x="39.7976" y="-57.8" font-family="Times,serif" font-size="14.00">3%</text>
+</g>
+<!-- rural&#45;&gt;rural -->
+<g id="edge4" class="edge"><title>rural&#45;&gt;rural</title>
+<path fill="none" stroke="black" d="M51.9923,-25.752C63.0402,-26.4902 72.5952,-23.9062 72.5952,-18 72.5952,-14.0317 68.2819,-11.5632 62.1005,-10.5944"/>
+<polygon fill="black" stroke="black" points="62.1063,-7.09262 51.9923,-10.248 61.8665,-14.0885 62.1063,-7.09262"/>
+<text text-anchor="middle" x="88.5952" y="-14.3" font-family="Times,serif" font-size="14.00">97%</text>
+</g>
+</g>
+</svg>
+
+    </div>
+    <p class="diagram-caption">城市人口迁移示意图</p>
+</div>
+
+<p>这个研究结果，用数学表示就是，第 $i$ 年的城区人口经过一年后，在城区和郊区的分布为：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{bmatrix} 0.95\, c_i \\ 0.05\, c_i \end{bmatrix}
+\end{equation}</script><p>第 $i$ 年的郊区人口经过一年后，在城区和郊区的分布为：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{bmatrix} 0.03\, r_i \\ 0.97\, r_i \end{bmatrix}
+\end{equation}</script><p>这时（第 $i+1$ 年），城区人口有来自一年前城区人口的 95%，以及一年前郊区人口的 3%；同样，郊区人口有来自一年前城区人口的 5%，以及一年前郊区人口的 97%。用向量表示就是，第 $i+1$ 年的城市人口分布：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\mathbf{x}_{i+1} = \begin{bmatrix} c_{i+1} \\ r_{i+1} \end{bmatrix}
+= c_i \begin{bmatrix} 0.95 \\ 0.05 \end{bmatrix} + r_i \begin{bmatrix} 0.03 \\ 0.97 \end{bmatrix}
+= \begin{bmatrix} 0.95 & 0.03 \\ 0.05 & 0.97 \end{bmatrix}\begin{bmatrix} c_i \\ r_i \end{bmatrix}
+\end{equation}</script><p>也就是每年人口分布是由上一年人口分布左乘一个矩阵（这个矩阵表示线性变换）得到的，我们用 $\mathbf{M}$ 表示这个矩阵，就是：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\mathbf{x}_{i+1} = \mathbf{M} \mathbf{x}_i
+\end{equation}</script><p>从这个例子，我们可以发现，当我们假设人口迁移的规律比较简单时（每一年的人口只与上一年人口有关，且是线性关系），人口的迁移就可以通过线性变换来表示。又由于矩阵可以表示一个线性变换，所以每一年的人口都可看作是上一年人口左乘一个变换矩阵（又叫<code>转移矩阵</code>）。</p>
+<h1 id="二、马尔可夫链"><a href="#二、马尔可夫链" class="headerlink" title="二、马尔可夫链"></a>二、马尔可夫链</h1><p>有同学可能已经意识到了，这个例子实际上就是<code>马尔可夫链</code>嘛！对，这个就是马尔可夫链。</p>
+<blockquote><p>（马尔可夫链）为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备 “无记忆” 的性质：下一状态的概率分布只能由当前状态决定，在时间序列中它前面的事件均与之无关。</p>
+<footer><strong>中文维基百科/马尔可夫链</strong><cite><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLWNuL+mprOWwlOWPr+Wkq+mTvg==" title="https://zh.wikipedia.org/zh-cn/马尔可夫链">zh.wikipedia.org/zh-cn/马尔可夫链<i class="fa fa-external-link"></i></span></cite></footer></blockquote>
+<p>在我们的例子里，城市每一年人口只与上一年人口有关，满足马尔可夫性质，所以人口的迁移可以看作是一个马尔可夫链。这个链中表示状态的节点就是 $\mathbf{x}_i$，节点中的转换关系就是<code>转移矩阵</code> $\mathbf{M}$。</p>
+<p>这个例子展示了我们借助线性变换解决几何之外的问题时的思路：</p>
+<ul>
+<li>首先，在我们将每年的人口建模为一个二维向量 $\mathbf{x}_i$ 的时候，这个实际问题就已经转换到二维的空间中了。从这个空间的角度来看，每年人口的变化情况，就是二维向量不断变换的过程。</li>
+<li>由于我们假设人口变化是一个线性变换（比如每年城区人口是上一年城区人口和郊区人口的线性组合），所以这个变换可以用矩阵来描述。</li>
+<li>又因为我们进一步简化问题，任务每年的变化是稳定的，所以这个线性变换只需要一个矩阵就可以了。</li>
+</ul>
+<p>未来关于这个例子还会进一步展开，对<code>马尔可夫链</code>的平稳分布进行更深入的分析。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><hr>
+<ul>
+<li>线性代数及其应用：第3版/（美）莱（Lay, D.C.）著；沈复兴等译. ——北京：人民邮电出版社，2007.7</li>
+</ul>
+<h1 id="版权声明："><a href="#版权声明：" class="headerlink" title="版权声明："></a>版权声明：</h1><hr>
+<p>本文中所有文字、图片版权均属本人所有，如需转载请注明来源。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mengqi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/http:/mengqi92.github.io/2016/06/22/linear-algebra-5/" title="线性代数拾遗（五）：矩阵变换的应用">http://mengqi92.github.io/2016/06/22/linear-algebra-5/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLzQuMC9udWxs"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag"># 基础概念</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%8B%BE%E9%81%97/" rel="tag"># 线性代数拾遗</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="tag"># 线性代数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/06/20/linear-algebra-4/" rel="prev" title="线性代数拾遗（四）：线性方程组的应用">
+      <i class="fa fa-chevron-left"></i> 线性代数拾遗（四）：线性方程组的应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/06/23/wishful-thinking/" rel="next" title="愿望思维">
+      愿望思维 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、社会学例子"><span class="nav-number">1.</span> <span class="nav-text">一、社会学例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、马尔可夫链"><span class="nav-number">2.</span> <span class="nav-text">二、马尔可夫链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版权声明："><span class="nav-number">4.</span> <span class="nav-text">版权声明：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mengqi"
+      src="/avatar/astronaut.png">
+  <p class="site-author-name" itemprop="name">Mengqi</p>
+  <div class="site-description" itemprop="description">机器学习、图像处理、统计分析、函数式编程</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21lbmdxaTky" title="Github → https:&#x2F;&#x2F;github.com&#x2F;mengqi92"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1lbmdxaXBlaUBnbWFpbC5jb20=" title="E-Mail → mailto:mengqipei@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9tZW5ncWlwZWk=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;mengqipei"><i class="fa fa-fw fa-twitter"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8yMjY0NDIyMzgz" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;2264422383"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLzQuMC9udWxs"><img src="/images/cc-by-nc.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy5mdXppaGFvLm9yZw==" title="http:&#x2F;&#x2F;www.fuzihao.org">切问录</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL2J1d2VucWkuZ2l0aHViLmlv" title="http:&#x2F;&#x2F;buwenqi.github.io">Wenqi's Blog</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mengqi</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
