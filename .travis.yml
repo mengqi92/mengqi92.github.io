@@ -1,0 +1,35 @@
+language: node_js
+node_js: "10.9"
+cache:
+  directories:
+    - node_modules
+
+env:
+  global:
+    - GITHUB_REF: github.com/mengqi92/mengqi92.github.io.git
+
+addons:
+  apt:
+    packages:
+      - graphviz
+
+before_install:
+  - npm install -g hexo
+  - npm install -g hexo-cli
+install:
+  - npm install
+script:
+  - hexo cl
+  - hexo g --debug -b
+after_script:
+  - cd ./public
+  - git init
+  - git config --global push.default matching
+  - git config user.name "${GITHUB_USER}"
+  - git config user.email "${GITHUB_EMAIL}"
+  - git add .
+  - git commit -m "updated by travis"
+  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git" master:master
+branches:
+  only:
+    - blog-reloaded
