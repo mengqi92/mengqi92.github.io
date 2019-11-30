@@ -18,6 +18,8 @@ before_install:
   - npm install -g hexo-cli
 install:
   - npm install
+  - git clone git@github.com:theme-next/hexo-theme-next.git themes/next-reloaded
+  - cp source/_data/next.yml themes/next-reloaded/next.yml
 script:
   - hexo cl
   - hexo g --debug -b
