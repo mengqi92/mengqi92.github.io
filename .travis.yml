@@ -18,7 +18,6 @@ before_install:
   - npm install -g hexo-cli
 install:
   - npm install
-  - cp source/_data/next.yml themes/next-reloaded/next.yml
 script:
   - hexo cl
   - hexo g --debug -b

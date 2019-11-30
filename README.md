@@ -1,0 +1,2 @@
+# Upgrade Next Guide
+We are using [Hexo Data File for Next theme config](https://github.com/theme-next/hexo-theme-next/blob/master/docs/DATA-FILES.md#option-2-next-way) (with `override=true`). Make sure copy ALL config in `themes/next/_config.yml` after upgraded next (use git diff to check config differences between upgrades)
