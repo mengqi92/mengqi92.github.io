@@ -21,6 +21,7 @@
     "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0",
-    "hexo-tag-diagram": "^0.2.1"
+    "hexo-tag-diagram": "^0.2.1",
+    "hexo-tag-plantuml": "^1.0.0"
   }
 }
