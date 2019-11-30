@@ -22,6 +22,14 @@ install:
 script:
   - hexo cl
   - hexo g --debug -b
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: ./public/
+  on:
+    branch: master
 after_script:
   - cd ./public
   - git init
