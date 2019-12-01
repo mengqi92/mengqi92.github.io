@@ -1,6 +1,5 @@
 language: node_js
 node_js: "10.9"
-dist: cosmic
 cache:
   directories:
     - node_modules
@@ -13,11 +12,12 @@ addons:
   apt:
     packages:
       - graphviz
-      - pandoc
 
 before_install:
   - npm install -g hexo
   - npm install -g hexo-cli
+  - wget https://github.com/jgm/pandoc/releases/download/2.8.0.1/pandoc-2.8.0.1-1-amd64.deb
+  - sudo dpkg -i pandoc-2.8.0.1-1-amd64.deb
 install:
   - npm install
 script:
