@@ -42,18 +42,18 @@ mathjax: true
 - 均值
     描述分布的“集中趋势”
 
-	$$x=\frac{1}{n} \sum\_i{x\_i}$$
+	$$x=\frac{1}{n} \sum_i{x_i}$$
 
 - 方差
     - 描述分布的变化性，或“展布”
 
-    $$S^2=\frac{1}{n} \sum\_i{(x\_i -\bar{x} )^2}$$
+    $$S^2=\frac{1}{n} \sum_i{(x_i -\bar{x} )^2}$$
 
 - 效应量
-    - 均值的差值：$\bar{x\_1} -\bar{x\_2} $
+    - 均值的差值：$\bar{x_1} -\bar{x_2} $
     - 均值差/合并标准差：
-    $$d=\bar{x\_1} -\bar{x\_2} \over s$$
-    其中，$s= \frac{n\_1 \cdot s\_1 + n\_2 \cdot s\_2}{n\_1+n\_2}$，该量描述均值差相对标准差的**倍数**
+    $$d=\bar{x_1} -\bar{x_2} \over s$$
+    其中，$s= \frac{n_1 \cdot s_1 + n_2 \cdot s_2}{n_1+n_2}$，该量描述均值差相对标准差的**倍数**
     
 ## 第三章 概率质量函数
 ### 概率质量函数（Probability Mass Function，PMF）
@@ -122,18 +122,18 @@ PDF：**连续性** CDF 的导数。
 2. 核密度估计
 
 ### 矩（moment）
-原始矩是一个统计量。对一组值为$x\_i$的样本，第 k 个原始矩为：
-$$m'\_k=\frac{1}{n} \sum{\_i} x\_i^k$$ 当 k=1 时，原始矩即为样本均值 $\bar{x} $。
+原始矩是一个统计量。对一组值为$x_i$的样本，第 k 个原始矩为：
+$$m'_k=\frac{1}{n} \sum{_i} x_i^k$$ 当 k=1 时，原始矩即为样本均值 $\bar{x} $。
 
 第 k 个中心矩（central moment）计算公式：
-$$m\_k=\frac{1}{n} \sum{\_i} (x\_i -\bar{x} )^k$$
+$$m_k=\frac{1}{n} \sum{_i} (x_i -\bar{x} )^k$$
 当 k=2 时，中心矩即为方差。
 
 #### 为什么称为“矩”
-> 如果我们在直尺的不同位置 $x\_i$ 附加一个重物，然后将直尺围绕这些值的均值旋转，旋转重物的[惯性力矩](http://en.wikipedia.org/wiki/Moment_of_inertia)就是这些值的方差。
+> 如果我们在直尺的不同位置 $x_i$ 附加一个重物，然后将直尺围绕这些值的均值旋转，旋转重物的[惯性力矩](http://en.wikipedia.org/wiki/Moment_of_inertia)就是这些值的方差。
 
 #### 统计量的单位
-如果值$x\_i$的单位是厘米，那么第一原始矩的单位是*厘米*，第二原始矩的单位是*平方厘米*，第三原始矩的单位是*立方厘米*
+如果值$x_i$的单位是厘米，那么第一原始矩的单位是*厘米*，第二原始矩的单位是*平方厘米*，第三原始矩的单位是*立方厘米*
 
 ### 偏度（skewness）
 如果分布是以集中趋势为中心对称的，那么这个分布就是*非偏斜的（unskewed）*。
@@ -143,9 +143,9 @@ $$m\_k=\frac{1}{n} \sum{\_i} (x\_i -\bar{x} )^k$$
 * *偏斜（skewed）*与*有偏（biased）*并无关系。偏度只是描述了分布的形状。
 
 #### 偏度的计算
-对给定的值序列 $x\_i$，样本偏度 $$g\_1= \frac{ \tfrac{1}{n} \sum{\_i} (x\_i-\bar{x} )^3}{方差^3} $$
+对给定的值序列 $x_i$，样本偏度 $$g_1= \frac{ \tfrac{1}{n} \sum{_i} (x_i-\bar{x} )^3}{方差^3} $$
 
-偏度为负值代表分布左偏，正值代表分布右偏。$g\_1$的大小代表偏斜的程度。
+偏度为负值代表分布左偏，正值代表分布右偏。$g_1$的大小代表偏斜的程度。
 
 #### 衡量分布对称性的另一个方法
 实际应用中，样本偏度容易受分布中离群值的影响，因此，计算样本偏度通常并非好主意。
@@ -155,7 +155,7 @@ $$m\_k=\frac{1}{n} \sum{\_i} (x\_i -\bar{x} )^k$$
 * 在右偏分布中，均值 > 中位数
 
 ##### Pearson 中位数偏度系数（Pearson's median skewness coefficient）
-$$g\_p=3(\bar{x} -m)/S$$
+$$g_p=3(\bar{x} -m)/S$$
 
 Pearson 中位数偏度系数更加稳健（robust）。
 
@@ -185,11 +185,11 @@ Pearson 中位数偏度系数更加稳健（robust）。
 要衡量两个变量时，比较麻烦的是两个变量之间单位不同，无法直接比较。为此，我们需要将两个变量统一到一个量纲上。
 
 常见的相关系数有两种：
-- Pearson乘积矩相关系数：将变量统一为标准分数（standard score），即偏离均值的标准差数：$z\_i = (x\_i - \mu)/\sigma$。
+- Pearson乘积矩相关系数：将变量统一为标准分数（standard score），即偏离均值的标准差数：$z_i = (x_i - \mu)/\sigma$。
 - Spearman秩相关系数：将变量转换为秩（rank），就是该变量在其所有值中的排名。
 
 标准分数有以下这些性质：
-- $z\_i$是无量纲（单位）的，其分布均值为0，方差为1；
+- $z_i$是无量纲（单位）的，其分布均值为0，方差为1；
 - 如果 $X$ 服从正态分布，则 $Z$ 也服从正态分布；
 - 如果 $X$ 是偏斜的或包含离群值，则 $Z$ 也是偏斜的或包含离群值；
 
@@ -200,14 +200,14 @@ Pearson 中位数偏度系数更加稳健（robust）。
 
 假设现在有两个序列 $X$ 和 $Y$，则两个序列中，值与均值的偏差为：
 $$\begin{cases}
-dx\_i = x\_i - \bar{x} \\\
-dy\_i = y\_i - \bar{y}
+dx_i = x_i - \bar{x} \\\
+dy_i = y_i - \bar{y}
 \end{cases}$$
 
-如果两个序列变化趋势一致的话，$dx\_i$ 和 $dy\_i$ 同号，即$dx\_i \cdot dy\_i > 0$；反之二者异号，即$dx\_i \cdot dy\_i < 0$。
+如果两个序列变化趋势一致的话，$dx_i$ 和 $dy_i$ 同号，即$dx_i \cdot dy_i > 0$；反之二者异号，即$dx_i \cdot dy_i < 0$。
 
 **我们将这一序列所有样本的偏差加到一块，应该就能度量两个序列之间共同变化的趋势**，于是我们就有了“协方差”的定义：
-$$\operatorname{Cov(X,Y)} = \frac{1}{n} \sum dx\_i dy\_i$$
+$$\operatorname{Cov(X,Y)} = \frac{1}{n} \sum dx_i dy_i$$
 注意到协方差定义中最后乘了一个 $\frac{1}{n}$ 来正则化（$n$为序列长度，此处要求$X$和$Y$必须长度相同）。
 
 *当$X$和$Y$两个向量正交时，协方差为0*
@@ -215,11 +215,11 @@ $$\operatorname{Cov(X,Y)} = \frac{1}{n} \sum dx\_i dy\_i$$
 ### Pearson相关系数
 协方差的单位是两个变量单位的乘积，这样会使人对它的意义感到迷惑，因而人们很少将协方差作为摘要统计量。接下来介绍的 Pearson相关系数解决了这个问题。
 
-$$\rho = \operatorname{Cov(X,Y)} / S\_X S\_Y \tag{p}\label{pearson}$$
+$$\rho = \operatorname{Cov(X,Y)} / S_X S_Y \tag{p}\label{pearson}$$
 可见，Pearson相关系数加入了标准差来正则化协方差，而且是无量纲的。
 
 我们可以把$\ref{pearson}$式中的$\operatorname{Cov(X,Y)}$展开，就能发现：
-$$ \rho = \frac{1}{n} \sum{ \left( \left( x\_i-\bar{x} \right) / S\_X \right) \left( \left(y\_i-\bar{y}\right) / S\_Y \right) } $$
+$$ \rho = \frac{1}{n} \sum{ \left( \left( x_i-\bar{x} \right) / S_X \right) \left( \left(y_i-\bar{y}\right) / S_Y \right) } $$
 也就是说，Pearson相关系数在计算偏差时就将其与标准差相比较，得到一个归一化的结果：标准分数，从而实现无量纲的。
 
 Pearson相关系数值的值域为$[-1, +1]$。如果$\rho >0$则两个变量正相关；反之$\rho <0$时，两个变量负相关。$\rho$的大小描述了相关性的强弱程度，当$\left\lvert \rho \right\rvert =1$时，两个变量完全相关，这时，只需要一个变量就能准确预测另一个变量。
@@ -264,12 +264,12 @@ $$ RMSE = \sqrt{MSE} $$
 
 ## 样本方差
 用样本方差作为估计量估计分布的方差是最直观的方法：
-$$S^2 = \frac{1}{n} \sum (x\_i - \bar{x})^2$$
+$$S^2 = \frac{1}{n} \sum (x_i - \bar{x})^2$$
 
 然而，$$S^2$$是偏倚（biased）估计量，对于小样本，$S^2$通常比分布的方差低很多。
 
-无偏估计量是$$S\_{n-1}^2$$
-$$ S\_{n-1}^2 = \frac{1}{n-1} \sum (x\_i - \bar{x})^2 $$
+无偏估计量是$$S_{n-1}^2$$
+$$ S_{n-1}^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 $$
 其中，减去的“1”是自由度。
 
 ## 抽样

@@ -37,9 +37,9 @@ date: 2015-10-13 15:59:45
 
 ## 2.1 最小二乘法
 线性模型与最小二乘法（Linear Models and Least Squares）
-给定输入 $X = (X\_1, X\_2, \cdots, X\_p)$，我们可以建立线性模型来预测输出 $Y$：
-$$ \hat{Y} = \hat{\beta} + \sum\_{j=1}^p{X\_j \hat{\beta\_j} } \tag{1}\label{leastsquare}$$
-其中，$\hat{\beta\_0}$就是截距，在机器学习中也被称为“偏差（bias）”。为了方便，我们常把 $\hat{\beta\_0}$ 包含进 $\hat{\beta}$中，相应地，在 $X$ 中添加一个常量 1（$\ref{leastsquare}$式子右边展开是$ 1 \times \hat{\beta\_0} + x\_1 \hat{\beta\_1} + \cdots + x\_p \hat{\beta\_p} $），这样就能把整个线性模型写为一个内积的形式了：
+给定输入 $X = (X_1, X_2, \cdots, X_p)$，我们可以建立线性模型来预测输出 $Y$：
+$$ \hat{Y} = \hat{\beta} + \sum_{j=1}^p{X_j \hat{\beta_j} } \tag{1}\label{leastsquare}$$
+其中，$\hat{\beta_0}$就是截距，在机器学习中也被称为“偏差（bias）”。为了方便，我们常把 $\hat{\beta_0}$ 包含进 $\hat{\beta}$中，相应地，在 $X$ 中添加一个常量 1（$\ref{leastsquare}$式子右边展开是$ 1 \times \hat{\beta_0} + x_1 \hat{\beta_1} + \cdots + x_p \hat{\beta_p} $），这样就能把整个线性模型写为一个内积的形式了：
 $$ \hat{Y} = X^\top \hat{\beta} $$
 
 注意，这里线性模型不只有一维情况，$\hat{Y}$可以是一个K维向量，此时 $\beta$ 是一个 p\times K 的协方差矩阵，（X, \hat{Y}）表示一个超平面。
@@ -47,7 +47,7 @@ $$ \hat{Y} = X^\top \hat{\beta} $$
 从 $p$ 维输入空间来看，$f(X)=X^\top \beta$ 是线性的，而$f'(X) = \beta$将指向坡度最陡的方向。
 
 接下来用最小平方误差法来拟合模型：
-$$RSS(\beta) = \sum\_{i=1}^N (y\_i - x\_i^\top \beta)^2$$
+$$RSS(\beta) = \sum_{i=1}^N (y_i - x_i^\top \beta)^2$$
 用矩阵形式描述就是：
 $$RSS(\beta) = (\mathbf{y}-\mathbf{X}\beta)^\top (\mathbf{y}-\mathbf{X}\beta)$$
 其中，$\mathbf{X}$为$N \times p$的矩阵，每一行为一个输入向量，$\mathbf{y}$为$N$维输出向量。
@@ -58,15 +58,15 @@ $$\mathbf{X}^\top (\mathbf{y}-\mathbf{X}\beta)$$
 继而解出误差最小时的$\beta$：
 $$\hat{\beta} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}$$
 
-有了$\beta$，我们的模型也就确定了，从而就可以预测任意输入变量 $x\_0$ 的类别：
-$$\hat{y}(x\_0) = x\_0^\top \hat{\beta}$$
+有了$\beta$，我们的模型也就确定了，从而就可以预测任意输入变量 $x_0$ 的类别：
+$$\hat{y}(x_0) = x_0^\top \hat{\beta}$$
 
 在二分类问题中，只有$y=0 或 y=1$两种情况，而用线性模型得到的输出向量范围是连续的值，此时可以定义当$\hat{y}>0.5$时，分类为$y=1$类；而当$\hat{y}<0.5$时，分类为$y=0$类。
 
 ## 2.2 最近邻法
 最近邻法使用训练集中，$x$的最近邻观察点来估计分类输出$\hat{Y}$：
-$$ \hat{Y} = \frac{1}{n} \sum\_{x\_i \in N\_k(x)}{y\_i} $$
-其中，$N\_k(x)$是$x$的$k$近邻点。计算出$\hat{Y}$后即可判定类别：当 $\hat{Y} > 0.5$ 时判为一类；当 $\hat{Y} < 0.5$ 时判为另一类。
+$$ \hat{Y} = \frac{1}{n} \sum_{x_i \in N_k(x)}{y_i} $$
+其中，$N_k(x)$是$x$的$k$近邻点。计算出$\hat{Y}$后即可判定类别：当 $\hat{Y} > 0.5$ 时判为一类；当 $\hat{Y} < 0.5$ 时判为另一类。
 
 近邻的定义需要使用距离。距离一般有欧氏距离、马氏距离、曼哈顿距离、切比雪夫距离等等，这里不再展开。
 
@@ -110,14 +110,14 @@ $$ f(x) = E(Y \mid X=x) $$
 ### 3.1.1 K-近邻方法
 
 从这个理论来看K-近邻方法，就会发现，K-近邻实际上就是直接用训练数据来得$f(x)$的。由于每个点最多只对应一个输出，为了算法的稳定性，K-近邻选择了一个邻域范围，从这个范围中的条件期望来进行分类决策：
-$$ \hat{f}(x) = Ave(y\_i \mid x\_i \in N\_k(x)) $$
+$$ \hat{f}(x) = Ave(y_i \mid x_i \in N_k(x)) $$
 从这个理论再来看K-近邻方法，就能发现，K-近邻实际上就是直接用训练数据来得到f(x)的。由于每个点最多只对应一个输出，为了算法的稳定性，K-近邻选择了一个邻域范围，从这个范围中的条件期望来进行类别决策：
 
 总结一下K-近邻的两个特点：
 - **K-近邻是通过样本来估计期望的，是基于样本的方法**；
 - K-近邻是把一个点上的条件概率放宽到了一个邻域上面。
 
-理论上，当样本数$N$和类别数$k$都趋向于无穷大时，$k/N \rightarrow 0$，$\hat{f}(x) \rightarrow E(Y\mid X=x)$。然而实际上，随着维数$p$增大，K-近邻中对“近邻”的测量复杂度也会随之增大，虽然$Ave(y\_i \mid x\_i \in N\_k(x))$仍会继续收敛，但收敛的速度会随着维数增高而变慢。
+理论上，当样本数$N$和类别数$k$都趋向于无穷大时，$k/N \rightarrow 0$，$\hat{f}(x) \rightarrow E(Y\mid X=x)$。然而实际上，随着维数$p$增大，K-近邻中对“近邻”的测量复杂度也会随之增大，虽然$Ave(y_i \mid x_i \in N_k(x))$仍会继续收敛，但收敛的速度会随着维数增高而变慢。
 
 ### 3.1.2 线性回归方法
 
@@ -136,31 +136,31 @@ $$ \theta = [E(XX^\top)]^{-1} E(XY) $$
 而最小二乘法实际上就是将$\ref{2}$式中的期望用样本的均值代替。
 
 我们将$\ref{2}$式的联合概率改写为在$X$上的条件概率，得到：
-$$EPE(f) = E\_X E\_Y ([Y - f(X)]^2 \mid X)$$
+$$EPE(f) = E_X E_Y ([Y - f(X)]^2 \mid X)$$
 
-上式是采用平方误差（$L\_2$）作为损失函数的结果，那如果我们改用$L\_1$，结果就会是中值形式了：
+上式是采用平方误差（$L_2$）作为损失函数的结果，那如果我们改用$L_1$，结果就会是中值形式了：
 $$ \hat{f}(x) = \operatorname{median}(Y \mid X=x) $$
 
-**中值形式相较于平方形式，对离群点更加稳健。然而 $L\_1$ 导数有不连续情况，因而没有得到广泛应用。**
+**中值形式相较于平方形式，对离群点更加稳健。然而 $L_1$ 导数有不连续情况，因而没有得到广泛应用。**
 
 ## 3.2 不连续形式的输出（categorical output）
 预测不连续形式输出的基本模式和连续形式的差不多，只是需要用不同的损失函数来惩罚预测误差。
 
-用$G$表示输出的随机变量，$\mathcal{G}$表示所有可能的输出，$\hat{G}$表示估计的可能类别集合。我们的损失函数可以用一个 $K\times K$ 矩阵 $L$ 描述，这里的 $K = \lvert \mathcal{G} \rvert$，$L$上的元素$L(k,l)$表示将$\mathcal{G}\_k$分类为$\mathcal{G}\_l$的代价。
+用$G$表示输出的随机变量，$\mathcal{G}$表示所有可能的输出，$\hat{G}$表示估计的可能类别集合。我们的损失函数可以用一个 $K\times K$ 矩阵 $L$ 描述，这里的 $K = \lvert \mathcal{G} \rvert$，$L$上的元素$L(k,l)$表示将$\mathcal{G}_k$分类为$\mathcal{G}_l$的代价。
 
 根据这个损失函数，我们有：
 $$EPE = E[L(G, \hat{G}(X))]$$
 改写为条件概率的形式就是：
-$$EPE = E\_X \sum\_{k=1}^{K} L[\mathcal{G}\_k, \hat{G}(X)] Pr(\mathcal{G}\_k \mid X)$$
+$$EPE = E_X \sum_{k=1}^{K} L[\mathcal{G}_k, \hat{G}(X)] Pr(\mathcal{G}_k \mid X)$$
 逐点最小化EPE，就得到了估计输出：
-$$\hat{G}(x) = \operatorname{argmin}\_{g\in \mathcal{G}} \sum\_{k=1}^K L(\mathcal{G}\_k, g) Pr(\mathcal{G}\_k \mid X = x)$$
+$$\hat{G}(x) = \operatorname{argmin}_{g\in \mathcal{G}} \sum_{k=1}^K L(\mathcal{G}_k, g) Pr(\mathcal{G}_k \mid X = x)$$
 
 ### 3.2.1 贝叶斯分类器
 
 如果我们采用 0-1 损失函数（即分错代价为1，分对为0）的话，可以进一步将上式简化为：
-$$\hat{G}(x) = \operatorname{argmin}\_{g\in \mathcal{G}} [1-Pr(g \mid X=x)]$$
+$$\hat{G}(x) = \operatorname{argmin}_{g\in \mathcal{G}} [1-Pr(g \mid X=x)]$$
 
-上面的式子等价于 $\operatorname{argmax}\_{g\in \mathcal{G}} Pr(g \mid X=x)$。也就是说在给定 $X=x$ 条件下，类别$G\_k$概率最大，那就预测输出$G\_k$。这个实际上就是贝叶斯分类器了。
+上面的式子等价于 $\operatorname{argmax}_{g\in \mathcal{G}} Pr(g \mid X=x)$。也就是说在给定 $X=x$ 条件下，类别$G_k$概率最大，那就预测输出$G_k$。这个实际上就是贝叶斯分类器了。
 
 ### 3.2.2 K-近邻与贝叶斯分类器的关系
 

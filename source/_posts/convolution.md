@@ -1,4 +1,4 @@
----
+----
 title: 我对卷积的理解
 date: 2015-10-06 20:05:00
 tags:
@@ -20,13 +20,13 @@ mathjax: true
 ### 1.1 数学定义
 
 维基百科上，卷积的形式化定义如下：
-$$ f(x)\*g(x) = \int\_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} $$
+$$ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} $$
 
 ### 1.2 直观解释
 
 先来分析一下这个公式：
 
-1. $f(x)\*g(x)$ 表示 $f(x)$ 和 $g(x)$ 的卷积，注意此处自变量为 $x$；
+1. $f(x)*g(x)$ 表示 $f(x)$ 和 $g(x)$ 的卷积，注意此处自变量为 $x$；
 2. 它是对 $(-\infty, \infty)$ 区间上对 $\tau$ 求积分；
 3. 积分对象为两个函数的乘积：$f(\tau)$ 和 $g(x-\tau)$。
 4. 等式右边只有 $g(x-\tau)$ 提到了 $x$，其他部分都在关注 $\tau$
@@ -71,7 +71,7 @@ $$\operatorname{eff}(t) =
 
 ### 1.4 分析
 
-从上面的分析我们可以得到，小明第 t 天身上残留的药效 $\operatorname{rest}(t) = \sum\_{i=1}^n \operatorname{m}(t-i) \operatorname{eff}(i)$，其中 $n$ 为药效有效的最大天数。 我们不难想象，但药效函数 $\operatorname{eff}(t)$ 为连续时，上式中的求和就应改为积分；而当药效能无限期有效时，上式中 $n$ 就为 $\infty$。 无限期有效的药效函数，所对应的 $\operatorname{rest}(t) = \int\_{-\infty}^\infty \operatorname{m}(t-\tau) \operatorname{eff}(\tau) \,d\tau$（本例中严格来说应该是 $\int\_0^\infty$ ，这里推广到了 $(-\infty, \infty)$）。推导到这里，基本就是维基百科上卷积的定义了。
+从上面的分析我们可以得到，小明第 t 天身上残留的药效 $\operatorname{rest}(t) = \sum_{i=1}^n \operatorname{m}(t-i) \operatorname{eff}(i)$，其中 $n$ 为药效有效的最大天数。 我们不难想象，但药效函数 $\operatorname{eff}(t)$ 为连续时，上式中的求和就应改为积分；而当药效能无限期有效时，上式中 $n$ 就为 $\infty$。 无限期有效的药效函数，所对应的 $\operatorname{rest}(t) = \int_{-\infty}^\infty \operatorname{m}(t-\tau) \operatorname{eff}(\tau) \,d\tau$（本例中严格来说应该是 $\int_0^\infty$ ，这里推广到了 $(-\infty, \infty)$）。推导到这里，基本就是维基百科上卷积的定义了。
 
 ### 1.5 总结
 
@@ -85,11 +85,11 @@ $$\operatorname{eff}(t) =
 
 ### 2.1 数学定义
 
-$$ f(x, y)\* g(x, y) = \int\_{\tau\_1=-\infty}^\infty \int\_{\tau\_2=-\infty}^{\infty} f(\tau\_1, \tau\_2) \cdot g(x-\tau\_1, y-\tau\_2)\,d\tau\_1 d\tau\_2 \tag{2} $$
+$$ f(x, y)* g(x, y) = \int_{\tau_1=-\infty}^\infty \int_{\tau_2=-\infty}^{\infty} f(\tau_1, \tau_2) \cdot g(x-\tau_1, y-\tau_2)\,d\tau_1 d\tau_2 \tag{2} $$
 
 二维卷积在图像处理中会经常遇到，图像处理中用到的大多是二维卷积的离散形式：
 
-$$ f[x,y] * g[x,y] = \sum\_{n\_1=-\infty}^\infty \sum\_{n\_2=-\infty}^\infty f[n\_1, n\_2] \cdot g[x-n\_1, y-n\_2] \tag{3} $$
+$$ f[x,y] * g[x,y] = \sum_{n_1=-\infty}^\infty \sum_{n_2=-\infty}^\infty f[n_1, n_2] \cdot g[x-n_1, y-n_2] \tag{3} $$
 
 ### 2.2 图像处理中的二维卷积
 

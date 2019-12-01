@@ -48,14 +48,14 @@ mathjax: true
 
 {% asset_img complex-polar-transform.png  复数两种表示形式之间的转换 %}
 
-从上图可以看出，当我们有复数极坐标 $(r, \theta)$ 时，我们可以得到其直角坐标 $(r \cos(\theta), r \sin(\theta))$，即该复数为 $r\cos\theta + r\*i\sin\theta$。
+从上图可以看出，当我们有复数极坐标 $(r, \theta)$ 时，我们可以得到其直角坐标 $(r \cos(\theta), r \sin(\theta))$，即该复数为 $r\cos\theta + r*i\sin\theta$。
 
 ## 三、复数的复指数表示与欧拉公式
 欧拉有一天发现，神奇数字 $e$ 的纯虚数次方竟然在复数平面上绕圈！
 
 用极坐标形式表示，就是 $e^{i\theta}=\cos\theta+i\sin\theta$。
 
-如此，一个复数就又多了一种指数的表示形式，即复指数形式：$r e^{i\theta} = r \cos\theta + r\*i \sin\theta$。
+如此，一个复数就又多了一种指数的表示形式，即复指数形式：$r e^{i\theta} = r \cos\theta + r*i \sin\theta$。
 
 而当 $r=1$，$\theta=\pi$ 时，对应的直角坐标刚好就是 $(-1, 0)$ ，也就是实数 -1。由此就有了那个著名的“欧拉公式”：$$e^{i\pi}+1=0$$
 
@@ -65,7 +65,7 @@ mathjax: true
 
 {% asset_img real-wave-complex-wave.png  实数波和复数波示意 %}
 
-从示意图中，可以看出，当俯视复数波时，观察到的投影即是一个实数波，即是 $e^{i\theta}=\cos\theta + i\* \sin\theta$ 的实部：$\cos\theta$；当从左侧侧视复数波时，得到的投影即是其虚部：$\sin\theta$。
+从示意图中，可以看出，当俯视复数波时，观察到的投影即是一个实数波，即是 $e^{i\theta}=\cos\theta + i* \sin\theta$ 的实部：$\cos\theta$；当从左侧侧视复数波时，得到的投影即是其虚部：$\sin\theta$。
 
 事实上，复数波的完整定义为：
 $$ Ae^{i(\omega t+\phi)} = Ae^{i(2\pi f t+\phi)} = A\cos(2\pi f t+\phi) + iA\sin(2\pi f t+\phi) $$
