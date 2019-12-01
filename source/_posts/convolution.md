@@ -1,4 +1,4 @@
-----
+---
 title: 我对卷积的理解
 date: 2015-10-06 20:05:00
 tags:
@@ -71,7 +71,7 @@ $$\operatorname{eff}(t) =
 
 ### 1.4 分析
 
-从上面的分析我们可以得到，小明第 t 天身上残留的药效 $\operatorname{rest}(t) = \sum_{i=1}^n \operatorname{m}(t-i) \operatorname{eff}(i)$，其中 $n$ 为药效有效的最大天数。 我们不难想象，但药效函数 $\operatorname{eff}(t)$ 为连续时，上式中的求和就应改为积分；而当药效能无限期有效时，上式中 $n$ 就为 $\infty$。 无限期有效的药效函数，所对应的 $\operatorname{rest}(t) = \int_{-\infty}^\infty \operatorname{m}(t-\tau) \operatorname{eff}(\tau) \,d\tau$（本例中严格来说应该是 $\int_0^\infty$ ，这里推广到了 $(-\infty, \infty)$）。推导到这里，基本就是维基百科上卷积的定义了。
+从上面的分析我们可以得到，小明第 $t$ 天身上残留的药效 $\operatorname{rest}(t) = \sum_{i=1}^n \operatorname{m}(t-i) \operatorname{eff}(i)$，其中 $n$ 为药效有效的最大天数。 我们不难想象，但药效函数 $\operatorname{eff}(t)$ 为连续时，上式中的求和就应改为积分；而当药效能无限期有效时，上式中 $n$ 就为 $\infty$。 无限期有效的药效函数，所对应的 $\operatorname{rest}(t) = \int_{-\infty}^\infty \operatorname{m}(t-\tau) \operatorname{eff}(\tau) \,d\tau$（本例中严格来说应该是 $\int_0^\infty$ ，这里推广到了 $(-\infty, \infty)$）。推导到这里，基本就是维基百科上卷积的定义了。
 
 ### 1.5 总结
 
