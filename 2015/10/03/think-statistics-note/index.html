@@ -47,13 +47,13 @@
   };
 </script>
 
-  <meta name="description" content="第一章 探索性数据分析重编码（recode）不是调查收集的原始数据，而是使用原始数据计算得到的变量。可用来检查数据的一致性和准确性  第二章 分布直方图直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）">
+  <meta name="description" content="第一章 探索性数据分析 重编码（recode） 不是调查收集的原始数据，而是使用原始数据计算得到的变量。 可用来检查数据的一致性和准确性  第二章 分布 直方图 直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）">
 <meta name="keywords" content="读书笔记,统计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《统计思维：程序员数学之概率统计》读书摘录">
 <meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;03&#x2F;think-statistics-note&#x2F;index.html">
 <meta property="og:site_name" content="Mengqi&#39;s blog">
-<meta property="og:description" content="第一章 探索性数据分析重编码（recode）不是调查收集的原始数据，而是使用原始数据计算得到的变量。可用来检查数据的一致性和准确性  第二章 分布直方图直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）">
+<meta property="og:description" content="第一章 探索性数据分析 重编码（recode） 不是调查收集的原始数据，而是使用原始数据计算得到的变量。 可用来检查数据的一致性和准确性  第二章 分布 直方图 直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;03&#x2F;think-statistics-note&#x2F;pmf-cdf-pdf.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;03&#x2F;think-statistics-note&#x2F;nonlinear-correlation-example.png">
@@ -264,61 +264,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="第一章-探索性数据分析"><a href="#第一章-探索性数据分析" class="headerlink" title="第一章 探索性数据分析"></a>第一章 探索性数据分析</h2><h3 id="重编码（recode）"><a href="#重编码（recode）" class="headerlink" title="重编码（recode）"></a>重编码（recode）</h3><p>不是调查收集的原始数据，而是使用原始数据计算得到的变量。<br>可用来检查数据的一致性和准确性</p>
+        <h2 id="第一章-探索性数据分析">第一章 探索性数据分析</h2>
+<h3 id="重编码recode">重编码（recode）</h3>
+<p>不是调查收集的原始数据，而是使用原始数据计算得到的变量。 可用来检查数据的一致性和准确性</p>
 <hr>
-<h2 id="第二章-分布"><a href="#第二章-分布" class="headerlink" title="第二章 分布"></a>第二章 分布</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><p>直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）<br><a id="more"></a></p>
-<h3 id="变量分布"><a href="#变量分布" class="headerlink" title="变量分布"></a>变量分布</h3><ul>
-<li><p>集中趋势 —— 均值、中位数<br>  变量值是否聚集在某个值附近？</p>
-</li>
-<li><p>众数<br>  是否有多个聚集点？</p>
-</li>
-<li><p>展布 —— 方差<br>  变量的变化性如何？</p>
-</li>
-<li><p>尾部<br>  当值偏离众数时，其概率降低多快？</p>
-</li>
-<li><p>离群值<br>  是否有远离众数的极端值？</p>
-</li>
+<h2 id="第二章-分布">第二章 分布</h2>
+<h3 id="直方图">直方图</h3>
+<p>直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值） <a id="more"></a> ### 变量分布</p>
+<ul>
+<li><p>集中趋势 —— 均值、中位数 变量值是否聚集在某个值附近？</p></li>
+<li><p>众数 是否有多个聚集点？</p></li>
+<li><p>展布 —— 方差 变量的变化性如何？</p></li>
+<li><p>尾部 当值偏离众数时，其概率降低多快？</p></li>
+<li><p>离群值 是否有远离众数的极端值？</p></li>
 </ul>
-<h3 id="汇总统计量"><a href="#汇总统计量" class="headerlink" title="汇总统计量"></a>汇总统计量</h3><ul>
-<li><p>均值<br>  描述分布的“集中趋势”</p>
-<script type="math/tex; mode=display">x=\frac{1}{n} \sum\_i{x\_i}</script></li>
+<h3 id="汇总统计量">汇总统计量</h3>
+<ul>
+<li><p>均值 描述分布的“集中趋势”</p>
+<p><span class="math display">\[x=\frac{1}{n} \sum_i{x_i}\]</span></p></li>
 <li><p>方差</p>
 <ul>
-<li><p>描述分布的变化性，或“展布”</p>
-<script type="math/tex; mode=display">S^2=\frac{1}{n} \sum\_i{(x\_i -\bar{x} )^2}</script></li>
+<li>描述分布的变化性，或“展布”</li>
 </ul>
-</li>
+<p><span class="math display">\[S^2=\frac{1}{n} \sum_i{(x_i -\bar{x} )^2}\]</span></p></li>
 <li><p>效应量</p>
 <ul>
-<li>均值的差值：$\bar{x_1} -\bar{x_2} $</li>
-<li>均值差/合并标准差：<script type="math/tex; mode=display">d=\bar{x\_1} -\bar{x\_2} \over s</script>其中，$s= \frac{n_1 \cdot s_1 + n_2 \cdot s_2}{n_1+n_2}$，该量描述均值差相对标准差的<strong>倍数</strong></li>
+<li>均值的差值：${x_1} -{x_2} $</li>
+<li>均值差/合并标准差： <span class="math display">\[d=\bar{x_1} -\bar{x_2} \over s\]</span> 其中，<span class="math inline">\(s= \frac{n_1 \cdot s_1 + n_2 \cdot s_2}{n_1+n_2}\)</span>，该量描述均值差相对标准差的<strong>倍数</strong></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="第三章-概率质量函数"><a href="#第三章-概率质量函数" class="headerlink" title="第三章 概率质量函数"></a>第三章 概率质量函数</h2><h3 id="概率质量函数（Probability-Mass-Function，PMF）"><a href="#概率质量函数（Probability-Mass-Function，PMF）" class="headerlink" title="概率质量函数（Probability Mass Function，PMF）"></a>概率质量函数（Probability Mass Function，PMF）</h3><p>概率质量函数将每个值映射到其概率，$概率=\frac{频数}{样本量} $</p>
+<h2 id="第三章-概率质量函数">第三章 概率质量函数</h2>
+<h3 id="概率质量函数probability-mass-functionpmf">概率质量函数（Probability Mass Function，PMF）</h3>
+<p>概率质量函数将每个值映射到其概率，$概率= $</p>
 <ul>
 <li>PMF 适用于变量值数量较少的情况。随着值的数量增加，每个值对应的概率会变得越来越小，随机噪音的影响就会变大。</li>
 </ul>
-<h2 id="第四章-累积分布函数（cumulative-distribution-function，CDF）"><a href="#第四章-累积分布函数（cumulative-distribution-function，CDF）" class="headerlink" title="第四章 累积分布函数（cumulative distribution function，CDF）"></a>第四章 累积分布函数（cumulative distribution function，CDF）</h2><h3 id="百分位秩（percentile-rank）"><a href="#百分位秩（percentile-rank）" class="headerlink" title="百分位秩（percentile rank）"></a>百分位秩（percentile rank）</h3><p>在标准化考试成绩中，百分位秩是<strong>比你成绩低（或相同）的人的比例</strong></p>
-<h3 id="CDF"><a href="#CDF" class="headerlink" title="CDF"></a>CDF</h3><p>CDF将一个值映射到百分位秩<br>CDF(x) = 小于或等于x的值在分布中所占的比例</p>
+<h2 id="第四章-累积分布函数cumulative-distribution-functioncdf">第四章 累积分布函数（cumulative distribution function，CDF）</h2>
+<h3 id="百分位秩percentile-rank">百分位秩（percentile rank）</h3>
+<p>在标准化考试成绩中，百分位秩是<strong>比你成绩低（或相同）的人的比例</strong></p>
+<h3 id="cdf">CDF</h3>
+<p>CDF将一个值映射到百分位秩 CDF(x) = 小于或等于x的值在分布中所占的比例</p>
 <ul>
 <li>不同于百分位秩，CDF范围为0到1</li>
 <li>第 50 百分位就是<strong>中位数</strong></li>
-<li>基于百分位数的统计量<ul>
+<li>基于百分位数的统计量
+<ul>
 <li>中位数（median）</li>
 <li>四分位矩（interquartile range，IQR）</li>
 <li>等份点——分位数（quantile）</li>
+</ul></li>
 </ul>
-</li>
+<h3 id="利用cdf生成随机样本">利用CDF生成随机样本</h3>
+<ul>
+<li>无论CDF的形状如何，其百分位秩的分布都是均匀的 利用这一点，可以使用给定的CDF生成随机数：</li>
 </ul>
-<h3 id="利用CDF生成随机样本"><a href="#利用CDF生成随机样本" class="headerlink" title="利用CDF生成随机样本"></a>利用CDF生成随机样本</h3><ul>
-<li>无论CDF的形状如何，其百分位秩的分布都是均匀的<br>利用这一点，可以使用给定的CDF生成随机数：</li>
-</ul>
-<ol>
+<ol type="1">
 <li>从0到100中均匀地选择一个百分位秩</li>
 <li>使用cdf.Percentile，得到分布中对应所选百分位秩的值</li>
 </ol>
-<h2 id="第五章-分布建模"><a href="#第五章-分布建模" class="headerlink" title="第五章 分布建模"></a>第五章 分布建模</h2><p>基于有限样本的经验观察，被称为<em>经验分布</em><br><em>分析分布</em>试图建立一个简化的分布模型，来描述真实世界的分布，可以用作经验分布的<strong>建模</strong></p>
+<h2 id="第五章-分布建模">第五章 分布建模</h2>
+<p>基于有限样本的经验观察，被称为<em>经验分布</em> <em>分析分布</em>试图建立一个简化的分布模型，来描述真实世界的分布，可以用作经验分布的<strong>建模</strong></p>
 <ul>
 <li>现实世界的很多现象都可以用分析分布进行建模</li>
 <li>分析分布是一种<strong>抽象</strong>，也是一种<strong>数据压缩形式</strong>：如果模型很好地拟合了一个数据集，那么只需几个参数便可对大量数据进行概括</li>
@@ -327,108 +332,110 @@
 <li>现实世界的数据<strong>永远不会</strong>完美地符合一个分析分布，现实世界和数学模型之间总是存在着差异。</li>
 <li>什么是“相关”的，什么是“不必要”的，这取决于你将这个模型用于何种用途。</li>
 </ul>
-<h2 id="第六章-概率密度函数（Probability-density-function-PDF）"><a href="#第六章-概率密度函数（Probability-density-function-PDF）" class="headerlink" title="第六章 概率密度函数（Probability density function, PDF）"></a>第六章 概率密度函数（Probability density function, PDF）</h2><p>概率密度度量单位 x 的概率。</p>
-<h3 id="核密度估计（kernel-density-estimation-KDE）"><a href="#核密度估计（kernel-density-estimation-KDE）" class="headerlink" title="核密度估计（kernel density estimation, KDE）"></a>核密度估计（kernel density estimation, KDE）</h3><p>核密度估计可以对一个样本寻找符合样本数据的适当平滑的 PDF</p>
+<h2 id="第六章-概率密度函数probability-density-function-pdf">第六章 概率密度函数（Probability density function, PDF）</h2>
+<p>概率密度度量单位 x 的概率。</p>
+<h3 id="核密度估计kernel-density-estimation-kde">核密度估计（kernel density estimation, KDE）</h3>
+<p>核密度估计可以对一个样本寻找符合样本数据的适当平滑的 PDF</p>
 <p>KDE 估计密度函数可用于：</p>
-<ol>
-<li>可视化<br> 在项目探索阶段，可通过 CDF 展现分布，继而判断估计 PDF 是否为该分布的适宜模型。</li>
-<li>插值<br> 如果相信总体分布是平滑的，那么就可以使用KDE为样本中不存在的值插入相应的密度。</li>
-<li>模拟<br> 我们可以使用 KDE，对样本分布做平滑处理，使得模拟可以探索可能性更高的结果。</li>
+<ol type="1">
+<li>可视化 在项目探索阶段，可通过 CDF 展现分布，继而判断估计 PDF 是否为该分布的适宜模型。</li>
+<li>插值 如果相信总体分布是平滑的，那么就可以使用KDE为样本中不存在的值插入相应的密度。</li>
+<li>模拟 我们可以使用 KDE，对样本分布做平滑处理，使得模拟可以探索可能性更高的结果。</li>
 </ol>
-<h3 id="PMF、CDF、PDF-的关系"><a href="#PMF、CDF、PDF-的关系" class="headerlink" title="PMF、CDF、PDF 的关系"></a>PMF、CDF、PDF 的关系</h3><img class title="分布函数的关系框架" data-src="/2015/10/03/think-statistics-note/pmf-cdf-pdf.jpg">
-<p>PMF：一组<strong>离散值</strong>的概率。PDF 累加得到 CDF。<br>CDF：累积概率。<br>PDF：<strong>连续性</strong> CDF 的导数。</p>
-<p>离散型分布 -&gt; 连续型分布：平滑处理</p>
-<ol>
-<li>假设数据来自连续的分析分布，然后估计这个分布的参数</li>
-<li>核密度估计</li>
-</ol>
-<h3 id="矩（moment）"><a href="#矩（moment）" class="headerlink" title="矩（moment）"></a>矩（moment）</h3><p>原始矩是一个统计量。对一组值为$x_i$的样本，第 k 个原始矩为：</p>
-<script type="math/tex; mode=display">m'\_k=\frac{1}{n} \sum{\_i} x\_i^k$$ 当 k=1 时，原始矩即为样本均值 $\bar{x} $。
-
-第 k 个中心矩（central moment）计算公式：
-$$m\_k=\frac{1}{n} \sum{\_i} (x\_i -\bar{x} )^k</script><p>当 k=2 时，中心矩即为方差。</p>
-<h4 id="为什么称为“矩”"><a href="#为什么称为“矩”" class="headerlink" title="为什么称为“矩”"></a>为什么称为“矩”</h4><blockquote>
-<p>如果我们在直尺的不同位置 $x_i$ 附加一个重物，然后将直尺围绕这些值的均值旋转，旋转重物的<span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9Nb21lbnRfb2ZfaW5lcnRpYQ==" title="http://en.wikipedia.org/wiki/Moment_of_inertia">惯性力矩<i class="fa fa-external-link"></i></span>就是这些值的方差。</p>
+<h3 id="pmfcdfpdf-的关系">PMF、CDF、PDF 的关系</h3>
+<img class title="分布函数的关系框架" data-src="/2015/10/03/think-statistics-note/pmf-cdf-pdf.jpg">
+<p>PMF：一组<strong>离散值</strong>的概率。PDF 累加得到 CDF。 CDF：累积概率。 PDF：<strong>连续性</strong> CDF 的导数。</p>
+<p>离散型分布 -&gt; 连续型分布：平滑处理 1. 假设数据来自连续的分析分布，然后估计这个分布的参数 2. 核密度估计</p>
+<h3 id="矩moment">矩（moment）</h3>
+<p>原始矩是一个统计量。对一组值为<span class="math inline">\(x_i\)</span>的样本，第 k 个原始矩为： <span class="math display">\[m&#39;_k=\frac{1}{n} \sum{_i} x_i^k\]</span> 当 k=1 时，原始矩即为样本均值 ${x} $。</p>
+<p>第 k 个中心矩（central moment）计算公式： <span class="math display">\[m_k=\frac{1}{n} \sum{_i} (x_i -\bar{x} )^k\]</span> 当 k=2 时，中心矩即为方差。</p>
+<h4 id="为什么称为矩">为什么称为“矩”</h4>
+<blockquote>
+<p>如果我们在直尺的不同位置 <span class="math inline">\(x_i\)</span> 附加一个重物，然后将直尺围绕这些值的均值旋转，旋转重物的<span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9Nb21lbnRfb2ZfaW5lcnRpYQ==" title="http://en.wikipedia.org/wiki/Moment_of_inertia">惯性力矩<i class="fa fa-external-link"></i></span>就是这些值的方差。</p>
 </blockquote>
-<h4 id="统计量的单位"><a href="#统计量的单位" class="headerlink" title="统计量的单位"></a>统计量的单位</h4><p>如果值$x_i$的单位是厘米，那么第一原始矩的单位是<em>厘米</em>，第二原始矩的单位是<em>平方厘米</em>，第三原始矩的单位是<em>立方厘米</em></p>
-<h3 id="偏度（skewness）"><a href="#偏度（skewness）" class="headerlink" title="偏度（skewness）"></a>偏度（skewness）</h3><p>如果分布是以集中趋势为中心对称的，那么这个分布就是<em>非偏斜的（unskewed）</em>。<br>如果分布中的值向右<strong>延伸更多</strong>，那么这个分布就是<em>右偏的（right skewed）</em>；<br>如果分布中的值向左<strong>延伸更多</strong>，那么这个分布就是<em>左偏的（left skewed）</em>；</p>
+<h4 id="统计量的单位">统计量的单位</h4>
+<p>如果值<span class="math inline">\(x_i\)</span>的单位是厘米，那么第一原始矩的单位是<em>厘米</em>，第二原始矩的单位是<em>平方厘米</em>，第三原始矩的单位是<em>立方厘米</em></p>
+<h3 id="偏度skewness">偏度（skewness）</h3>
+<p>如果分布是以集中趋势为中心对称的，那么这个分布就是<em>非偏斜的（unskewed）</em>。 如果分布中的值向右<strong>延伸更多</strong>，那么这个分布就是<em>右偏的（right skewed）</em>； 如果分布中的值向左<strong>延伸更多</strong>，那么这个分布就是<em>左偏的（left skewed）</em>；</p>
 <ul>
 <li><em>偏斜（skewed）</em>与<em>有偏（biased）</em>并无关系。偏度只是描述了分布的形状。</li>
 </ul>
-<h4 id="偏度的计算"><a href="#偏度的计算" class="headerlink" title="偏度的计算"></a>偏度的计算</h4><p>对给定的值序列 $x_i$，样本偏度 <script type="math/tex">g\_1= \frac{ \tfrac{1}{n} \sum{\_i} (x\_i-\bar{x} )^3}{方差^3}</script></p>
-<p>偏度为负值代表分布左偏，正值代表分布右偏。$g_1$的大小代表偏斜的程度。</p>
-<h4 id="衡量分布对称性的另一个方法"><a href="#衡量分布对称性的另一个方法" class="headerlink" title="衡量分布对称性的另一个方法"></a>衡量分布对称性的另一个方法</h4><p>实际应用中，样本偏度容易受分布中离群值的影响，因此，计算样本偏度通常并非好主意。</p>
-<p>衡量分布对称性的另一个方法是<strong>检查均值和中位数的关系</strong>：极端值对均值的影响比对中位数影响更大</p>
-<ul>
-<li>在左偏分布中，均值 &lt; 中位数</li>
-<li>在右偏分布中，均值 &gt; 中位数</li>
-</ul>
-<h5 id="Pearson-中位数偏度系数（Pearson’s-median-skewness-coefficient）"><a href="#Pearson-中位数偏度系数（Pearson’s-median-skewness-coefficient）" class="headerlink" title="Pearson 中位数偏度系数（Pearson’s median skewness coefficient）"></a>Pearson 中位数偏度系数（Pearson’s median skewness coefficient）</h5><script type="math/tex; mode=display">g\_p=3(\bar{x} -m)/S</script><p>Pearson 中位数偏度系数更加稳健（robust）。</p>
-<h2 id="第七章-变量之间的关系"><a href="#第七章-变量之间的关系" class="headerlink" title="第七章 变量之间的关系"></a>第七章 变量之间的关系</h2><blockquote>
+<h4 id="偏度的计算">偏度的计算</h4>
+<p>对给定的值序列 <span class="math inline">\(x_i\)</span>，样本偏度 <span class="math display">\[g_1= \frac{ \tfrac{1}{n} \sum{_i} (x_i-\bar{x} )^3}{方差^3} \]</span></p>
+<p>偏度为负值代表分布左偏，正值代表分布右偏。<span class="math inline">\(g_1\)</span>的大小代表偏斜的程度。</p>
+<h4 id="衡量分布对称性的另一个方法">衡量分布对称性的另一个方法</h4>
+<p>实际应用中，样本偏度容易受分布中离群值的影响，因此，计算样本偏度通常并非好主意。</p>
+<p>衡量分布对称性的另一个方法是<strong>检查均值和中位数的关系</strong>：极端值对均值的影响比对中位数影响更大 * 在左偏分布中，均值 &lt; 中位数 * 在右偏分布中，均值 &gt; 中位数</p>
+<h5 id="pearson-中位数偏度系数pearsons-median-skewness-coefficient">Pearson 中位数偏度系数（Pearson's median skewness coefficient）</h5>
+<p><span class="math display">\[g_p=3(\bar{x} -m)/S\]</span></p>
+<p>Pearson 中位数偏度系数更加稳健（robust）。</p>
+<h2 id="第七章-变量之间的关系">第七章 变量之间的关系</h2>
+<blockquote>
 <p>如果能够从一个变量的信息得到另一个变量的信息，那么这两个变量就是<strong>相关的</strong>。</p>
 </blockquote>
-<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>研究两个变量之间关系最简单方法就是散点图（scatter plot）。</p>
-<h4 id="抖动技术（jittering）"><a href="#抖动技术（jittering）" class="headerlink" title="抖动技术（jittering）"></a>抖动技术（jittering）</h4><p>当获取数据由于某种原因而丢失部分信息，例如数据经过四舍五入后丢失了更高精度的小数位信息，变得“更离散”而导致散点图不美观，这时可以通过加入随机噪音（例如服从均匀分布的随机值）来填补各离散值之间的空隙。</p>
+<h3 id="散点图">散点图</h3>
+<p>研究两个变量之间关系最简单方法就是散点图（scatter plot）。</p>
+<h4 id="抖动技术jittering">抖动技术（jittering）</h4>
+<p>当获取数据由于某种原因而丢失部分信息，例如数据经过四舍五入后丢失了更高精度的小数位信息，变得“更离散”而导致散点图不美观，这时可以通过加入随机噪音（例如服从均匀分布的随机值）来填补各离散值之间的空隙。</p>
 <p><strong>抖动技术只是为了图像的美观，应只用于视觉呈现，而不能通过它来分析数据。</strong></p>
-<h4 id="饱和（saturation）"><a href="#饱和（saturation）" class="headerlink" title="饱和（saturation）"></a>饱和（saturation）</h4><p>由于数据在一定区域内过于密集，甚至出现重叠，而离群值显得特别突出。这种情况称为“饱和”。</p>
-<p>解决办法：<br>将图中的点以半透明显示（例如 alpha=0.2），这样重叠的点只会导致那一片的数据点颜色更深。<br>（我的理解：<strong>以半透明显示的办法，相当于把数据正则化（Normalized）了</strong>，原先数据密度值的域为二值情况（0 or 1），<strong>重叠区域密度大于 1 无法在图上体现，相当于上溢出。通过规范化，将密度值域打散在（0，1）连续域内了</strong>，重叠区域密度只要密度不超过1，就能在散点图中较好地体现出来）</p>
-<h3 id="相关性（correlation）"><a href="#相关性（correlation）" class="headerlink" title="相关性（correlation）"></a>相关性（correlation）</h3><p>相关性是一个<strong>量化两个变量之间关系强弱</strong>的统计量。</p>
+<h4 id="饱和saturation">饱和（saturation）</h4>
+<p>由于数据在一定区域内过于密集，甚至出现重叠，而离群值显得特别突出。这种情况称为“饱和”。</p>
+<p>解决办法： 将图中的点以半透明显示（例如 alpha=0.2），这样重叠的点只会导致那一片的数据点颜色更深。 （我的理解：<strong>以半透明显示的办法，相当于把数据正则化（Normalized）了</strong>，原先数据密度值的域为二值情况（0 or 1），<strong>重叠区域密度大于 1 无法在图上体现，相当于上溢出。通过规范化，将密度值域打散在（0，1）连续域内了</strong>，重叠区域密度只要密度不超过1，就能在散点图中较好地体现出来）</p>
+<h3 id="相关性correlation">相关性（correlation）</h3>
+<p>相关性是一个<strong>量化两个变量之间关系强弱</strong>的统计量。</p>
 <p>要衡量两个变量时，比较麻烦的是两个变量之间单位不同，无法直接比较。为此，我们需要将两个变量统一到一个量纲上。</p>
-<p>常见的相关系数有两种：</p>
-<ul>
-<li>Pearson乘积矩相关系数：将变量统一为标准分数（standard score），即偏离均值的标准差数：$z_i = (x_i - \mu)/\sigma$。</li>
-<li>Spearman秩相关系数：将变量转换为秩（rank），就是该变量在其所有值中的排名。</li>
-</ul>
-<p>标准分数有以下这些性质：</p>
-<ul>
-<li>$z_i$是无量纲（单位）的，其分布均值为0，方差为1；</li>
-<li>如果 $X$ 服从正态分布，则 $Z$ 也服从正态分布；</li>
-<li>如果 $X$ 是偏斜的或包含离群值，则 $Z$ 也是偏斜的或包含离群值；</li>
-</ul>
-<p>当观察的变量 $X$ 有偏斜，或是含有离群值时，$Z$ 也会受影响。这种情况下，使用百分位秩更加稳健，因为百分位秩总是服从(1, n)的均匀分布：$R~U(1, n)$，其中 $n$ 为样本数。</p>
-<h3 id="协方差（covariance）"><a href="#协方差（covariance）" class="headerlink" title="协方差（covariance）"></a>协方差（covariance）</h3><p>协方差用于<strong>度量两个变量共同变化的趋势</strong>。</p>
-<p>假设现在有两个序列 $X$ 和 $Y$，则两个序列中，值与均值的偏差为：</p>
-<script type="math/tex; mode=display">\begin{cases}
-dx\_i = x\_i - \bar{x} \\\
-dy\_i = y\_i - \bar{y}
-\end{cases}</script><p>如果两个序列变化趋势一致的话，$dx_i$ 和 $dy_i$ 同号，即$dx_i \cdot dy_i &gt; 0$；反之二者异号，即$dx_i \cdot dy_i &lt; 0$。</p>
-<p><strong>我们将这一序列所有样本的偏差加到一块，应该就能度量两个序列之间共同变化的趋势</strong>，于是我们就有了“协方差”的定义：</p>
-<script type="math/tex; mode=display">\operatorname{Cov(X,Y)} = \frac{1}{n} \sum dx\_i dy\_i</script><p>注意到协方差定义中最后乘了一个 $\frac{1}{n}$ 来正则化（$n$为序列长度，此处要求$X$和$Y$必须长度相同）。</p>
-<p><em>当$X$和$Y$两个向量正交时，协方差为0</em></p>
-<h3 id="Pearson相关系数"><a href="#Pearson相关系数" class="headerlink" title="Pearson相关系数"></a>Pearson相关系数</h3><p>协方差的单位是两个变量单位的乘积，这样会使人对它的意义感到迷惑，因而人们很少将协方差作为摘要统计量。接下来介绍的 Pearson相关系数解决了这个问题。</p>
-<script type="math/tex; mode=display">\rho = \operatorname{Cov(X,Y)} / S\_X S\_Y \tag{p}\label{pearson}</script><p>可见，Pearson相关系数加入了标准差来正则化协方差，而且是无量纲的。</p>
-<p>我们可以把$\ref{pearson}$式中的$\operatorname{Cov(X,Y)}$展开，就能发现：</p>
-<script type="math/tex; mode=display">\rho = \frac{1}{n} \sum{ \left( \left( x\_i-\bar{x} \right) / S\_X \right) \left( \left(y\_i-\bar{y}\right) / S\_Y \right) }</script><p>也就是说，Pearson相关系数在计算偏差时就将其与标准差相比较，得到一个归一化的结果：标准分数，从而实现无量纲的。</p>
-<p>Pearson相关系数值的值域为$[-1, +1]$。如果$\rho &gt;0$则两个变量正相关；反之$\rho &lt;0$时，两个变量负相关。$\rho$的大小描述了相关性的强弱程度，当$\left\lvert \rho \right\rvert =1$时，两个变量完全相关，这时，只需要一个变量就能准确预测另一个变量。</p>
-<p><strong>注意，Pearson相关系数接近0时，并不能代表变量之间没有相关关系，因为Peason相关系数只度量了线性关系。如果变量之间存在非线性关系，那么用$\rho$度量相关性就不那么准确了</strong>。下图为一些具有非线性关系的变量的散点图，然而它们的相关系数都为0。</p>
+<p>常见的相关系数有两种： - Pearson乘积矩相关系数：将变量统一为标准分数（standard score），即偏离均值的标准差数：<span class="math inline">\(z_i = (x_i - \mu)/\sigma\)</span>。 - Spearman秩相关系数：将变量转换为秩（rank），就是该变量在其所有值中的排名。</p>
+<p>标准分数有以下这些性质： - <span class="math inline">\(z_i\)</span>是无量纲（单位）的，其分布均值为0，方差为1； - 如果 <span class="math inline">\(X\)</span> 服从正态分布，则 <span class="math inline">\(Z\)</span> 也服从正态分布； - 如果 <span class="math inline">\(X\)</span> 是偏斜的或包含离群值，则 <span class="math inline">\(Z\)</span> 也是偏斜的或包含离群值；</p>
+<p>当观察的变量 <span class="math inline">\(X\)</span> 有偏斜，或是含有离群值时，<span class="math inline">\(Z\)</span> 也会受影响。这种情况下，使用百分位秩更加稳健，因为百分位秩总是服从(1, n)的均匀分布：<span class="math inline">\(R~U(1, n)\)</span>，其中 <span class="math inline">\(n\)</span> 为样本数。</p>
+<h3 id="协方差covariance">协方差（covariance）</h3>
+<p>协方差用于<strong>度量两个变量共同变化的趋势</strong>。</p>
+<p>假设现在有两个序列 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span>，则两个序列中，值与均值的偏差为： <span class="math display">\[\begin{cases}
+dx_i = x_i - \bar{x} \\\
+dy_i = y_i - \bar{y}
+\end{cases}\]</span></p>
+<p>如果两个序列变化趋势一致的话，<span class="math inline">\(dx_i\)</span> 和 <span class="math inline">\(dy_i\)</span> 同号，即<span class="math inline">\(dx_i \cdot dy_i &gt; 0\)</span>；反之二者异号，即<span class="math inline">\(dx_i \cdot dy_i &lt; 0\)</span>。</p>
+<p><strong>我们将这一序列所有样本的偏差加到一块，应该就能度量两个序列之间共同变化的趋势</strong>，于是我们就有了“协方差”的定义： <span class="math display">\[\operatorname{Cov(X,Y)} = \frac{1}{n} \sum dx_i dy_i\]</span> 注意到协方差定义中最后乘了一个 <span class="math inline">\(\frac{1}{n}\)</span> 来正则化（<span class="math inline">\(n\)</span>为序列长度，此处要求<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>必须长度相同）。</p>
+<p><em>当<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>两个向量正交时，协方差为0</em></p>
+<h3 id="pearson相关系数">Pearson相关系数</h3>
+<p>协方差的单位是两个变量单位的乘积，这样会使人对它的意义感到迷惑，因而人们很少将协方差作为摘要统计量。接下来介绍的 Pearson相关系数解决了这个问题。</p>
+<p><span class="math display">\[\rho = \operatorname{Cov(X,Y)} / S_X S_Y \tag{p}\label{pearson}\]</span> 可见，Pearson相关系数加入了标准差来正则化协方差，而且是无量纲的。</p>
+<p>我们可以把<span class="math inline">\(\ref{pearson}\)</span>式中的<span class="math inline">\(\operatorname{Cov(X,Y)}\)</span>展开，就能发现： <span class="math display">\[ \rho = \frac{1}{n} \sum{ \left( \left( x_i-\bar{x} \right) / S_X \right) \left( \left(y_i-\bar{y}\right) / S_Y \right) } \]</span> 也就是说，Pearson相关系数在计算偏差时就将其与标准差相比较，得到一个归一化的结果：标准分数，从而实现无量纲的。</p>
+<p>Pearson相关系数值的值域为<span class="math inline">\([-1, +1]\)</span>。如果<span class="math inline">\(\rho &gt;0\)</span>则两个变量正相关；反之<span class="math inline">\(\rho &lt;0\)</span>时，两个变量负相关。<span class="math inline">\(\rho\)</span>的大小描述了相关性的强弱程度，当<span class="math inline">\(\left\lvert \rho \right\rvert =1\)</span>时，两个变量完全相关，这时，只需要一个变量就能准确预测另一个变量。</p>
+<p><strong>注意，Pearson相关系数接近0时，并不能代表变量之间没有相关关系，因为Peason相关系数只度量了线性关系。如果变量之间存在非线性关系，那么用<span class="math inline">\(\rho\)</span>度量相关性就不那么准确了</strong>。下图为一些具有非线性关系的变量的散点图，然而它们的相关系数都为0。</p>
 <img class title="非线性关系变量散点图及其相关系数" data-src="/2015/10/03/think-statistics-note/nonlinear-correlation-example.png">
 <p>图片来源：<span class="exturl" data-url="aHR0cDovL3d3dy53aWtpd2FuZC5jb20vZW4vQ29ycmVsYXRpb25fYW5kX2RlcGVuZGVuY2U=" title="http://www.wikiwand.com/en/Correlation_and_dependence">英文维基百科/Correlation and dependence<i class="fa fa-external-link"></i></span></p>
-<h3 id="Spearman秩相关"><a href="#Spearman秩相关" class="headerlink" title="Spearman秩相关"></a>Spearman秩相关</h3><p>当变量之间呈线性相关，且变量大致符合正态分布时，Pearson相关系数能较好地说明相关性的强弱。然而离群值会影响Pearson相关系数的稳健性（回忆一下，Pearson相关系数定义中，每个样本的标准分数是相同权重加和的，因而离群值能较大程度地影响结果）</p>
+<h3 id="spearman秩相关">Spearman秩相关</h3>
+<p>当变量之间呈线性相关，且变量大致符合正态分布时，Pearson相关系数能较好地说明相关性的强弱。然而离群值会影响Pearson相关系数的稳健性（回忆一下，Pearson相关系数定义中，每个样本的标准分数是相同权重加和的，因而离群值能较大程度地影响结果）</p>
 <p>Spearman相关系数不仅能描述变量的相关性，还能够缓解离群值及偏斜分布的影响。缓解离群值影响是通过计算各个值的秩(rank)实现的。如在样本[1, 2, 5, 7]中，值5出现在有序列表的第3位，因此5的值为3。</p>
 <p><em>缓解离群值的常见方法就是用“排名”而非其值来计算。比如取中值（排名中位数）就比取均值面对离群点时更加稳健。</em></p>
-<h3 id="相关性和因果关系"><a href="#相关性和因果关系" class="headerlink" title="相关性和因果关系"></a>相关性和因果关系</h3><p>如果变量A和B相关，则有三种可能的解释：A导致B，或B导致A，或其他某种因素导致A和B。这些解释称为“因果关系”。</p>
-<p>只有相关性，我们无法证明因果关系。要证明因果关系，有以下三种方法：</p>
-<ol>
-<li>时间<br> 如果 A 在 B 之前发生，则 A 可能导致 B，而 B 不可能导致 A。</li>
-<li>随机性<br> 类似随机对照试验。<br>3.回归分析</li>
-</ol>
-<h1 id="第八章-估计"><a href="#第八章-估计" class="headerlink" title="第八章 估计"></a>第八章 估计</h1><p>使用样本来<strong>估计</strong>分布，用来估计的统计量叫做<strong>估计量</strong>（estimator）</p>
-<h2 id="均方误差（mean-squared-error，MSE）"><a href="#均方误差（mean-squared-error，MSE）" class="headerlink" title="均方误差（mean squared error，MSE）"></a>均方误差（mean squared error，MSE）</h2><p>均方误差可用来衡量估计量对分布的描述效果</p>
-<script type="math/tex; mode=display">MSE = \frac{1}{m} \sum (\bar{x} - \mu)^2</script><p>其中$m$为抽样次数。</p>
-<h3 id="均方根误差（root-mean-squared-error，RMSE）"><a href="#均方根误差（root-mean-squared-error，RMSE）" class="headerlink" title="均方根误差（root mean squared error，RMSE）"></a>均方根误差（root mean squared error，RMSE）</h3><p>均方根误差就是均方误差的平方根：</p>
-<script type="math/tex; mode=display">RMSE = \sqrt{MSE}</script><p>用均方根误差不一定越小越好，因为估计量在实际情况中不一定会出现。最可能与实际值相符的估计叫做<strong>最大似然估计（maximum likelihood estimator，MLE）</strong></p>
-<h2 id="样本方差"><a href="#样本方差" class="headerlink" title="样本方差"></a>样本方差</h2><p>用样本方差作为估计量估计分布的方差是最直观的方法：</p>
-<script type="math/tex; mode=display">S^2 = \frac{1}{n} \sum (x\_i - \bar{x})^2</script><p>然而，<script type="math/tex">S^2</script>是偏倚（biased）估计量，对于小样本，$S^2$通常比分布的方差低很多。</p>
-<p>无偏估计量是<script type="math/tex">S\_{n-1}^2</script></p>
-<script type="math/tex; mode=display">S\_{n-1}^2 = \frac{1}{n-1} \sum (x\_i - \bar{x})^2</script><p>其中，减去的“1”是自由度。</p>
-<h2 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h2><h3 id="抽样误差"><a href="#抽样误差" class="headerlink" title="抽样误差"></a>抽样误差</h3><p>由随机选择导致的估计变化称为<strong>抽样误差（sampling error）</strong>，例如，从数量庞大的大猩猩总体中抽取9只测量体重，然而却运气不佳抽到了最重的9只。</p>
-<h3 id="抽样分布"><a href="#抽样分布" class="headerlink" title="抽样分布"></a>抽样分布</h3><p>抽样若干次，对每次抽样的估计量进行统计，得到的分布叫做<strong>抽样分布</strong>。抽样分布是对估计量分布的描述，而不是实际的值的分布。</p>
-<h3 id="抽样分布的描述"><a href="#抽样分布的描述" class="headerlink" title="抽样分布的描述"></a>抽样分布的描述</h3><ul>
-<li>标准误差（standard error，SE）<br>标准误差度量估计值平均偏离实际值多少。注意标准误差描述的是<strong>估计量</strong>变化的情况，而标准差描述的是<strong>度量值</strong>变化的情况。</li>
-<li>置信区间（confidential interval，CI）<br>抽样分布中指定比例的范围。例如，90%置信区间表示的是 第5个百分位数 到 第95个百分位数。</li>
+<h3 id="相关性和因果关系">相关性和因果关系</h3>
+<p>如果变量A和B相关，则有三种可能的解释：A导致B，或B导致A，或其他某种因素导致A和B。这些解释称为“因果关系”。</p>
+<p>只有相关性，我们无法证明因果关系。要证明因果关系，有以下三种方法： 1. 时间 如果 A 在 B 之前发生，则 A 可能导致 B，而 B 不可能导致 A。 2. 随机性 类似随机对照试验。 3.回归分析</p>
+<h1 id="第八章-估计">第八章 估计</h1>
+<p>使用样本来<strong>估计</strong>分布，用来估计的统计量叫做<strong>估计量</strong>（estimator）</p>
+<h2 id="均方误差mean-squared-errormse">均方误差（mean squared error，MSE）</h2>
+<p>均方误差可用来衡量估计量对分布的描述效果 <span class="math display">\[ MSE = \frac{1}{m} \sum (\bar{x} - \mu)^2 \]</span> 其中<span class="math inline">\(m\)</span>为抽样次数。</p>
+<h3 id="均方根误差root-mean-squared-errorrmse">均方根误差（root mean squared error，RMSE）</h3>
+<p>均方根误差就是均方误差的平方根： <span class="math display">\[ RMSE = \sqrt{MSE} \]</span></p>
+<p>用均方根误差不一定越小越好，因为估计量在实际情况中不一定会出现。最可能与实际值相符的估计叫做<strong>最大似然估计（maximum likelihood estimator，MLE）</strong></p>
+<h2 id="样本方差">样本方差</h2>
+<p>用样本方差作为估计量估计分布的方差是最直观的方法： <span class="math display">\[S^2 = \frac{1}{n} \sum (x_i - \bar{x})^2\]</span></p>
+<p>然而，<span class="math display">\[S^2\]</span>是偏倚（biased）估计量，对于小样本，<span class="math inline">\(S^2\)</span>通常比分布的方差低很多。</p>
+<p>无偏估计量是<span class="math display">\[S_{n-1}^2\]</span> <span class="math display">\[ S_{n-1}^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 \]</span> 其中，减去的“1”是自由度。</p>
+<h2 id="抽样">抽样</h2>
+<h3 id="抽样误差">抽样误差</h3>
+<p>由随机选择导致的估计变化称为<strong>抽样误差（sampling error）</strong>，例如，从数量庞大的大猩猩总体中抽取9只测量体重，然而却运气不佳抽到了最重的9只。</p>
+<h3 id="抽样分布">抽样分布</h3>
+<p>抽样若干次，对每次抽样的估计量进行统计，得到的分布叫做<strong>抽样分布</strong>。抽样分布是对估计量分布的描述，而不是实际的值的分布。</p>
+<h3 id="抽样分布的描述">抽样分布的描述</h3>
+<ul>
+<li>标准误差（standard error，SE） 标准误差度量估计值平均偏离实际值多少。注意标准误差描述的是<strong>估计量</strong>变化的情况，而标准差描述的是<strong>度量值</strong>变化的情况。</li>
+<li>置信区间（confidential interval，CI） 抽样分布中指定比例的范围。例如，90%置信区间表示的是 第5个百分位数 到 第95个百分位数。</li>
 </ul>
-<h3 id="抽样偏倚"><a href="#抽样偏倚" class="headerlink" title="抽样偏倚"></a>抽样偏倚</h3><p>由于抽样过程导致的误差，叫做抽样偏倚（sampling bias）。比如，通过电话抽样统计女性体重，由于可能不能覆盖到没有电话或是不公布号码的人，实际统计的人群会有偏差。</p>
-<h3 id="测量误差"><a href="#测量误差" class="headerlink" title="测量误差"></a>测量误差</h3><p>测量误差是得到的结果不准确。比如，统计女性体重时，只是询问而不测量；或是由于调查参与者“美化”自己的数字。</p>
+<h3 id="抽样偏倚">抽样偏倚</h3>
+<p>由于抽样过程导致的误差，叫做抽样偏倚（sampling bias）。比如，通过电话抽样统计女性体重，由于可能不能覆盖到没有电话或是不公布号码的人，实际统计的人群会有偏差。</p>
+<h3 id="测量误差">测量误差</h3>
+<p>测量误差是得到的结果不准确。比如，统计女性体重时，只是询问而不测量；或是由于调查参与者“美化”自己的数字。</p>
 <p>在汇报一个估计值时，可以用标准误差或置信区间。但要记住：抽样误差只是误差来源之一，而且通常不是最大的误差来源。</p>
 
     </div>
@@ -507,7 +514,7 @@ dy\_i = y\_i - \bar{y}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-探索性数据分析"><span class="nav-number">1.</span> <span class="nav-text">第一章 探索性数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重编码（recode）"><span class="nav-number">1.1.</span> <span class="nav-text">重编码（recode）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-分布"><span class="nav-number">2.</span> <span class="nav-text">第二章 分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直方图"><span class="nav-number">2.1.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量分布"><span class="nav-number">2.2.</span> <span class="nav-text">变量分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇总统计量"><span class="nav-number">2.3.</span> <span class="nav-text">汇总统计量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-概率质量函数"><span class="nav-number">3.</span> <span class="nav-text">第三章 概率质量函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率质量函数（Probability-Mass-Function，PMF）"><span class="nav-number">3.1.</span> <span class="nav-text">概率质量函数（Probability Mass Function，PMF）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-累积分布函数（cumulative-distribution-function，CDF）"><span class="nav-number">4.</span> <span class="nav-text">第四章 累积分布函数（cumulative distribution function，CDF）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百分位秩（percentile-rank）"><span class="nav-number">4.1.</span> <span class="nav-text">百分位秩（percentile rank）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDF"><span class="nav-number">4.2.</span> <span class="nav-text">CDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用CDF生成随机样本"><span class="nav-number">4.3.</span> <span class="nav-text">利用CDF生成随机样本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-分布建模"><span class="nav-number">5.</span> <span class="nav-text">第五章 分布建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-概率密度函数（Probability-density-function-PDF）"><span class="nav-number">6.</span> <span class="nav-text">第六章 概率密度函数（Probability density function, PDF）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核密度估计（kernel-density-estimation-KDE）"><span class="nav-number">6.1.</span> <span class="nav-text">核密度估计（kernel density estimation, KDE）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMF、CDF、PDF-的关系"><span class="nav-number">6.2.</span> <span class="nav-text">PMF、CDF、PDF 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩（moment）"><span class="nav-number">6.3.</span> <span class="nav-text">矩（moment）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么称为“矩”"><span class="nav-number">6.3.1.</span> <span class="nav-text">为什么称为“矩”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计量的单位"><span class="nav-number">6.3.2.</span> <span class="nav-text">统计量的单位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏度（skewness）"><span class="nav-number">6.4.</span> <span class="nav-text">偏度（skewness）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#偏度的计算"><span class="nav-number">6.4.1.</span> <span class="nav-text">偏度的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#衡量分布对称性的另一个方法"><span class="nav-number">6.4.2.</span> <span class="nav-text">衡量分布对称性的另一个方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Pearson-中位数偏度系数（Pearson’s-median-skewness-coefficient）"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">Pearson 中位数偏度系数（Pearson’s median skewness coefficient）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-变量之间的关系"><span class="nav-number">7.</span> <span class="nav-text">第七章 变量之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#散点图"><span class="nav-number">7.1.</span> <span class="nav-text">散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抖动技术（jittering）"><span class="nav-number">7.1.1.</span> <span class="nav-text">抖动技术（jittering）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饱和（saturation）"><span class="nav-number">7.1.2.</span> <span class="nav-text">饱和（saturation）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性（correlation）"><span class="nav-number">7.2.</span> <span class="nav-text">相关性（correlation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差（covariance）"><span class="nav-number">7.3.</span> <span class="nav-text">协方差（covariance）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pearson相关系数"><span class="nav-number">7.4.</span> <span class="nav-text">Pearson相关系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spearman秩相关"><span class="nav-number">7.5.</span> <span class="nav-text">Spearman秩相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性和因果关系"><span class="nav-number">7.6.</span> <span class="nav-text">相关性和因果关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八章-估计"><span class="nav-number"></span> <span class="nav-text">第八章 估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#均方误差（mean-squared-error，MSE）"><span class="nav-number">1.</span> <span class="nav-text">均方误差（mean squared error，MSE）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#均方根误差（root-mean-squared-error，RMSE）"><span class="nav-number">1.1.</span> <span class="nav-text">均方根误差（root mean squared error，RMSE）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本方差"><span class="nav-number">2.</span> <span class="nav-text">样本方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽样"><span class="nav-number">3.</span> <span class="nav-text">抽样</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样误差"><span class="nav-number">3.1.</span> <span class="nav-text">抽样误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样分布"><span class="nav-number">3.2.</span> <span class="nav-text">抽样分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样分布的描述"><span class="nav-number">3.3.</span> <span class="nav-text">抽样分布的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样偏倚"><span class="nav-number">3.4.</span> <span class="nav-text">抽样偏倚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量误差"><span class="nav-number">3.5.</span> <span class="nav-text">测量误差</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-探索性数据分析"><span class="nav-number">1.</span> <span class="nav-text">第一章 探索性数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重编码recode"><span class="nav-number">1.1.</span> <span class="nav-text">重编码（recode）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-分布"><span class="nav-number">2.</span> <span class="nav-text">第二章 分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直方图"><span class="nav-number">2.1.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇总统计量"><span class="nav-number">2.2.</span> <span class="nav-text">汇总统计量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-概率质量函数"><span class="nav-number">3.</span> <span class="nav-text">第三章 概率质量函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率质量函数probability-mass-functionpmf"><span class="nav-number">3.1.</span> <span class="nav-text">概率质量函数（Probability Mass Function，PMF）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-累积分布函数cumulative-distribution-functioncdf"><span class="nav-number">4.</span> <span class="nav-text">第四章 累积分布函数（cumulative distribution function，CDF）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百分位秩percentile-rank"><span class="nav-number">4.1.</span> <span class="nav-text">百分位秩（percentile rank）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdf"><span class="nav-number">4.2.</span> <span class="nav-text">CDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用cdf生成随机样本"><span class="nav-number">4.3.</span> <span class="nav-text">利用CDF生成随机样本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-分布建模"><span class="nav-number">5.</span> <span class="nav-text">第五章 分布建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-概率密度函数probability-density-function-pdf"><span class="nav-number">6.</span> <span class="nav-text">第六章 概率密度函数（Probability density function, PDF）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核密度估计kernel-density-estimation-kde"><span class="nav-number">6.1.</span> <span class="nav-text">核密度估计（kernel density estimation, KDE）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pmfcdfpdf-的关系"><span class="nav-number">6.2.</span> <span class="nav-text">PMF、CDF、PDF 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩moment"><span class="nav-number">6.3.</span> <span class="nav-text">矩（moment）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么称为矩"><span class="nav-number">6.3.1.</span> <span class="nav-text">为什么称为“矩”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计量的单位"><span class="nav-number">6.3.2.</span> <span class="nav-text">统计量的单位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏度skewness"><span class="nav-number">6.4.</span> <span class="nav-text">偏度（skewness）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#偏度的计算"><span class="nav-number">6.4.1.</span> <span class="nav-text">偏度的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#衡量分布对称性的另一个方法"><span class="nav-number">6.4.2.</span> <span class="nav-text">衡量分布对称性的另一个方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pearson-中位数偏度系数pearsons-median-skewness-coefficient"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">Pearson 中位数偏度系数（Pearson&#39;s median skewness coefficient）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-变量之间的关系"><span class="nav-number">7.</span> <span class="nav-text">第七章 变量之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#散点图"><span class="nav-number">7.1.</span> <span class="nav-text">散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抖动技术jittering"><span class="nav-number">7.1.1.</span> <span class="nav-text">抖动技术（jittering）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饱和saturation"><span class="nav-number">7.1.2.</span> <span class="nav-text">饱和（saturation）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性correlation"><span class="nav-number">7.2.</span> <span class="nav-text">相关性（correlation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差covariance"><span class="nav-number">7.3.</span> <span class="nav-text">协方差（covariance）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearson相关系数"><span class="nav-number">7.4.</span> <span class="nav-text">Pearson相关系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spearman秩相关"><span class="nav-number">7.5.</span> <span class="nav-text">Spearman秩相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性和因果关系"><span class="nav-number">7.6.</span> <span class="nav-text">相关性和因果关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第八章-估计"><span class="nav-number"></span> <span class="nav-text">第八章 估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#均方误差mean-squared-errormse"><span class="nav-number">1.</span> <span class="nav-text">均方误差（mean squared error，MSE）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#均方根误差root-mean-squared-errorrmse"><span class="nav-number">1.1.</span> <span class="nav-text">均方根误差（root mean squared error，RMSE）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本方差"><span class="nav-number">2.</span> <span class="nav-text">样本方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽样"><span class="nav-number">3.</span> <span class="nav-text">抽样</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样误差"><span class="nav-number">3.1.</span> <span class="nav-text">抽样误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样分布"><span class="nav-number">3.2.</span> <span class="nav-text">抽样分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样分布的描述"><span class="nav-number">3.3.</span> <span class="nav-text">抽样分布的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽样偏倚"><span class="nav-number">3.4.</span> <span class="nav-text">抽样偏倚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量误差"><span class="nav-number">3.5.</span> <span class="nav-text">测量误差</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

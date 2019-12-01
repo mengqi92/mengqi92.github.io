@@ -235,7 +235,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+                <time title="修改时间：2019-12-01 04:50:50" itemprop="dateModified" datetime="2019-12-01T04:50:50+00:00">2019-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,13 +262,16 @@
       
           <img src="/2015/10/06/convolution/banner.jpeg" class="">
 <p>在学习机器学习和图像处理的过程中，经常会遇到卷积这个概念。我每次遇到这个概念都有点似懂非懂的样子。有时候清楚它的直观解释，但又搞不清公式中是如何体现的。究其原因，还是我没有完全搞懂这个概念。 维基百科上有一个动态图来演示这个概念，但对于我来说还是有些复杂。于是自己在网上找了很多文章来研究，终于有了比较直观的印象，这里就趁热把我理解的解释一下，作为总结。</p>
-<h2 id="一、一维卷积"><a href="#一、一维卷积" class="headerlink" title="一、一维卷积"></a>一、一维卷积</h2><h3 id="1-1-数学定义"><a href="#1-1-数学定义" class="headerlink" title="1.1 数学定义"></a>1.1 数学定义</h3><p>维基百科上，卷积的形式化定义如下：</p>
-<script type="math/tex; mode=display">f(x)\*g(x) = \int\_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1}</script><h3 id="1-2-直观解释"><a href="#1-2-直观解释" class="headerlink" title="1.2 直观解释"></a>1.2 直观解释</h3><p>先来分析一下这个公式：</p>
-<ol>
-<li>$f(x)*g(x)$ 表示 $f(x)$ 和 $g(x)$ 的卷积，注意此处自变量为 $x$；</li>
-<li>它是对 $(-\infty, \infty)$ 区间上对 $\tau$ 求积分；</li>
-<li>积分对象为两个函数的乘积：$f(\tau)$ 和 $g(x-\tau)$。</li>
-<li>等式右边只有 $g(x-\tau)$ 提到了 $x$，其他部分都在关注 $\tau$</li>
+<h2 id="一一维卷积">一、一维卷积</h2>
+<h3 id="数学定义">1.1 数学定义</h3>
+<p>维基百科上，卷积的形式化定义如下： <span class="math display">\[ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} \]</span></p>
+<h3 id="直观解释">1.2 直观解释</h3>
+<p>先来分析一下这个公式：</p>
+<ol type="1">
+<li><span class="math inline">\(f(x)*g(x)\)</span> 表示 <span class="math inline">\(f(x)\)</span> 和 <span class="math inline">\(g(x)\)</span> 的卷积，注意此处自变量为 <span class="math inline">\(x\)</span>；</li>
+<li>它是对 <span class="math inline">\((-\infty, \infty)\)</span> 区间上对 <span class="math inline">\(\tau\)</span> 求积分；</li>
+<li>积分对象为两个函数的乘积：<span class="math inline">\(f(\tau)\)</span> 和 <span class="math inline">\(g(x-\tau)\)</span>。</li>
+<li>等式右边只有 <span class="math inline">\(g(x-\tau)\)</span> 提到了 <span class="math inline">\(x\)</span>，其他部分都在关注 <span class="math inline">\(\tau\)</span></li>
 </ol>
 <p>这样一个公式恐怕还是难以理解，接下来将通过一个例子来进行解释。</p>
           <!--noindex-->
@@ -346,7 +349,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>研究傅里叶变换的过程中经常要和复数打交道，经常会遇到 $e^{ix}$ 这种形式。</p>
+          <p>研究傅里叶变换的过程中经常要和复数打交道，经常会遇到 <span class="math inline">\(e^{ix}\)</span> 这种形式。</p>
 <p>这里就总结一下复数的直角坐标、极坐标，以及复指数表示形式，也有对欧拉公式的直观解释，以便更好地理解傅里叶变换。</p>
 <p>本文中图片均来自于 <a href="http://www.csie.ntnu.edu.tw/~u91029/Wave.html" target="_blank" rel="noopener">国立台湾师范大学资讯工程学系的演算法笔记</a>。</p>
           <!--noindex-->
@@ -406,7 +409,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+                <time title="修改时间：2019-12-01 04:50:51" itemprop="dateModified" datetime="2019-12-01T04:50:51+00:00">2019-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -432,9 +435,10 @@
 
       
           <p>最近项目需要，用到了 Logistic 回归（Logistic Regression），因此又跟着 Andrew Ng 的机器学习课程复习了一遍相关知识，整理如下：</p>
-<h2 id="一、问题的引入"><a href="#一、问题的引入" class="headerlink" title="一、问题的引入"></a>一、问题的引入</h2><p>使用线性回归方法是可以引申来处理分类问题的，一般是用回归得到假设值 $h_\theta (x)$ 来决定类别归属。例如：$h_\theta (x) &lt; 0.5$ 时，y = 0；$h_\theta (x) &gt; 0.5$ 时，y = 1。</p>
-<p>然而，线性回归得到的假设值 $h_\theta (x)$ 有可能 &gt;1 或是 &lt;0，而且有可能会超出很多，这种情况下使用线性回归似乎不是很好的选择。</p>
-<p>为了解决这个问题，我们引入 Logistic 回归方法，将 $h_\theta (x)$ 限制在 (0,1) 范围内。</p>
+<h2 id="一问题的引入">一、问题的引入</h2>
+<p>使用线性回归方法是可以引申来处理分类问题的，一般是用回归得到假设值 <span class="math inline">\(h_\theta (x)\)</span> 来决定类别归属。例如：<span class="math inline">\(h_\theta (x) &lt; 0.5\)</span> 时，y = 0；<span class="math inline">\(h_\theta (x) &gt; 0.5\)</span> 时，y = 1。</p>
+<p>然而，线性回归得到的假设值 <span class="math inline">\(h_\theta (x)\)</span> 有可能 &gt;1 或是 &lt;0，而且有可能会超出很多，这种情况下使用线性回归似乎不是很好的选择。</p>
+<p>为了解决这个问题，我们引入 Logistic 回归方法，将 <span class="math inline">\(h_\theta (x)\)</span> 限制在 (0,1) 范围内。</p>
 <p>注意，Logistic 回归是一种<strong>分类</strong>方法，而不是回归方法，名字中的“回归”是历史原因造成的。</p>
           <!--noindex-->
             <div class="post-button">
@@ -511,9 +515,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="第一章-探索性数据分析"><a href="#第一章-探索性数据分析" class="headerlink" title="第一章 探索性数据分析"></a>第一章 探索性数据分析</h2><h3 id="重编码（recode）"><a href="#重编码（recode）" class="headerlink" title="重编码（recode）"></a>重编码（recode）</h3><p>不是调查收集的原始数据，而是使用原始数据计算得到的变量。<br>可用来检查数据的一致性和准确性</p>
-<hr>
-<h2 id="第二章-分布"><a href="#第二章-分布" class="headerlink" title="第二章 分布"></a>第二章 分布</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><p>直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）<br>
+          <h2 id="第一章-探索性数据分析">第一章 探索性数据分析</h2>
+<h3 id="重编码recode">重编码（recode）</h3>
+<p>不是调查收集的原始数据，而是使用原始数据计算得到的变量。 可用来检查数据的一致性和准确性</p>
+<hr />
+<h2 id="第二章-分布">第二章 分布</h2>
+<h3 id="直方图">直方图</h3>
+<p>直方图能判断分布的形状，容易发现最常出现的值，但不一定能看到很少出现的值（离群值）
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/10/03/think-statistics-note/#more" rel="contents">

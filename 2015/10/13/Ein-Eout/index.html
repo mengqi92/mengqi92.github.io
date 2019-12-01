@@ -47,15 +47,15 @@
   };
 </script>
 
-  <meta name="description" content="加州理工的机器学习公开课上，穆斯塔法教授对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。 而这门课程在讲解学习的可行性时，多次提到了$E_{in}$和$E_{out}$的概念。 $E_{in}$和$E_{out}$分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是因为有这样一个理">
+  <meta name="description" content="加州理工的机器学习公开课上，穆斯塔法教授对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。 而这门课程在讲解学习的可行性时，多次提到了\(E_{in}\)和\(E_{out}\)的概念。 \(E_{in}\)和\(E_{out}\)分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是">
 <meta name="keywords" content="随笔,机器学习感悟">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ein 和 Eout，假设模型以及开放思维">
 <meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;13&#x2F;Ein-Eout&#x2F;index.html">
 <meta property="og:site_name" content="Mengqi&#39;s blog">
-<meta property="og:description" content="加州理工的机器学习公开课上，穆斯塔法教授对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。 而这门课程在讲解学习的可行性时，多次提到了$E_{in}$和$E_{out}$的概念。 $E_{in}$和$E_{out}$分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是因为有这样一个理">
+<meta property="og:description" content="加州理工的机器学习公开课上，穆斯塔法教授对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。 而这门课程在讲解学习的可行性时，多次提到了\(E_{in}\)和\(E_{out}\)的概念。 \(E_{in}\)和\(E_{out}\)分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T16:28:17.763Z">
+<meta property="og:updated_time" content="2019-12-01T04:50:50.984Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://mengqi92.github.io/2015/10/13/Ein-Eout/">
@@ -236,7 +236,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+                <time title="修改时间：2019-12-01 04:50:50" itemprop="dateModified" datetime="2019-12-01T04:50:50+00:00">2019-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,18 +269,17 @@
 
       
         <p>加州理工的<span class="exturl" data-url="aHR0cDovL29wZW4uMTYzLmNvbS9zcGVjaWFsL29wZW5jb3Vyc2UvbGVhcm5pbmdmcm9tZGF0YS5odG1s" title="http://open.163.com/special/opencourse/learningfromdata.html">机器学习公开课<i class="fa fa-external-link"></i></span>上，<span class="exturl" data-url="aHR0cHM6Ly93b3JrLmNhbHRlY2guZWR1" title="https://work.caltech.edu">穆斯塔法教授<i class="fa fa-external-link"></i></span>对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。</p>
-<p>而这门课程在讲解学习的可行性时，多次提到了$E_{in}$和$E_{out}$的概念。 $E_{in}$和$E_{out}$分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是因为有这样一个理论支撑：</p>
-<script type="math/tex; mode=display">P[E\_{in} - E\_{out} > \epsilon] = 2 e^{-2\epsilon^2 N} \tag{\*}\label{\*}</script><p>上面的式子叫 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSG9lZmZkaW5nJTI3c19pbmVxdWFsaXR5" title="https://en.wikipedia.org/wiki/Hoeffding%27s_inequality">Hoeffding 不等式<i class="fa fa-external-link"></i></span>。从公式中可以看出，当N足够大时，$E_{in}$和$E_{out}$相差太大的概率就比较小。换句话说，当N足够大时，$E_{in}$就会更接近于$E_{out}$。如此，我们机器学习提出的模型假设如果对大量已知样本能够较好地拟合的话，那它对真实的未知样本应该也能够较好地拟合。</p>
-<p>上面的$\ref{*}$式只适用于一次随机试验，一次试验只建立一个模型假设，而我们实际训练时是要提出若干个假设，再从这些假设中选择最符合目标函数的那个假设。也就是：</p>
-<script type="math/tex; mode=display">P[E\_{in} - E\_{out} > \epsilon] = 2 M e^{-2\epsilon^2 N} \tag{\*\*}\label{\*\*}</script><p>式子中的 M 就是我们提出的假设数目。</p>
-<h2 id><a href="#" class="headerlink" title></a><a id="more"></a></h2><p>理论先讲到这里，下面谈谈我个人对$E_{in}$和$E_{out}$的一点理解。</p>
+<p>而这门课程在讲解学习的可行性时，多次提到了<span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>的概念。 <span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是因为有这样一个理论支撑： <span class="math display">\[P[E_{in} - E_{out} &gt; \epsilon] = 2 e^{-2\epsilon^2 N} \tag{*}\label{*}\]</span> 上面的式子叫 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSG9lZmZkaW5nJTI3c19pbmVxdWFsaXR5" title="https://en.wikipedia.org/wiki/Hoeffding%27s_inequality">Hoeffding 不等式<i class="fa fa-external-link"></i></span>。从公式中可以看出，当N足够大时，<span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>相差太大的概率就比较小。换句话说，当N足够大时，<span class="math inline">\(E_{in}\)</span>就会更接近于<span class="math inline">\(E_{out}\)</span>。如此，我们机器学习提出的模型假设如果对大量已知样本能够较好地拟合的话，那它对真实的未知样本应该也能够较好地拟合。</p>
+<p>上面的<span class="math inline">\(\ref{*}\)</span>式只适用于一次随机试验，一次试验只建立一个模型假设，而我们实际训练时是要提出若干个假设，再从这些假设中选择最符合目标函数的那个假设。也就是： <span class="math display">\[P[E_{in} - E_{out} &gt; \epsilon] = 2 M e^{-2\epsilon^2 N} \tag{**}\label{**}\]</span> 式子中的 M 就是我们提出的假设数目。</p>
+<h2 id="section"><a id="more"></a></h2>
+<p>理论先讲到这里，下面谈谈我个人对<span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>的一点理解。</p>
 <p><strong>我们人在观察世界、观察他人的时候，其实就是在学习。从小到大，我们通过眼耳鼻等五官获知大量样本，再从这些样本中不断丰富和调整自己头脑中的假设模型，我们对事物、对社会、对世界的认识也就是指自己头脑中的这个模型，即所谓的“世界观”、“价值观”等等。每个人对社会、对他人的评判也都是来源于他头脑中对所认识事物建立的模型。</strong></p>
-<p>比如“士别三日，当刮目相看”的例子，孙权、鲁肃与吕蒙长期共事，逐渐对吕蒙建立了假设模型，而当吕蒙“乃始就学”之后，鲁肃再与吕蒙论议，发现他头脑中的这个模型已不能很好地拟合现在的吕蒙，乃大惊曰“士别三日，当刮目想看”。我们平时看人时，也要经常提醒自己，自己对他人的看法也只是自己头脑中的“假设模型”而已，你自己觉得拟合的再好，觉得$E_{in}$已经很小了，但也不能说明这个“假设”就能很好地拟合真实情况。$E_{in}$小，不代表$E_{out}$就小，还有可能是过拟合，或是假设模型本身就错了啊。</p>
+<p>比如“士别三日，当刮目相看”的例子，孙权、鲁肃与吕蒙长期共事，逐渐对吕蒙建立了假设模型，而当吕蒙“乃始就学”之后，鲁肃再与吕蒙论议，发现他头脑中的这个模型已不能很好地拟合现在的吕蒙，乃大惊曰“士别三日，当刮目想看”。我们平时看人时，也要经常提醒自己，自己对他人的看法也只是自己头脑中的“假设模型”而已，你自己觉得拟合的再好，觉得<span class="math inline">\(E_{in}\)</span>已经很小了，但也不能说明这个“假设”就能很好地拟合真实情况。<span class="math inline">\(E_{in}\)</span>小，不代表<span class="math inline">\(E_{out}\)</span>就小，还有可能是过拟合，或是假设模型本身就错了啊。</p>
 <p>所以有时面对他人无端指责或是误解时，我们可以这样想：他对你的看法，其实是他先对你观察，并在他头脑中建立一个模型，这个模型就是你在他头脑中的投影。而他表达出来对你的看法，也都是基于他对你在他头脑中的投影所做的观察。既然是投影，必然不全面，这个投影不一定能代表你的真实情况。这样看来，当你被人无缘由嘲讽的时候，反而暴露出了他认识的局限。你也不妨就当他在对一个“幽灵”说话。</p>
-<p>再从这个角度来看，我们也就不难理解新闻上经常出现的一些类似“某‘好男人’被曝出轨”、“某温文尔雅的编剧吸毒”的新闻所引起的舆论哗然。从机器学习的角度看，这就是反映了大众脑中的模型和真实情况反差太大，而这个反差的揭露时间又过短使得大家一时接受不了（Justin Beiber的变化时间就够长，所以它的那些新闻，我也都见怪不怪了 -_-）。大众脑中所建立模型的$E_{out}$过大，或者说 “bias” 过大，这个模型不能很好地预测真实世界。</p>
-<p>那么，我们如何能够改善我们的假设对于真实情况的预测呢？我们再来回顾一下$\ref{**}式$：</p>
-<script type="math/tex; mode=display">P[E\_{in} - E\_{out} > \epsilon] = 2 M e^{-2\epsilon^2 N}</script><p>要想提高$P[E_{in} - E_{out} &gt; \epsilon] $：一个是提高$N$，即增加我们的阅历，而且所“阅”的人（样本）分布也要尽可能的广，这样建立的模型泛化能力才更强。另一个就是不断迭代，不断评价旧有假设，从中发现不足（“吾日三省吾身”），并在其基础上进行改良，提出新的假设。也就是说，我们要保持一个勤于思考、开放的头脑，时刻提醒自己认识具有局限，保持谦卑的心态，不断学习、吸收并更新我们对世界、对他人的看法！</p>
-<h2 id="版权声明："><a href="#版权声明：" class="headerlink" title="版权声明："></a>版权声明：</h2><p>本文中所有文字版权均属本人所有，未经允许请勿转载。</p>
+<p>再从这个角度来看，我们也就不难理解新闻上经常出现的一些类似“某‘好男人’被曝出轨”、“某温文尔雅的编剧吸毒”的新闻所引起的舆论哗然。从机器学习的角度看，这就是反映了大众脑中的模型和真实情况反差太大，而这个反差的揭露时间又过短使得大家一时接受不了（Justin Beiber的变化时间就够长，所以它的那些新闻，我也都见怪不怪了 -_-）。大众脑中所建立模型的<span class="math inline">\(E_{out}\)</span>过大，或者说 "bias" 过大，这个模型不能很好地预测真实世界。</p>
+<p>那么，我们如何能够改善我们的假设对于真实情况的预测呢？我们再来回顾一下<span class="math inline">\(\ref{**}式\)</span>： <span class="math display">\[P[E_{in} - E_{out} &gt; \epsilon] = 2 M e^{-2\epsilon^2 N}\]</span> 要想提高$P[E_{in} - E_{out} &gt; ] <span class="math inline">\(：一个是提高\)</span>N$，即增加我们的阅历，而且所“阅”的人（样本）分布也要尽可能的广，这样建立的模型泛化能力才更强。另一个就是不断迭代，不断评价旧有假设，从中发现不足（“吾日三省吾身”），并在其基础上进行改良，提出新的假设。也就是说，我们要保持一个勤于思考、开放的头脑，时刻提醒自己认识具有局限，保持谦卑的心态，不断学习、吸收并更新我们对世界、对他人的看法！</p>
+<h2 id="版权声明">版权声明：</h2>
+<p>本文中所有文字版权均属本人所有，未经允许请勿转载。</p>
 
     </div>
 
@@ -361,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明："><span class="nav-number">2.</span> <span class="nav-text">版权声明：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明"><span class="nav-number">2.</span> <span class="nav-text">版权声明：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -47,20 +47,20 @@
   };
 </script>
 
-  <meta name="description" content="上一章我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。   之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩">
+  <meta name="description" content="上一章 我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。 之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩阵">
 <meta name="keywords" content="基础概念,数学,线性代数拾遗,线性代数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数拾遗（三）：线性变换以及矩阵的意义">
 <meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;index.html">
 <meta property="og:site_name" content="Mengqi&#39;s blog">
-<meta property="og:description" content="上一章我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。   之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩">
+<meta property="og:description" content="上一章 我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。 之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩阵">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;banner.jpeg">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;linear-transformation.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;rotation.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;existence.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;uniqueness.png">
-<meta property="og:updated_time" content="2019-11-30T16:28:17.775Z">
+<meta property="og:updated_time" content="2019-12-01T04:50:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2016&#x2F;05&#x2F;20&#x2F;linear-algebra-3&#x2F;banner.jpeg">
 
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-30 16:28:17" itemprop="dateModified" datetime="2019-11-30T16:28:17+00:00">2019-11-30</time>
+                <time title="修改时间：2019-12-01 04:50:51" itemprop="dateModified" datetime="2019-12-01T04:50:51+00:00">2019-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,68 +275,77 @@
 
       
         <img class data-src="/2016/05/20/linear-algebra-3/banner.jpeg">
-<a href="/2016/05/14/linear-algebra-2/" title="上一章">上一章</a>我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。 
-
-之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩阵的。这一章，我们引入矩阵的另一层意义：`线性变换`。
-
+<a href="/2016/05/14/linear-algebra-2/" title="上一章">上一章</a>
+<p>我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。</p>
+<p>之前的两章中，矩阵是在矩阵方程中出现的，当时我们理解它的意义为“对向量的一种封装”，也就是一种“数据”的形式理解矩阵的。这一章，我们引入矩阵的另一层意义：<code>线性变换</code>。</p>
 <a id="more"></a>
-<h1 id="一、变换"><a href="#一、变换" class="headerlink" title="一、变换"></a>一、变换</h1><p>假如有如 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 形式的方程：</p>
-<script type="math/tex; mode=display">
+<h1 id="一变换">一、变换</h1>
+<p>假如有如 <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> 形式的方程： <span class="math display">\[
 \begin{bmatrix}
-4 & -3 & 1 & 3 \\
-2 & 0 & 5 & 1
+4 &amp; -3 &amp; 1 &amp; 3 \\
+2 &amp; 0 &amp; 5 &amp; 1
 \end{bmatrix}
 \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}
 =
-\begin{bmatrix} 5 \\ 8 \end{bmatrix}</script><p>以往我们都是将其看成是几个列向量的线性组合，即<script type="math/tex">1\begin{bmatrix}4 \\ 2\end{bmatrix} + 1\begin{bmatrix}-3 \\ 0\end{bmatrix} + 1\begin{bmatrix}1 \\ 5\end{bmatrix} + 1\begin{bmatrix}3 \\ 1\end{bmatrix} = \begin{bmatrix} 5 \\ 8 \end{bmatrix}</script>，这次我们换个角度，把 $\mathbf{A}$ 看作一个整体，整个方程就是一个 4 维向量 $\mathbf{x}$ 乘以矩阵 $\mathbf{A}$ 后得到一个 2 维向量 $\mathbf{b}$。 以这个观点来看的话，<strong>矩阵 $\mathbf{A}$ 就相当于一个从一个向量集映射到另一个向量集的函数！</strong>。</p>
-<p>假设 $\mathbf{x}$ 是 $n$ 维向量，$\mathbf{b}$ 是 $m$ 维向量，则 $\mathbf{A}$ 就是一个 $R^n$ 到 $R^m$ 的变换。这个变换的<code>定义域</code>是 $R^n$，<code>上域</code>是 $R^m$，记作 $T: R^n \rightarrow R^m$。$\mathbf{x}$ 是 $R^n$ 空间中的一个向量，$T(\mathbf{x})$ 就是其变换到 $R^m$ 空间中的<code>像</code>，而全体<code>像</code> $T(\mathbf{x})$ 的集合就称为变换 $T$ 的<code>值域</code>。图示如下：</p>
+\begin{bmatrix} 5 \\ 8 \end{bmatrix}
+\]</span> 以往我们都是将其看成是几个列向量的线性组合，即<span class="math display">\[1\begin{bmatrix}4 \\ 2\end{bmatrix} + 1\begin{bmatrix}-3 \\ 0\end{bmatrix} + 1\begin{bmatrix}1 \\ 5\end{bmatrix} + 1\begin{bmatrix}3 \\ 1\end{bmatrix} = \begin{bmatrix} 5 \\ 8 \end{bmatrix}\]</span>，这次我们换个角度，把 <span class="math inline">\(\mathbf{A}\)</span> 看作一个整体，整个方程就是一个 4 维向量 <span class="math inline">\(\mathbf{x}\)</span> 乘以矩阵 <span class="math inline">\(\mathbf{A}\)</span> 后得到一个 2 维向量 <span class="math inline">\(\mathbf{b}\)</span>。 以这个观点来看的话，<strong>矩阵 <span class="math inline">\(\mathbf{A}\)</span> 就相当于一个从一个向量集映射到另一个向量集的函数！</strong>。</p>
+<p>假设 <span class="math inline">\(\mathbf{x}\)</span> 是 <span class="math inline">\(n\)</span> 维向量，<span class="math inline">\(\mathbf{b}\)</span> 是 <span class="math inline">\(m\)</span> 维向量，则 <span class="math inline">\(\mathbf{A}\)</span> 就是一个 <span class="math inline">\(R^n\)</span> 到 <span class="math inline">\(R^m\)</span> 的变换。这个变换的<code>定义域</code>是 <span class="math inline">\(R^n\)</span>，<code>上域</code>是 <span class="math inline">\(R^m\)</span>，记作 <span class="math inline">\(T: R^n \rightarrow R^m\)</span>。<span class="math inline">\(\mathbf{x}\)</span> 是 <span class="math inline">\(R^n\)</span> 空间中的一个向量，<span class="math inline">\(T(\mathbf{x})\)</span> 就是其变换到 <span class="math inline">\(R^m\)</span> 空间中的<code>像</code>，而全体<code>像</code> <span class="math inline">\(T(\mathbf{x})\)</span> 的集合就称为变换 <span class="math inline">\(T\)</span> 的<code>值域</code>。图示如下：</p>
 <img class title="变换$T$" data-src="/2016/05/20/linear-algebra-3/linear-transformation.png">
-<p>从这种观点来看，矩阵就是一个函数：$\mathbf{x}\mapsto\mathbf{A}{x}$！矩阵既可看作是数据的表示，又可看作是表示变换的函数，这不禁让我联想起了 lisp 里的“同像性”，也就是“代码即数据”。我不知道他们之间有没有更深一层的联系，不过从这一层面再来看矩阵，感觉又多了一层趣味……</p>
+<p>从这种观点来看，矩阵就是一个函数：<span class="math inline">\(\mathbf{x}\mapsto\mathbf{A}{x}\)</span>！矩阵既可看作是数据的表示，又可看作是表示变换的函数，这不禁让我联想起了 lisp 里的“同像性”，也就是“代码即数据”。我不知道他们之间有没有更深一层的联系，不过从这一层面再来看矩阵，感觉又多了一层趣味……</p>
 <p>除此之外，以动态的眼光来看待矩阵，也有助于我们理解为什么一些随时间变化的系统可以用线性代数来建模。比如马尔科夫链中的转移矩阵，就是用静态的矩阵来表示一个变换的过程。</p>
-<p>不难发现，当变换 $T$ 为 $\mathbf{x}\mapsto\mathbf{A}\mathbf{x}$ ，向量 $\mathbf{x}$ 若有 n 维，则变换的定义域就是 $R^n$，$\mathbf{A}$ 就有 n 列；向量 $\mathbf{b}$  若有 m 维，则变换的上域就是 $R^m$，$\mathbf{A}$ 就有 m 行（$\mathbf{A}$ 每一列有 m 个元素）。而变换的值域就是 $\mathbf{A}$ 中列的所有线性组合组成的集合。</p>
-<p>也就是说，像 <script type="math/tex">\begin{bmatrix}1 & -3 \\ 3 & 5 \\ -1 & 7\end{bmatrix}</script>这样的矩阵，所表达的变换就是一个二维到三维的映射 $T:R^2\rightarrow R^3$。</p>
-<p>再例如，矩阵<script type="math/tex">\begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix}</script> 所表达的变换就是一个投影：把 $R^3$ 中的点投影到 $x_1 x_2$平面，因为：</p>
-<script type="math/tex; mode=display">
+<p>不难发现，当变换 <span class="math inline">\(T\)</span> 为 <span class="math inline">\(\mathbf{x}\mapsto\mathbf{A}\mathbf{x}\)</span> ，向量 <span class="math inline">\(\mathbf{x}\)</span> 若有 n 维，则变换的定义域就是 <span class="math inline">\(R^n\)</span>，<span class="math inline">\(\mathbf{A}\)</span> 就有 n 列；向量 <span class="math inline">\(\mathbf{b}\)</span> 若有 m 维，则变换的上域就是 <span class="math inline">\(R^m\)</span>，<span class="math inline">\(\mathbf{A}\)</span> 就有 m 行（<span class="math inline">\(\mathbf{A}\)</span> 每一列有 m 个元素）。而变换的值域就是 <span class="math inline">\(\mathbf{A}\)</span> 中列的所有线性组合组成的集合。</p>
+<p>也就是说，像 <span class="math display">\[\begin{bmatrix}1 &amp; -3 \\ 3 &amp; 5 \\ -1 &amp; 7\end{bmatrix}\]</span>这样的矩阵，所表达的变换就是一个二维到三维的映射 <span class="math inline">\(T:R^2\rightarrow R^3\)</span>。</p>
+<p>再例如，矩阵<span class="math display">\[\begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0\end{bmatrix}\]</span> 所表达的变换就是一个投影：把 <span class="math inline">\(R^3\)</span> 中的点投影到 <span class="math inline">\(x_1 x_2\)</span>平面，因为： <span class="math display">\[
 \begin{bmatrix}
-1 & 0 & 0 \\
-0 & 1 & 0 \\
-0 & 0 & 0
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
 \end{bmatrix}
 \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}
 =
-\begin{bmatrix} x_1 \\ x_2 \\ 0 \end{bmatrix}</script><h1 id="二、线性变换"><a href="#二、线性变换" class="headerlink" title="二、线性变换"></a>二、线性变换</h1><p>线性变换是一类满足线性条件的变换。所谓的线性条件就是：</p>
-<script type="math/tex; mode=display">T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \\ \text{和}\\ T(c \mathbf{u}) = c T(\mathbf{u})</script><p>注意到，向量的加法和数乘运算在变换前和变换后的效果是一样的，也就是所谓的线性变换<em>保持了</em>向量的加法和数乘运算。</p>
-<p>我们假设有一个二维向量 $\mathbf{x}=\begin{bmatrix}x_1\ x_2 \end{bmatrix}= x_1 \mathbf{e}_1 + x_2 \mathbf{e}_2$，其中 <script type="math/tex">\mathbf{e}_1=\begin{bmatrix}1\\ 0\end{bmatrix}, \mathbf{e}_2=\begin{bmatrix}0\\ 1\end{bmatrix}</script> 是 2$\times$ 2 单位矩阵 $\mathbf{I}_n$ 的列向量。由于线性变换保持加法和数乘运算，所以</p>
-<script type="math/tex; mode=display">
+\begin{bmatrix} x_1 \\ x_2 \\ 0 \end{bmatrix}
+\]</span></p>
+<h1 id="二线性变换">二、线性变换</h1>
+<p>线性变换是一类满足线性条件的变换。所谓的线性条件就是： <span class="math display">\[T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \\ \text{和}\\ T(c \mathbf{u}) = c T(\mathbf{u})\]</span></p>
+<p>注意到，向量的加法和数乘运算在变换前和变换后的效果是一样的，也就是所谓的线性变换<em>保持了</em>向量的加法和数乘运算。</p>
+<p>我们假设有一个二维向量 <span class="math inline">\(\mathbf{x}=\begin{bmatrix}x_1\\ x_2 \end{bmatrix}= x_1 \mathbf{e}_1 + x_2 \mathbf{e}_2\)</span>，其中 <span class="math display">\[\mathbf{e}_1=\begin{bmatrix}1\\ 0\end{bmatrix}, \mathbf{e}_2=\begin{bmatrix}0\\ 1\end{bmatrix}\]</span> 是 2<span class="math inline">\(\times\)</span> 2 单位矩阵 <span class="math inline">\(\mathbf{I}_n\)</span> 的列向量。由于线性变换保持加法和数乘运算，所以</p>
+<p><span class="math display">\[
 \begin{equation}
-T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) & T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x} \nonumber
-\end{equation}</script><p>这也就是说，对于每一个线性变换$T: R^n \rightarrow R^m$，都有唯一一个矩阵 $\mathbf{A}$，使得 $T(\mathbf{x})=\mathbf{A}\mathbf{x}$，其中 $ \mathbf{A} = [ T(\mathbf{e}_1) \cdots T(\mathbf{e}_1) ] $。$ \mathbf{A} $ 被称为是线性变换 $T$ 的<code>标准矩阵</code>。</p>
-<p>总结一下，线性变换是满足线性条件的变换，所谓线性条件就要求变换前后的加法和数乘运算不变（变换前 a+b 等于 c，则变换后 a’+b’ 也等于 c’）。 线性变换有两种描述形式：$T:R^n \rightarrow R^m$ 和 $ \mathbf{x} \mapsto \mathbf{A}\mathbf{x} $，后者也被称为<code>矩阵变换</code></p>
+T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) &amp; T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x} \nonumber
+\end{equation}
+\]</span></p>
+<p>这也就是说，对于每一个线性变换<span class="math inline">\(T: R^n \rightarrow R^m\)</span>，都有唯一一个矩阵 <span class="math inline">\(\mathbf{A}\)</span>，使得 <span class="math inline">\(T(\mathbf{x})=\mathbf{A}\mathbf{x}\)</span>，其中 $  = [ T(_1) T(_1) ] <span class="math inline">\(。\)</span>  $ 被称为是线性变换 <span class="math inline">\(T\)</span> 的<code>标准矩阵</code>。</p>
+<p>总结一下，线性变换是满足线性条件的变换，所谓线性条件就要求变换前后的加法和数乘运算不变（变换前 a+b 等于 c，则变换后 a'+b' 也等于 c'）。 线性变换有两种描述形式：<span class="math inline">\(T:R^n \rightarrow R^m\)</span> 和 $   $，后者也被称为<code>矩阵变换</code></p>
 <blockquote>
 <p>线性变换强调它作为映射的性质，而矩阵变换则描述了映射是怎样实现的。</p>
 </blockquote>
-<h1 id="三、几何中的线性变换"><a href="#三、几何中的线性变换" class="headerlink" title="三、几何中的线性变换"></a>三、几何中的线性变换</h1><p>借助上面线性变换的性质，我们就很容易理解图形学中一些专门用于变换的矩阵了，比如 2 维平面上的旋转矩阵：</p>
-<script type="math/tex; mode=display">
+<h1 id="三几何中的线性变换">三、几何中的线性变换</h1>
+<p>借助上面线性变换的性质，我们就很容易理解图形学中一些专门用于变换的矩阵了，比如 2 维平面上的旋转矩阵： <span class="math display">\[
 \begin{equation}
 \mathbf{A}=
 \begin{bmatrix}
-\cos\varphi & -\sin\varphi \\
-\sin\varphi & \cos\varphi
+\cos\varphi &amp; -\sin\varphi \\
+\sin\varphi &amp; \cos\varphi
 \end{bmatrix} \nonumber
-\end{equation}</script><p>把它的列向量拆开，就是 <script type="math/tex">T(\mathbf{e}_1) = \begin{bmatrix}\cos\varphi \\ \sin\varphi \end{bmatrix}</script>，<script type="math/tex">T(\mathbf{e}_2) = \begin{bmatrix}-\sin\varphi \\ \cos\varphi \end{bmatrix}</script>也就是 <script type="math/tex">\begin{bmatrix}1\\ 0\end{bmatrix}</script> 旋转到 <script type="math/tex">\begin{bmatrix}\cos\varphi \\ \sin\varphi\end{bmatrix}</script> ，<script type="math/tex">\begin{bmatrix}0\\ 1\end{bmatrix}</script> 旋转到 <script type="math/tex">\begin{bmatrix}-\sin\varphi \\ \cos\varphi\end{bmatrix}</script> 。</p>
+\end{equation}
+\]</span></p>
+<p>把它的列向量拆开，就是 <span class="math display">\[T(\mathbf{e}_1) = \begin{bmatrix}\cos\varphi \\ \sin\varphi \end{bmatrix}\]</span>，<span class="math display">\[T(\mathbf{e}_2) = \begin{bmatrix}-\sin\varphi \\ \cos\varphi \end{bmatrix}\]</span>也就是 <span class="math display">\[\begin{bmatrix}1\\ 0\end{bmatrix}\]</span> 旋转到 <span class="math display">\[\begin{bmatrix}\cos\varphi \\ \sin\varphi\end{bmatrix}\]</span> ，<span class="math display">\[\begin{bmatrix}0\\ 1\end{bmatrix}\]</span> 旋转到 <span class="math display">\[\begin{bmatrix}-\sin\varphi \\ \cos\varphi\end{bmatrix}\]</span> 。</p>
 <p>旋转变换如下图所示：</p>
 <img class title="旋转变换" data-src="/2016/05/20/linear-algebra-3/rotation.png">
-<h1 id="四、存在性和唯一性问题"><a href="#四、存在性和唯一性问题" class="headerlink" title="四、存在性和唯一性问题"></a>四、存在性和唯一性问题</h1><p>有了线性变换的概念，我们再来回顾之前两章讨论的解的存在性和唯一性的问题。</p>
-<h2 id="4-1-解的存在性"><a href="#4-1-解的存在性" class="headerlink" title="4.1 解的存在性"></a>4.1 解的存在性</h2><p>非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 可以看做是一个 $ \mathbf{x} $ 所在空间到 $ \mathbf{b} $ 所在空间的映射。<br>对映射 $T=R^n\rightarrow R^m$ ，如果 $R^n$ 中任意向量 $\mathbf{b}$ 都是 $R^n$ 中至少一个 $\mathbf{x}$ 的像，则称 $T$ 是 $R^n$ 到 $R^m$ 上的映射（或叫<code>满射</code>），这时，非线性方程组对于任意的 $ \mathbf{b} $ 都有解。反过来，如果存在 $ \mathbf{b} $ 使得非线性方程组无解，那么 $T$ 就不是 $R^n$ 到 $R^m$ 上的满射。它们的几何表示如下图所示：</p>
+<h1 id="四存在性和唯一性问题">四、存在性和唯一性问题</h1>
+<p>有了线性变换的概念，我们再来回顾之前两章讨论的解的存在性和唯一性的问题。</p>
+<h2 id="解的存在性">4.1 解的存在性</h2>
+<p>非线性方程组 <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> 可以看做是一个 $  $ 所在空间到 $  $ 所在空间的映射。 对映射 <span class="math inline">\(T=R^n\rightarrow R^m\)</span> ，如果 <span class="math inline">\(R^n\)</span> 中任意向量 <span class="math inline">\(\mathbf{b}\)</span> 都是 <span class="math inline">\(R^n\)</span> 中至少一个 <span class="math inline">\(\mathbf{x}\)</span> 的像，则称 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(R^n\)</span> 到 <span class="math inline">\(R^m\)</span> 上的映射（或叫<code>满射</code>），这时，非线性方程组对于任意的 $  $ 都有解。反过来，如果存在 $  $ 使得非线性方程组无解，那么 <span class="math inline">\(T\)</span> 就不是 <span class="math inline">\(R^n\)</span> 到 <span class="math inline">\(R^m\)</span> 上的满射。它们的几何表示如下图所示：</p>
 <img class title="满射" data-src="/2016/05/20/linear-algebra-3/existence.png">
-<h2 id="4-2-解的唯一性"><a href="#4-2-解的唯一性" class="headerlink" title="4.2 解的唯一性"></a>4.2 解的唯一性</h2><p>如果任意的 $ \mathbf{b}\in R^m $ 都是 $R^n$ 中最多一个向量 $ \mathbf{x} $ 的像，那么就称 $T$ 是<code>一对一映射</code>。</p>
-<p>一对一映射也就是非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 对任意 $ \mathbf{b} $ 要么无解，要么有唯一解。也就是说，当 方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，$T$ 就不是一对一映射，这时齐次方程组 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有平凡解。</p>
+<h2 id="解的唯一性">4.2 解的唯一性</h2>
+<p>如果任意的 $ R^m $ 都是 <span class="math inline">\(R^n\)</span> 中最多一个向量 $  $ 的像，那么就称 <span class="math inline">\(T\)</span> 是<code>一对一映射</code>。</p>
+<p>一对一映射也就是非线性方程组 <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> 对任意 $  $ 要么无解，要么有唯一解。也就是说，当 方程 <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，<span class="math inline">\(T\)</span> 就不是一对一映射，这时齐次方程组 <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span> 只有平凡解。</p>
 <img class title="一对一映射" data-src="/2016/05/20/linear-algebra-3/uniqueness.png">
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献:"></a>参考文献:</h1><hr>
+<h2 id="参考文献"># 参考文献:</h2>
 <ul>
 <li>线性代数及其应用：第3版/（美）莱（Lay, D.C.）著；沈复兴等译. ——北京：人民邮电出版社，2007.7</li>
 </ul>
-<h1 id="版权声明："><a href="#版权声明：" class="headerlink" title="版权声明："></a>版权声明：</h1><hr>
+<h2 id="版权声明"># 版权声明：</h2>
 <p>本文中所有文字、图片版权均属本人所有，如需转载请注明来源。</p>
 
     </div>
@@ -420,7 +429,7 @@ T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\math
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、变换"><span class="nav-number">1.</span> <span class="nav-text">一、变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、线性变换"><span class="nav-number">2.</span> <span class="nav-text">二、线性变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、几何中的线性变换"><span class="nav-number">3.</span> <span class="nav-text">三、几何中的线性变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、存在性和唯一性问题"><span class="nav-number">4.</span> <span class="nav-text">四、存在性和唯一性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-解的存在性"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 解的存在性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-解的唯一性"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 解的唯一性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版权声明："><span class="nav-number">6.</span> <span class="nav-text">版权声明：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一变换"><span class="nav-number">1.</span> <span class="nav-text">一、变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二线性变换"><span class="nav-number">2.</span> <span class="nav-text">二、线性变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三几何中的线性变换"><span class="nav-number">3.</span> <span class="nav-text">三、几何中的线性变换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四存在性和唯一性问题"><span class="nav-number">4.</span> <span class="nav-text">四、存在性和唯一性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解的存在性"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 解的存在性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解的唯一性"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 解的唯一性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.3.</span> <span class="nav-text"># 参考文献:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明"><span class="nav-number">4.4.</span> <span class="nav-text"># 版权声明：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
