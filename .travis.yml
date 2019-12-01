@@ -1,5 +1,6 @@
 language: node_js
 node_js: "10.9"
+dist: cosmic
 cache:
   directories:
     - node_modules
@@ -12,6 +13,7 @@ addons:
   apt:
     packages:
       - graphviz
+      - pandoc
 
 before_install:
   - npm install -g hexo
