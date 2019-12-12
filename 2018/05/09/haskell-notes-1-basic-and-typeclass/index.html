@@ -56,7 +56,7 @@
 <meta property="og:description" content="Haskell 是一门静态类型的纯函数式编程语言，比较著名的就是它的类型系统、「纯函数」性、惰性求值。我个人觉得学习 Haskell 对学习理解其它编程语言（尤其是静态语言）很有帮助，比如 Java 中的泛型、JavaScript 中的 Promise 等等，因此在这里对自己的 Haskell 学习之旅进行一个总结。 相信大部分读者和我一样，都是从 C 系语言开始学起的，这里假设你和我一样具有一">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.haskell.org&#x2F;img&#x2F;haskell-logo.svg">
-<meta property="og:updated_time" content="2019-12-01T07:27:55.860Z">
+<meta property="og:updated_time" content="2019-12-12T14:21:43.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.haskell.org&#x2F;img&#x2F;haskell-logo.svg">
 
@@ -238,7 +238,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-01 07:27:55" itemprop="dateModified" datetime="2019-12-01T07:27:55+00:00">2019-12-01</time>
+                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
 <p>一个类型类的例子是定义相等性的 <code>Eq</code>。一个类型，只要它实现了 <code>Eq</code> 类型类，那么就可以通过 <code>==</code> 运算符判断这个类型不同值的相等性：</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&gt; :t (==)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">(==) :: (<span class="type">Eq</span> a) =&gt; a -&gt; a -&gt; <span class="type">Bool</span></span></pre></td></tr></table></figure>
 <p>上面的类型声明中，多了一个 <code>=&gt;</code> 记号，这个叫做<strong>类型约束</strong>，表示后面的类型变量 <code>a</code> 必须满足 <code>Eq a</code> 的约束，就是说 <code>a</code> 的类型必须实现了 <code>Eq</code> 这个类型类。可以类比于 Java 泛型中的 <code>&lt;? implements Eq&gt;</code>。</p>
-<p>为了方便接受，我们刚才都是用 Java 中相似的概念作类比的。然而类型类的概念和 Java 中的接口还是有很大不同的：<strong>Haskell 世界中函数是一等成员，任何 Haskell 函数都可以扩展类型类的行为，类型类在定义时没有声明它的行为</strong>。我们在使用时首先看的是函数，再看它扩展了哪些类型类，而不是像在 Java 中那样习惯先看接口，再看它有哪些方法。此外，Java 中接口在定义之时就要在接口内声明好它的行为，之后所有实现接口的类都无一例外地要实现所有行为。而在实际开发中可能用不到接口的所有函数，那些没有用到的函数有时候就通过 <code>return null;</code> 的方式过掉了，这样做其实会给之后的开发埋下隐患。</p>
+<p>为了方便接受，我们刚才都是用 Java 中相似的概念作类比的。然而类型类的概念和 Java 中的接口还是有很大不同的：<strong>Haskell 世界中函数是一等成员，任何 Haskell 函数都可以扩展类型类的行为，类型类在定义时没有声明它的行为</strong>。此外，Java 中接口在定义之时就要在接口内声明好它的行为，之后所有实现接口的类都无一例外地要实现所有行为。而在实际开发中可能用不到接口的所有函数，那些没有用到的函数有时候就通过 <code>return null;</code> 的方式过掉了，这样做其实会给之后的开发埋下隐患。</p>
 <h5 id="常见的几个类型类">常见的几个类型类</h5>
 <h6 id="eq-类型类">Eq 类型类</h6>
 <p><code>Eq</code> 用于判断相等性和不等性，所有 <code>Eq</code> 的实例类型都必须实现 <code>==</code> 和 <code>/=</code> （不等于）两个函数。</p>
