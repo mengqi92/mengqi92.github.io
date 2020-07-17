@@ -8,7 +8,6 @@ category: 编程
 date: 2020-07-17 20:22:32
 ---
 
-
 这个系列打算不定期更新一些关于 Git 的小技巧，希望能帮助到有需要的同学。
 
 ## 忽略本地修改
@@ -88,7 +87,7 @@ git ls-files -v | Select-String -Pattern /path/to/file
     - **优势**：本地可以对文件做一些个人定制。文件不会出现在 `git status`。
     - **局限**：拉取远程文件更新，或切换分支时有可能出现冲突，需要撤销忽略后手动解决冲突。 
 
-# 更多阅读
+## 更多阅读
 1. [Git Doc/update-index](https://www.git-scm.com/docs/git-update-index)
 2. [Git Doc/gitignore](https://git-scm.com/docs/gitignore)
 3. [How to ignore files already managed with Git locally](https://dev.to/nishina555/how-to-ignore-files-already-managed-with-git-locally-19oo)
