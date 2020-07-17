@@ -47,23 +47,18 @@
   };
 </script>
 
-  <meta name="description" content="研究傅里叶变换的过程中经常要和复数打交道，经常会遇到 \(e^{ix}\) 这种形式。 这里就总结一下复数的直角坐标、极坐标，以及复指数表示形式，也有对欧拉公式的直观解释，以便更好地理解傅里叶变换。 本文中图片均来自于 国立台湾师范大学资讯工程学系的演算法笔记。">
-<meta name="keywords" content="傅里叶变换,欧拉公式,复数,数字信号处理,图像处理,基础概念,Gabor 特征">
+  <meta name="description" content="这个系列打算不定期更新一些关于 Git 的小技巧，希望能帮助到有需要的同学。 忽略本地修改 在一个多人协作的 Git 仓库里，有些情况下远程仓库中可能会存放一些 IDE 或者 Build 工具的配置文件，以方便所有参与的同学获得一致的体验。当然这些文件会从大局出发，加入的通常都是比较通用的配置项，不一定能完全满足你个人的需求。一旦你自己对这些文件做了个人定制，它们就会被 Git 识别为本地修改，不">
+<meta name="keywords" content="工具,小技巧,Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复数的几种表示形式">
-<meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;index.html">
+<meta property="og:title" content="Git 小技巧 - 忽略不想要提交的本地修改">
+<meta property="og:url" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2020&#x2F;07&#x2F;17&#x2F;hide-files-from-git&#x2F;index.html">
 <meta property="og:site_name" content="Mengqi&#39;s blog">
-<meta property="og:description" content="研究傅里叶变换的过程中经常要和复数打交道，经常会遇到 \(e^{ix}\) 这种形式。 这里就总结一下复数的直角坐标、极坐标，以及复指数表示形式，也有对欧拉公式的直观解释，以便更好地理解傅里叶变换。 本文中图片均来自于 国立台湾师范大学资讯工程学系的演算法笔记。">
+<meta property="og:description" content="这个系列打算不定期更新一些关于 Git 的小技巧，希望能帮助到有需要的同学。 忽略本地修改 在一个多人协作的 Git 仓库里，有些情况下远程仓库中可能会存放一些 IDE 或者 Build 工具的配置文件，以方便所有参与的同学获得一致的体验。当然这些文件会从大局出发，加入的通常都是比较通用的配置项，不一定能完全满足你个人的需求。一旦你自己对这些文件做了个人定制，它们就会被 Git 识别为本地修改，不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;complex-plane.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;complex-polar-plane.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;complex-polar-transform.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;real-wave-complex-wave.png">
-<meta property="og:updated_time" content="2015-10-06T14:47:16.000Z">
+<meta property="og:updated_time" content="2020-07-17T12:26:40.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;mengqi92.github.io&#x2F;2015&#x2F;10&#x2F;06&#x2F;complex&#x2F;complex-plane.png">
 
-<link rel="canonical" href="http://mengqi92.github.io/2015/10/06/complex/">
+<link rel="canonical" href="http://mengqi92.github.io/2020/07/17/hide-files-from-git/">
 
 
 <script id="page-configurations">
@@ -77,7 +72,7 @@
   };
 </script>
 
-  <title>复数的几种表示形式 | Mengqi's blog</title>
+  <title>Git 小技巧 - 忽略不想要提交的本地修改 | Mengqi's blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68396368-1"></script>
     <script>
@@ -211,7 +206,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2015/10/06/complex/">
+    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2020/07/17/hide-files-from-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/avatar/astronaut.png">
@@ -224,7 +219,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          复数的几种表示形式
+          Git 小技巧 - 忽略不想要提交的本地修改
         </h1>
 
         <div class="post-meta">
@@ -233,8 +228,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2015-10-06 14:47:16" itemprop="dateCreated datePublished" datetime="2015-10-06T14:47:16+00:00">2015-10-06</time>
+              <time title="创建时间：2020-07-17 20:22:32 / 修改时间：12:26:40" itemprop="dateCreated datePublished" datetime="2020-07-17T20:22:32+00:00">2020-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,8 +238,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cv/" itemprop="url" rel="index">
-                    <span itemprop="name">图像处理</span>
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
             </span>
@@ -266,42 +262,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>研究傅里叶变换的过程中经常要和复数打交道，经常会遇到 <span class="math inline">\(e^{ix}\)</span> 这种形式。</p>
-<p>这里就总结一下复数的直角坐标、极坐标，以及复指数表示形式，也有对欧拉公式的直观解释，以便更好地理解傅里叶变换。</p>
-<p>本文中图片均来自于 <span class="exturl" data-url="aHR0cDovL3d3dy5jc2llLm50bnUuZWR1LnR3L351OTEwMjkvV2F2ZS5odG1s" title="http://www.csie.ntnu.edu.tw/~u91029/Wave.html">国立台湾师范大学资讯工程学系的演算法笔记<i class="fa fa-external-link"></i></span>。</p>
+        <p>这个系列打算不定期更新一些关于 Git 的小技巧，希望能帮助到有需要的同学。</p>
+<h2 id="忽略本地修改">忽略本地修改</h2>
+<p>在一个多人协作的 Git 仓库里，有些情况下远程仓库中可能会存放一些 IDE 或者 Build 工具的配置文件，以方便所有参与的同学获得一致的体验。当然这些文件会从大局出发，加入的通常都是比较通用的配置项，不一定能完全满足你个人的需求。一旦你自己对这些文件做了个人定制，它们就会被 Git 识别为本地修改，不但本地的 <code>git status</code> 或 <code>change list</code> 一直会进行恼人的提醒，而且每次 <code>git add</code> 文件时还要小心翼翼的避开。</p>
+<p>那么，有没有方法告诉 Git 我们可以忽略这些文件的本地修改呢？答案是有的，你只需要下面这条命令：</p>
 <a id="more"></a>
-<h2 id="一复数的直角坐标表示">一、复数的直角坐标表示</h2>
-<p>首先，复数基本单位是 <span class="math inline">\(i=\sqrt{-1}\)</span>，有了这个单位，复数空间中的每个数都可以表示为 <span class="math inline">\(a+bi\)</span> 的形式。其中，a 被称为“实部（real part）”，b 被称为“虚部（imaginary part）”。</p>
-<p>复数可以在复平面（complex plane）上表示，复平面横纵坐标分别为实部和虚部，下图就是复数 <span class="math inline">\(2+3i\)</span> 在复平面上的表示。</p>
-<img class title="复平面" data-src="/2015/10/06/complex/complex-plane.png">
-<p>我们可以发现，这个复平面和实数空间的直角坐标系类似。那可不可以用极坐标的方法表示复数呢？</p>
-<h2 id="二复数的极坐标表示">二、复数的极坐标表示</h2>
-<p>事实上，复数是可以用极坐标表示的，那一个复数用极坐标表示时的长度和角度分别是多少呢？我们可以在复平面中计算出来。</p>
-<p>例如，复数 <span class="math inline">\(4+3i\)</span> 的复平面直角坐标表示是<span class="math inline">\((4, 3)\)</span>，原点指向该点的向量长度 <span class="math inline">\(r=\sqrt{3^2+4^2}=5\)</span>，向量的角度 <span class="math inline">\(\theta = arctan(\frac{3}{4})\)</span>。</p>
-<img class title="复数的极坐标表示" data-src="/2015/10/06/complex/complex-polar-plane.png">
-<p>这里，复数极坐标表示的长度 <span class="math inline">\(r\)</span> 也被称为“强度（magnitude）”，角度 <span class="math inline">\(\theta\)</span> 也被称为“相位（phase）”。</p>
-<h3 id="由复数极坐标得到直角坐标">2.1 由复数极坐标得到直角坐标</h3>
-<p>上面我们用复数的直角坐标计算出了极坐标，那么是不是也可以由极坐标推出直角坐标呢？我们还是从复平面中来看：</p>
-<img class title="复数两种表示形式之间的转换" data-src="/2015/10/06/complex/complex-polar-transform.png">
-<p>从上图可以看出，当我们有复数极坐标 <span class="math inline">\((r, \theta)\)</span> 时，我们可以得到其直角坐标 <span class="math inline">\((r \cos(\theta), r \sin(\theta))\)</span>，即该复数为 <span class="math inline">\(r\cos\theta + r*i\sin\theta\)</span>。</p>
-<h2 id="三复数的复指数表示与欧拉公式">三、复数的复指数表示与欧拉公式</h2>
-<p>欧拉有一天发现，神奇数字 <span class="math inline">\(e\)</span> 的纯虚数次方竟然在复数平面上绕圈！</p>
-<p>用极坐标形式表示，就是 <span class="math inline">\(e^{i\theta}=\cos\theta+i\sin\theta\)</span>。</p>
-<p>如此，一个复数就又多了一种指数的表示形式，即复指数形式：<span class="math inline">\(r e^{i\theta} = r \cos\theta + r*i \sin\theta\)</span>。</p>
-<p>而当 <span class="math inline">\(r=1\)</span>，<span class="math inline">\(\theta=\pi\)</span> 时，对应的直角坐标刚好就是 <span class="math inline">\((-1, 0)\)</span> ，也就是实数 -1。由此就有了那个著名的“欧拉公式”：<span class="math display">\[e^{i\pi}+1=0\]</span></p>
-<h3 id="复数波和实数波">3.1 复数波和实数波</h3>
-<p>实数波我们比较熟悉，就是 <span class="math inline">\(\sin\theta\)</span> 或 <span class="math inline">\(\cos\theta\)</span> 形式。而复数波则是由 <span class="math inline">\(e^{i\theta}\)</span> 来定义，实数波和复数波的示意图如下：</p>
-<img class title="实数波和复数波示意" data-src="/2015/10/06/complex/real-wave-complex-wave.png">
-<p>从示意图中，可以看出，当俯视复数波时，观察到的投影即是一个实数波，即是 <span class="math inline">\(e^{i\theta}=\cos\theta + i* \sin\theta\)</span> 的实部：<span class="math inline">\(\cos\theta\)</span>；当从左侧侧视复数波时，得到的投影即是其虚部：<span class="math inline">\(\sin\theta\)</span>。</p>
-<p>事实上，复数波的完整定义为： <span class="math display">\[ Ae^{i(\omega t+\phi)} = Ae^{i(2\pi f t+\phi)} = A\cos(2\pi f t+\phi) + iA\sin(2\pi f t+\phi) \]</span> 其中，<span class="math inline">\(A\)</span>为振幅，<span class="math inline">\(\omega\)</span>为角速度，<span class="math inline">\(f\)</span>为频率，<span class="math inline">\(\phi\)</span>为初试相位，这个波的强度（magnitude）为 <span class="math inline">\(A = \sqrt{A^2 \cdot \cos^2(2\pi f t+\phi) + A^2 \cdot \sin^2(2\pi f t+\phi)}\)</span>，瞬时相位（phase）为 <span class="math inline">\(2\pi f t + \phi\)</span>。</p>
-<p>由于复指数形式的复数波<span class="math inline">\(e^{i\theta}\)</span>相较于<span class="math inline">\(\cos(\theta)+i\sin(\theta)\)</span>更简单且更易于控制，因而在信号处理中得到广泛的使用。除此之外，<span class="math inline">\(e^{i\theta}\)</span>形式可以看作是实数波的基础，因为我们可以组合两个复数波来得到<span class="math inline">\(\cos(\theta)\)</span>和<span class="math inline">\(\sin(\theta)\)</span>：</p>
-<p><span class="math display">\[\cos(\theta)=\frac{e^{i\theta}+e^{-i\theta}}{2}\]</span> <span class="math display">\[\sin(\theta)=\frac{e^{i\theta}-e^{-i\theta}}{2i}\]</span></p>
-<p>另外，在信号处理中，我们只需要考虑实部的线性运算，因此，在我们对一个复数波进行滤波后，得到的复数波可以分解为 <span class="math inline">\(\cos\)</span> 和 <span class="math inline">\(\sin\)</span> 的形式，进而只需要选取实部所对应的 <span class="math inline">\(\cos\)</span> 部分就行了。</p>
-<p>在傅里叶变换中，便是将任意非周期函数分解为了各种复数波叠加的形式，因而傅里叶变换的公式中才会有类似 <span class="math inline">\(e^{ix}\)</span> 的形式。</p>
-<h3 id="参考资料">参考资料：</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git update-index --skip-worktree /path/to/file</span></pre></td></tr></table></figure>
+<p>执行这条命令后，Git 就会忽略本地对这个文件的所有修改。现在可以放心大胆地 <code>git add .</code>/<code>git add -u</code> 啦!</p>
+<p>这条命令相比 <code>.gitignore</code> 的方式，省去了修改 <code>.gitignore</code> 文件，否则还要再想办法忽略本地对 <code>.gitignore</code> 的修改……</p>
+<h3 id="副作用">副作用</h3>
+<p>这种方式也有一个副作用，那就是在拉取远程分支时，由于本地和远程文件存在不一致的更新，会导致冲突的问题。 比如 ./foo.config 文件是一个已经存在远程仓库的配置文件，其内容是</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&gt; cat ./foo.config</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">a</span></pre></td></tr></table></figure>
+<p>本地对它加了一行： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&gt; cat ./foo.config</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">a</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">b</span></pre></td></tr></table></figure></p>
+<p>而远程仓库有人提交了另一个更新： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&gt; cat ./foo.config</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">a</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">c</span></pre></td></tr></table></figure></p>
+<p>那么在 <code>git pull</code> 时，远程分支和本地分支就会存在冲突，需要手动处理冲突。处理冲突前，还需要先把已经忽略掉的文件再恢复回来，命令还比较好记，就是 <code>--skip-worktree</code> 换成 <code>--no-skip-worktree</code> 就可以了: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git update-index --no-skip-worktree /path/to/file</span></pre></td></tr></table></figure></p>
+<h3 id="查看被忽略的文件项目">查看被忽略的文件项目</h3>
+<p>如果时间久了，忘了哪些文件被忽略了，那么可以通过 <code>git ls-files -v</code> 来查看，其结果中第一列打 <code>H</code> 标记的项目就是被忽略（Hide）的项目。我们可以通过 <code>grep</code> 或是 PowerShell 中的 <code>Select-String</code> 来将这些项目过滤出来。 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git ls-files -v | grep -E -i /path/to/file</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git ls-files -v | Select-String -Pattern /path/to/file</span></pre></td></tr></table></figure></p>
+<h2 id="各种忽略文件的方法对比">各种忽略文件的方法对比</h2>
+<p>除了 <code>--skip-worktree</code> 的方式，Git 也有其它的机制可以忽略文件的修改，大概有这么几类：</p>
 <ol type="1">
-<li><span class="exturl" data-url="aHR0cDovL3d3dy5jc2llLm50bnUuZWR1LnR3L351OTEwMjkvV2F2ZS5odG1s" title="http://www.csie.ntnu.edu.tw/~u91029/Wave.html">国立台湾师范大学资讯工程学系的演算法笔记<i class="fa fa-external-link"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9jY3JtYS5zdGFuZm9yZC5lZHUvfmpvcy9mcC9Db21wbGV4X1NpbnVzb2lkcy5odG1s" title="https://ccrma.stanford.edu/~jos/fp/Complex_Sinusoids.html">斯坦福大学 JULIUS O. SMITH III 所著 Introduction to Digital Filters with Audio Applications 在线版<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdGlnbm9yZQ==" title="https://git-scm.com/docs/gitignore">gitignore 文件<i class="fa fa-external-link"></i></span>.</li>
+<li>.git/info/exclude 文件</li>
+<li><code>git update-index --assume-unchanged</code> （<span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2l0LXNjbS5jb20vZG9jcy9naXQtdXBkYXRlLWluZGV4" title="https://www.git-scm.com/docs/git-update-index">官方文档<i class="fa fa-external-link"></i></span>）</li>
+<li><code>git update-index --skip-worktree</code>（<span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2l0LXNjbS5jb20vZG9jcy9naXQtdXBkYXRlLWluZGV4" title="https://www.git-scm.com/docs/git-update-index">官方文档<i class="fa fa-external-link"></i></span>）</li>
+</ol>
+<p>这里简单区分一下：</p>
+<ul>
+<li>.gitignore
+<ul>
+<li><strong>说明</strong>：显式地阻止提交文件。</li>
+<li><strong>优势</strong>：.gitignore 文件本身提交至远程仓库，全组共享忽略文件配置。</li>
+<li><strong>局限</strong>：如果项目已经存在远程仓库，即使被加入 .gitignore，仍然可以进行修改并提交。本地的修改会显示在 <code>git status</code> 结果中。</li>
+</ul></li>
+<li>.git/info/exclude
+<ul>
+<li><strong>说明</strong>：显式地阻止提交文件。</li>
+<li><strong>优势</strong>：exclude 文件本身不会提交至远程仓库，因此适合放一些个人定制的 “gitignore” 项目。</li>
+<li><strong>局限</strong>：和 .gitignore 存在同样地局限。文件若已存在远程仓库，则本地修改仍可以提交至远程仓库。本地的修改会显示在 <code>git status</code> 结果中。</li>
+</ul></li>
+<li>assume-unchanged
+<ul>
+<li><strong>说明</strong>：声明本地远程都<strong>不会修改</strong>这个文件。</li>
+<li><strong>优势</strong>：git 直接跳过这些文件的处理以提升性能。文件不会出现在 <code>git status</code>。</li>
+<li><strong>局限</strong>：不适合本地或远程需要修改的文件。本地会忽略掉之后远程文件的修改。</li>
+</ul></li>
+<li>skip-worktree
+<ul>
+<li><strong>说明</strong>：声明忽略文件的本地修改。</li>
+<li><strong>优势</strong>：本地可以对文件做一些个人定制。文件不会出现在 <code>git status</code>。</li>
+<li><strong>局限</strong>：拉取远程文件更新，或切换分支时有可能出现冲突，需要撤销忽略后手动解决冲突。</li>
+</ul></li>
+</ul>
+<h1 id="更多阅读">更多阅读</h1>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2l0LXNjbS5jb20vZG9jcy9naXQtdXBkYXRlLWluZGV4" title="https://www.git-scm.com/docs/git-update-index">Git Doc/update-index<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdGlnbm9yZQ==" title="https://git-scm.com/docs/gitignore">Git Doc/gitignore<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vbmlzaGluYTU1NS9ob3ctdG8taWdub3JlLWZpbGVzLWFscmVhZHktbWFuYWdlZC13aXRoLWdpdC1sb2NhbGx5LTE5b28=" title="https://dev.to/nishina555/how-to-ignore-files-already-managed-with-git-locally-19oo">How to ignore files already managed with Git locally<i class="fa fa-external-link"></i></span></li>
 </ol>
 
     </div>
@@ -318,7 +334,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="/http:/mengqi92.github.io/2015/10/06/complex/" title="复数的几种表示形式">http://mengqi92.github.io/2015/10/06/complex/</a>
+    <a href="/http:/mengqi92.github.io/2020/07/17/hide-files-from-git/" title="Git 小技巧 - 忽略不想要提交的本地修改">http://mengqi92.github.io/2020/07/17/hide-files-from-git/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLzQuMC9udWxs"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</span> 许可协议。转载请注明出处！
@@ -329,13 +345,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="tag"># 傅里叶变换</a>
-              <a href="/tags/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F/" rel="tag"># 欧拉公式</a>
-              <a href="/tags/%E5%A4%8D%E6%95%B0/" rel="tag"># 复数</a>
-              <a href="/tags/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="tag"># 数字信号处理</a>
-              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
-              <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag"># 基础概念</a>
-              <a href="/tags/Gabor-%E7%89%B9%E5%BE%81/" rel="tag"># Gabor 特征</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+              <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag"># 小技巧</a>
+              <a href="/tags/Git/" rel="tag"># Git</a>
           </div>
 
         
@@ -344,13 +356,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/10/05/logistic-regression/" rel="prev" title="Logistic 回归">
-      <i class="fa fa-chevron-left"></i> Logistic 回归
+    <a href="/2018/09/18/git-housekeeping/" rel="prev" title="Git 仓库大扫除">
+      <i class="fa fa-chevron-left"></i> Git 仓库大扫除
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2015/10/06/convolution/" rel="next" title="我对卷积的理解">
-      我对卷积的理解 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -388,7 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一复数的直角坐标表示"><span class="nav-number">1.</span> <span class="nav-text">一、复数的直角坐标表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二复数的极坐标表示"><span class="nav-number">2.</span> <span class="nav-text">二、复数的极坐标表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#由复数极坐标得到直角坐标"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 由复数极坐标得到直角坐标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三复数的复指数表示与欧拉公式"><span class="nav-number">3.</span> <span class="nav-text">三、复数的复指数表示与欧拉公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复数波和实数波"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 复数波和实数波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.2.</span> <span class="nav-text">参考资料：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略本地修改"><span class="nav-number">1.</span> <span class="nav-text">忽略本地修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#副作用"><span class="nav-number">1.1.</span> <span class="nav-text">副作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看被忽略的文件项目"><span class="nav-number">1.2.</span> <span class="nav-text">查看被忽略的文件项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种忽略文件的方法对比"><span class="nav-number">2.</span> <span class="nav-text">各种忽略文件的方法对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多阅读"><span class="nav-number"></span> <span class="nav-text">更多阅读</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -562,54 +571,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 

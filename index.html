@@ -204,6 +204,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2020/07/17/hide-files-from-git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/avatar/astronaut.png">
+      <meta itemprop="name" content="Mengqi">
+      <meta itemprop="description" content="机器学习、图像处理、统计分析、函数式编程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengqi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/17/hide-files-from-git/" class="post-title-link" itemprop="url">Git 小技巧 - 忽略不想要提交的本地修改</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-17 20:22:32 / 修改时间：12:26:40" itemprop="dateCreated datePublished" datetime="2020-07-17T20:22:32+00:00">2020-07-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个系列打算不定期更新一些关于 Git 的小技巧，希望能帮助到有需要的同学。</p>
+<h2 id="忽略本地修改">忽略本地修改</h2>
+<p>在一个多人协作的 Git 仓库里，有些情况下远程仓库中可能会存放一些 IDE 或者 Build 工具的配置文件，以方便所有参与的同学获得一致的体验。当然这些文件会从大局出发，加入的通常都是比较通用的配置项，不一定能完全满足你个人的需求。一旦你自己对这些文件做了个人定制，它们就会被 Git 识别为本地修改，不但本地的 <code>git status</code> 或 <code>change list</code> 一直会进行恼人的提醒，而且每次 <code>git add</code> 文件时还要小心翼翼的避开。</p>
+<p>那么，有没有方法告诉 Git 我们可以忽略这些文件的本地修改呢？答案是有的，你只需要下面这条命令：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/17/hide-files-from-git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2018/09/18/git-housekeeping/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -235,7 +315,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -324,7 +404,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -409,7 +489,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -494,7 +574,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -580,7 +660,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -665,7 +745,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -754,7 +834,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -840,7 +920,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -926,7 +1006,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
+                <time title="修改时间：2020-07-17 12:26:40" itemprop="dateModified" datetime="2020-07-17T12:26:40+00:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -960,92 +1040,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/05/03/linear-algebra-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mengqi92.github.io/2015/10/13/Ein-Eout/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/avatar/astronaut.png">
-      <meta itemprop="name" content="Mengqi">
-      <meta itemprop="description" content="机器学习、图像处理、统计分析、函数式编程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mengqi's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/10/13/Ein-Eout/" class="post-title-link" itemprop="url">Ein 和 Eout，假设模型以及开放思维</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-10-13 01:32:18" itemprop="dateCreated datePublished" datetime="2015-10-13T01:32:18+00:00">2015-10-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 14:21:43" itemprop="dateModified" datetime="2019-12-12T14:21:43+00:00">2019-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nonsense/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>加州理工的<a href="http://open.163.com/special/opencourse/learningfromdata.html" target="_blank" rel="noopener">机器学习公开课</a>上，<a href="https://work.caltech.edu" target="_blank" rel="noopener">穆斯塔法教授</a>对机器学习的讲解非常细致，每个公式、每个符号都会进行详细的剖析，并直观地解释出来，他对机器学习的热情和态度很值得我们学习。</p>
-<p>而这门课程在讲解学习的可行性时，多次提到了<span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>的概念。 <span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>分别表示模型假设对样本（已知）的错误率和对真实情况（未知）的错误率。统计机器学习之所以可行，就是因为有这样一个理论支撑： <span class="math display">\[P[E_{in} - E_{out} &gt; \epsilon] = 2 e^{-2\epsilon^2 N} \tag{*}\label{*}\]</span> 上面的式子叫 <a href="https://en.wikipedia.org/wiki/Hoeffding%27s_inequality" target="_blank" rel="noopener">Hoeffding 不等式</a>。从公式中可以看出，当N足够大时，<span class="math inline">\(E_{in}\)</span>和<span class="math inline">\(E_{out}\)</span>相差太大的概率就比较小。换句话说，当N足够大时，<span class="math inline">\(E_{in}\)</span>就会更接近于<span class="math inline">\(E_{out}\)</span>。如此，我们机器学习提出的模型假设如果对大量已知样本能够较好地拟合的话，那它对真实的未知样本应该也能够较好地拟合。</p>
-<p>上面的<span class="math inline">\(\ref{*}\)</span>式只适用于一次随机试验，一次试验只建立一个模型假设，而我们实际训练时是要提出若干个假设，再从这些假设中选择最符合目标函数的那个假设。也就是： <span class="math display">\[P[E_{in} - E_{out} &gt; \epsilon] = 2 M e^{-2\epsilon^2 N} \tag{**}\label{**}\]</span> 式子中的 M 就是我们提出的假设数目。</p>
-<h2 id="section">
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2015/10/13/Ein-Eout/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1115,7 +1109,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1128,7 +1122,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1187,7 +1181,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
