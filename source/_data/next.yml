@@ -155,7 +155,7 @@ sidebar:
   #  - always  expand for all pages automatically.
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  totally remove sidebar including sidebar toggle.
-  display: always
+  display: hide
 
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
@@ -167,7 +167,7 @@ avatar:
   # Replace the default image and set the url here.
   url: /avatar/astronaut.png  #/images/avatar.gif
   # If true, the avatar will be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
   rotated: false
 
@@ -182,7 +182,7 @@ social:
   Github: https://github.com/mengqi92 || github
   E-Mail: mailto:mengqipei@gmail.com || envelope
   Twitter: https://twitter.com/mengqipei || twitter
-  Weibo: https://weibo.com/u/2264422383 || weibo
+  #Weibo: https://weibo.com/u/2264422383 || weibo
   #Google: https://plus.google.com/yourname || google
   #FB Page: https://www.facebook.com/yourname || facebook
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
