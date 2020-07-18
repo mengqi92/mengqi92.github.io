@@ -40,12 +40,12 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /avatar/favicon/favicon-16x16.png
-  medium: /avatar/favicon/favicon-32x32.png
-  apple_touch_icon: /avatar/favicon/apple-icon.png
-  safari_pinned_tab: /avatar/favicon/favicon-16x16.png
-  android_manifest: /avatar/favicon/manifest.json
-  ms_browserconfig: /avatar/favicon/browserconfig.xml
+  small: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-16x16.png
+  medium: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-32x32.png
+  apple_touch_icon: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/apple-icon.png
+  safari_pinned_tab: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-16x16.png
+  android_manifest: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/manifest.json
+  ms_browserconfig: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/browserconfig.xml
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
@@ -165,7 +165,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: /avatar/astronaut.png  #/images/avatar.gif
+  url: https://mengqistatic.azureedge.net/staticfiles/avatar/astronaut.png
   # If true, the avatar will be dispalyed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.
@@ -206,7 +206,7 @@ links_settings:
 links:
   #Title: http://yoursite.com
   切问录: http://www.fuzihao.org
-  Wenqi's Blog: http://buwenqi.github.io
+  Wenqi's Blog: https://buwenqi.github.io
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
