@@ -91,3 +91,5 @@ deploy:
   theme: next
   repository: git@github.com:mengqi92/mengqi92.github.io.git
   branch: master
+
+all_minifier: true
