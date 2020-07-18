@@ -10,7 +10,7 @@ mathjax: true
 date: 2016-05-20 21:11:00
 ---
 
-{% asset_img banner.jpeg %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/banner.jpeg %}
 
 {% post_link linear-algebra-2 上一章 %}我们讨论了齐次和非齐次两种线性方程组的解集，以及它们的几何意义。由齐次线性方程组，我们引入了零空间的概念；而由非齐次线性方程组，我们引入了列空间的概念。这两个空间目前是我们理解线性方程组的桥梁，未来还会对这些空间进行更进一步的讨论。在这之前，让我们先来研究一下矩阵的意义。 
 
@@ -33,7 +33,7 @@ $$
 
 假设 $\mathbf{x}$ 是 $n$ 维向量，$\mathbf{b}$ 是 $m$ 维向量，则 $\mathbf{A}$ 就是一个 $R^n$ 到 $R^m$ 的变换。这个变换的`定义域`是 $R^n$，`上域`是 $R^m$，记作 $T: R^n \rightarrow R^m$。$\mathbf{x}$ 是 $R^n$ 空间中的一个向量，$T(\mathbf{x})$ 就是其变换到 $R^m$ 空间中的`像`，而全体`像` $T(\mathbf{x})$ 的集合就称为变换 $T$ 的`值域`。图示如下：
 
-{% asset_img linear-transformation.png 变换$T$ %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/linear-transformation.png 变换$T$ %}
 
 从这种观点来看，矩阵就是一个函数：$\mathbf{x}\mapsto\mathbf{A}{x}$！矩阵既可看作是数据的表示，又可看作是表示变换的函数，这不禁让我联想起了 lisp 里的“同像性”，也就是“代码即数据”。我不知道他们之间有没有更深一层的联系，不过从这一层面再来看矩阵，感觉又多了一层趣味……
 
@@ -91,7 +91,7 @@ $$
 
 旋转变换如下图所示：
  
-{% asset_img rotation.png 旋转变换 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/rotation.png 旋转变换 %}
 
 # 四、存在性和唯一性问题
 有了线性变换的概念，我们再来回顾之前两章讨论的解的存在性和唯一性的问题。
@@ -101,14 +101,14 @@ $$
 非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 可以看做是一个 $ \mathbf{x} $ 所在空间到 $ \mathbf{b} $ 所在空间的映射。
 对映射 $T=R^n\rightarrow R^m$ ，如果 $R^n$ 中任意向量 $\mathbf{b}$ 都是 $R^n$ 中至少一个 $\mathbf{x}$ 的像，则称 $T$ 是 $R^n$ 到 $R^m$ 上的映射（或叫`满射`），这时，非线性方程组对于任意的 $ \mathbf{b} $ 都有解。反过来，如果存在 $ \mathbf{b} $ 使得非线性方程组无解，那么 $T$ 就不是 $R^n$ 到 $R^m$ 上的满射。它们的几何表示如下图所示：
 
-{% asset_img existence.png 满射 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/existence.png 满射 %}
  
 ## 4.2 解的唯一性
 如果任意的 $ \mathbf{b}\in R^m $ 都是 $R^n$ 中最多一个向量 $ \mathbf{x} $ 的像，那么就称 $T$ 是`一对一映射`。
 
 一对一映射也就是非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 对任意 $ \mathbf{b} $ 要么无解，要么有唯一解。也就是说，当 方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，$T$ 就不是一对一映射，这时齐次方程组 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有平凡解。
 
-{% asset_img uniqueness.png 一对一映射 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/uniqueness.png 一对一映射 %}
  
 # 参考文献:
 ---

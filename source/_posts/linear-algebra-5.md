@@ -9,7 +9,7 @@ tags:
 category: 线性代数
 mathjax: true
 ---
-{% asset_img banner.jpeg %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-5/banner.jpeg %}
 
 {% post_link linear-algebra-2 上一章 %}用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵“封装”的作用，将解三个方程组的问题转换为解$$\mathbf{A}\mathbf{x}=\mathbf{0}$$。而我们知道，矩阵不仅可以封装数据，还可以表示线性变换，那这一章就来介绍一下矩阵变换在现实生活中的应用。
 

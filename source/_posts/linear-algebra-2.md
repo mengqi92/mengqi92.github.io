@@ -10,7 +10,7 @@ mathjax: true
 date: 2016-05-14
 ---
 
-{% asset_img banner.jpeg %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-2/banner.jpeg %}
 
 {% post_link linear-algebra-1 上一章 %}我们讲到三种等价形式：线性方程组、向量方程和矩阵方程。由于这三者之间的等价关系，我们解决现实问题时可以自由选取其中任意一个作为模型。我个人认为，线性方程组是最“质朴”的形式；向量方程则是与几何建立了关系，这将方便我们进行更直观的推理；矩阵方程则是向量方程的一种“封装”，是向量方程的一种抽象，它将具体的向量形式隐藏，提供给我们一个简洁的 API 形式——矩阵。未来将要介绍的很多概念就是基于对这一层封装的研究，如果到时候我们发现某个概念理解有困难，不妨转换思路到向量方程或线性方程组的形式进行分析。
 
@@ -114,7 +114,7 @@ $$
 
 如下图中，$\mathbf{A} = [\mathbf{a_1}\ \mathbf{a_2}\ \mathbf{a_3}]$，由于有两个向量线性相关，导致 3 个列向量只能张成 2 维，因此 $\mathbf{A}$ 的秩为 2。所以 $\mathbf{A}\mathbf{x}$ 得不到任意三维向量 $\mathbf{b}$，也就是 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 并不对所有 $\mathbf{b}$ 成立（只有$\mathbf{b}$ 是 $\mathbf{A}$ 列空间中的向量时才成立）。
 
-{% asset_img r_less_than_n.png 秩小于n的情况 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-2/r_less_than_n.png 秩小于n的情况 %}
 
 更进一步，非齐次线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 中，如果 $\mathbf{A}$已知，$\mathbf{x}$和$\mathbf{b}$ 未知，此时我们关注的问题是 $\mathbf{A}$ 的列向量能张成多少维；如果 $\mathbf{A}$ 和 $\mathbf{b}$ 已知，我们关注的问题就是 $\mathbf{A}$ 中 $n$ 个列向量如何线性表示能表示成 $\mathbf{b}$，这时候我们如果提前知道 $\mathbf{A}$ 的列空间达不到 $\mathbf{b}$ 的维数，那么这些列向量就一定无法线性组合出 $\mathbf{b}$。
 

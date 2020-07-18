@@ -11,7 +11,7 @@ tags:
 category: 图像处理
 mathjax: true
 ---
-{% asset_img banner.jpeg %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/banner.jpeg %}
 
 在学习机器学习和图像处理的过程中，经常会遇到卷积这个概念。我每次遇到这个概念都有点似懂非懂的样子。有时候清楚它的直观解释，但又搞不清公式中是如何体现的。究其原因，还是我没有完全搞懂这个概念。 维基百科上有一个动态图来演示这个概念，但对于我来说还是有些复杂。于是自己在网上找了很多文章来研究，终于有了比较直观的印象，这里就趁热把我理解的解释一下，作为总结。
 
@@ -38,7 +38,7 @@ $$ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} $
 
 试想小明有一段时间每天都要去输液，输的药会在身体里残留直至失效，药效随着时间是不断衰落的。 这里为简便起见，假设药效 4 天就失效，而且药效持续函数是离散的。如下图所示：
 
-{% asset_img conv-effect-function.png 药效持续函数 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-function.png 药效持续函数 %}
 
 图中，横坐标为天数，纵坐标为药效。输液当天（day=0）药效为 100%，第二天减弱为 80%，第三天减弱为 40%，第四天减弱为 0。
 
@@ -55,19 +55,19 @@ $$\operatorname{eff}(t) =
 下面观察一下小明从第一天起，连续三天输液后身上所留下的药效（假设每天药量固定为10）。
 - 第一天，小明去医院输完液后，药效为 10（$ \operatorname{rest}(t) = \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。
 
-{% asset_img conv-effect-day1.png 第一天累积的药效示意 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day1.png 第一天累积的药效示意 %}
 
 - 第二天，小明去医院准备输液
     - 输液前，他身上带着前一天的药效，此时已经衰减为 10$\cdot$ 80%=8，即 $ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $。
     - 输液后，他身上携带的药效为：8 + 10 = 18（$ \operatorname{rest}(t) = \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）
 
-{% asset_img conv-effect-day2.png 第二天累积的药效示意 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day2.png 第二天累积的药效示意 %}
 
 - 第三天，小明去医院准备输液
     - 输液前，他身上带着前两天的药效，第一天的此时已衰减为 10$\cdot$ 40%=4（$ \operatorname{m}(t-2)\cdot \operatorname{eff}(2) $），第二天的此时衰减为 10$\cdot$ 80%=8（$ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $）。
     - 输液后，他身上携带的药效为：4 + 8 + 10 = 22（$ \operatorname{rest}(t) = \operatorname{m}(t-2)\cdot \operatorname{eff}(2) + \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。
 
-{% asset_img conv-effect-day3.png 第三天累积的药效示意 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day3.png 第三天累积的药效示意 %}
 
 ### 1.4 分析
 
@@ -126,7 +126,7 @@ $$
 
 当卷积核运动到图像右下角处（卷积中心和图像对应图像第 4 行第 4 列）时，它和图像卷积的结果如下图所示：
 
-{% asset_img 2d-convolution.png 二维卷积示例 %}
+{% image https://mengqistatic.azureedge.net/staticfiles/convolution/2d-convolution.png 二维卷积示例 %}
 
 可以看出，二维卷积在图像中的效果就是：对图像的每个像素的邻域（邻域大小就是核的大小）加权求和得到该像素点的输出值。滤波器核在这里是作为一个“权重表”来使用的。
 
