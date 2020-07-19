@@ -29,7 +29,7 @@ $$
 =
 \begin{bmatrix} 5 \\ 8 \end{bmatrix}
 $$ 
-以往我们都是将其看成是几个列向量的线性组合，即$$1\begin{bmatrix}4 \\ 2\end{bmatrix} + 1\begin{bmatrix}-3 \\ 0\end{bmatrix} + 1\begin{bmatrix}1 \\ 5\end{bmatrix} + 1\begin{bmatrix}3 \\ 1\end{bmatrix} = \begin{bmatrix} 5 \\ 8 \end{bmatrix}$$，这次我们换个角度，把 $\mathbf{A}$ 看作一个整体，整个方程就是一个 4 维向量 $\mathbf{x}$ 乘以矩阵 $\mathbf{A}$ 后得到一个 2 维向量 $\mathbf{b}$。 以这个观点来看的话，**矩阵 $\mathbf{A}$ 就相当于一个从一个向量集映射到另一个向量集的函数！**。
+以往我们都是将其看成是几个列向量的线性组合，即$1\begin{bmatrix}4 \\ 2\end{bmatrix} + 1\begin{bmatrix}-3 \\ 0\end{bmatrix} + 1\begin{bmatrix}1 \\ 5\end{bmatrix} + 1\begin{bmatrix}3 \\ 1\end{bmatrix} = \begin{bmatrix} 5 \\ 8 \end{bmatrix}$，这次我们换个角度，把 $\mathbf{A}$ 看作一个整体，整个方程就是一个 4 维向量 $\mathbf{x}$ 乘以矩阵 $\mathbf{A}$ 后得到一个 2 维向量 $\mathbf{b}$。 以这个观点来看的话，**矩阵 $\mathbf{A}$ 就相当于一个从一个向量集映射到另一个向量集的函数！**。
 
 假设 $\mathbf{x}$ 是 $n$ 维向量，$\mathbf{b}$ 是 $m$ 维向量，则 $\mathbf{A}$ 就是一个 $R^n$ 到 $R^m$ 的变换。这个变换的`定义域`是 $R^n$，`上域`是 $R^m$，记作 $T: R^n \rightarrow R^m$。$\mathbf{x}$ 是 $R^n$ 空间中的一个向量，$T(\mathbf{x})$ 就是其变换到 $R^m$ 空间中的`像`，而全体`像` $T(\mathbf{x})$ 的集合就称为变换 $T$ 的`值域`。图示如下：
 
@@ -41,9 +41,9 @@ $$
 
 不难发现，当变换 $T$ 为 $\mathbf{x}\mapsto\mathbf{A}\mathbf{x}$ ，向量 $\mathbf{x}$ 若有 n 维，则变换的定义域就是 $R^n$，$\mathbf{A}$ 就有 n 列；向量 $\mathbf{b}$  若有 m 维，则变换的上域就是 $R^m$，$\mathbf{A}$ 就有 m 行（$\mathbf{A}$ 每一列有 m 个元素）。而变换的值域就是 $\mathbf{A}$ 中列的所有线性组合组成的集合。
 
-也就是说，像 $$\begin{bmatrix}1 & -3 \\ 3 & 5 \\ -1 & 7\end{bmatrix}$$这样的矩阵，所表达的变换就是一个二维到三维的映射 $T:R^2\rightarrow R^3$。
+也就是说，像 $\begin{bmatrix}1 & -3 \\ 3 & 5 \\ -1 & 7\end{bmatrix}$这样的矩阵，所表达的变换就是一个二维到三维的映射 $T:R^2\rightarrow R^3$。
 
-再例如，矩阵$$\begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix}$$ 所表达的变换就是一个投影：把 $R^3$ 中的点投影到 $x_1 x_2$平面，因为：
+再例如，矩阵$\begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix}$ 所表达的变换就是一个投影：把 $R^3$ 中的点投影到 $x_1 x_2$平面，因为：
 $$
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -61,33 +61,29 @@ $$T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \\ \text{和}\\ T(c \
  
 注意到，向量的加法和数乘运算在变换前和变换后的效果是一样的，也就是所谓的线性变换*保持了*向量的加法和数乘运算。
 
-我们假设有一个二维向量 $\mathbf{x}=\begin{bmatrix}x_1\\ x_2 \end{bmatrix}= x_1 \mathbf{e}_1 + x_2 \mathbf{e}_2$，其中 $$\mathbf{e}_1=\begin{bmatrix}1\\ 0\end{bmatrix}, \mathbf{e}_2=\begin{bmatrix}0\\ 1\end{bmatrix}$$ 是 2$\times$ 2 单位矩阵 $\mathbf{I}_n$ 的列向量。由于线性变换保持加法和数乘运算，所以
+我们假设有一个二维向量 $\mathbf{x}=\begin{bmatrix}x_1\\ x_2 \end{bmatrix}= x_1 \mathbf{e}_1 + x_2 \mathbf{e}_2$，其中 $\mathbf{e}_1=\begin{bmatrix}1\\ 0\end{bmatrix}, \mathbf{e}_2=\begin{bmatrix}0\\ 1\end{bmatrix}$ 是 2$\times$ 2 单位矩阵 $\mathbf{I}_n$ 的列向量。由于线性变换保持加法和数乘运算，所以
 
 $$
-\begin{equation}
-T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) & T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x} \nonumber
-\end{equation}
+T(\mathbf{x})=x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) = \begin{bmatrix}T(\mathbf{e}_1) & T(\mathbf{e}_2)\end{bmatrix} \begin{bmatrix} x_1\\ x_2 \end{bmatrix} = \mathbf{A}\mathbf{x}
 $$
 
-这也就是说，对于每一个线性变换$T: R^n \rightarrow R^m$，都有唯一一个矩阵 $\mathbf{A}$，使得 $T(\mathbf{x})=\mathbf{A}\mathbf{x}$，其中 $ \mathbf{A} = [ T(\mathbf{e}_1) \cdots T(\mathbf{e}_1) ] $。$ \mathbf{A} $ 被称为是线性变换 $T$ 的`标准矩阵`。
+这也就是说，对于每一个线性变换$T: R^n \rightarrow R^m$，都有唯一一个矩阵 $\mathbf{A}$，使得 $T(\mathbf{x})=\mathbf{A}\mathbf{x}$，其中 $\mathbf{A} = [ T(\mathbf{e}_1) \cdots T(\mathbf{e}_1) ]$。$\mathbf{A}$ 被称为是线性变换 $T$ 的`标准矩阵`。
 
-总结一下，线性变换是满足线性条件的变换，所谓线性条件就要求变换前后的加法和数乘运算不变（变换前 a+b 等于 c，则变换后 a'+b' 也等于 c'）。 线性变换有两种描述形式：$T:R^n \rightarrow R^m$ 和 $ \mathbf{x} \mapsto \mathbf{A}\mathbf{x} $，后者也被称为`矩阵变换`
+总结一下，线性变换是满足线性条件的变换，所谓线性条件就要求变换前后的加法和数乘运算不变（变换前 a+b 等于 c，则变换后 a'+b' 也等于 c'）。 线性变换有两种描述形式：$T:R^n \rightarrow R^m$ 和 $\mathbf{x} \mapsto \mathbf{A}\mathbf{x}$，后者也被称为`矩阵变换`
 
 > 线性变换强调它作为映射的性质，而矩阵变换则描述了映射是怎样实现的。
 
 # 三、几何中的线性变换
 借助上面线性变换的性质，我们就很容易理解图形学中一些专门用于变换的矩阵了，比如 2 维平面上的旋转矩阵：
 $$
-\begin{equation}
 \mathbf{A}=
 \begin{bmatrix}
 \cos\varphi & -\sin\varphi \\
 \sin\varphi & \cos\varphi
-\end{bmatrix} \nonumber
-\end{equation}
+\end{bmatrix}
 $$
 
-把它的列向量拆开，就是 $$T(\mathbf{e}_1) = \begin{bmatrix}\cos\varphi \\ \sin\varphi \end{bmatrix}$$，$$T(\mathbf{e}_2) = \begin{bmatrix}-\sin\varphi \\ \cos\varphi \end{bmatrix}$$也就是 $$\begin{bmatrix}1\\ 0\end{bmatrix}$$ 旋转到 $$\begin{bmatrix}\cos\varphi \\ \sin\varphi\end{bmatrix}$$ ，$$\begin{bmatrix}0\\ 1\end{bmatrix}$$ 旋转到 $$\begin{bmatrix}-\sin\varphi \\ \cos\varphi\end{bmatrix}$$ 。
+把它的列向量拆开，就是 $T(\mathbf{e}_1) = \begin{bmatrix}\cos\varphi \\ \sin\varphi \end{bmatrix}$，$T(\mathbf{e}_2) = \begin{bmatrix}-\sin\varphi \\ \cos\varphi \end{bmatrix}$也就是 $\begin{bmatrix}1\\ 0\end{bmatrix}$ 旋转到 $\begin{bmatrix}\cos\varphi \\ \sin\varphi\end{bmatrix}$ ，$\begin{bmatrix}0\\ 1\end{bmatrix}$ 旋转到 $\begin{bmatrix}-\sin\varphi \\ \cos\varphi\end{bmatrix}$ 。
 
 旋转变换如下图所示：
  
@@ -98,15 +94,15 @@ $$
 
 ## 4.1 解的存在性
 
-非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 可以看做是一个 $ \mathbf{x} $ 所在空间到 $ \mathbf{b} $ 所在空间的映射。
-对映射 $T=R^n\rightarrow R^m$ ，如果 $R^n$ 中任意向量 $\mathbf{b}$ 都是 $R^n$ 中至少一个 $\mathbf{x}$ 的像，则称 $T$ 是 $R^n$ 到 $R^m$ 上的映射（或叫`满射`），这时，非线性方程组对于任意的 $ \mathbf{b} $ 都有解。反过来，如果存在 $ \mathbf{b} $ 使得非线性方程组无解，那么 $T$ 就不是 $R^n$ 到 $R^m$ 上的满射。它们的几何表示如下图所示：
+非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 可以看做是一个 $\mathbf{x}$ 所在空间到 $\mathbf{b}$ 所在空间的映射。
+对映射 $T=R^n\rightarrow R^m$ ，如果 $R^n$ 中任意向量 $\mathbf{b}$ 都是 $R^n$ 中至少一个 $\mathbf{x}$ 的像，则称 $T$ 是 $R^n$ 到 $R^m$ 上的映射（或叫`满射`），这时，非线性方程组对于任意的 $ \mathbf{b} $ 都有解。反过来，如果存在 $\mathbf{b}$ 使得非线性方程组无解，那么 $T$ 就不是 $R^n$ 到 $R^m$ 上的满射。它们的几何表示如下图所示：
 
 {% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/existence.png 满射 %}
  
 ## 4.2 解的唯一性
-如果任意的 $ \mathbf{b}\in R^m $ 都是 $R^n$ 中最多一个向量 $ \mathbf{x} $ 的像，那么就称 $T$ 是`一对一映射`。
+如果任意的 $\mathbf{b}\in R^m$ 都是 $R^n$ 中最多一个向量 $\mathbf{x}$ 的像，那么就称 $T$ 是`一对一映射`。
 
-一对一映射也就是非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 对任意 $ \mathbf{b} $ 要么无解，要么有唯一解。也就是说，当 方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，$T$ 就不是一对一映射，这时齐次方程组 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有平凡解。
+一对一映射也就是非线性方程组 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 对任意 $\mathbf{b}$ 要么无解，要么有唯一解。也就是说，当 方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有无穷多解时（即方程含有自由变量，即不满秩，即各列线性相关） ，$T$ 就不是一对一映射，这时齐次方程组 $\mathbf{A}\mathbf{x}=\mathbf{0}$ 只有平凡解。
 
 {% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-3/uniqueness.png 一对一映射 %}
  

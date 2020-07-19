@@ -20,38 +20,31 @@ mathjax: true
 比如一个地区有三个政党：「民主党」、「共和党」、「自由党」，我们用一个向量 $\mathbf{x} \in \mathbb{R}^3$ 来表示每年选举的投票结果:
 
 $$
-\begin{equation}
 \begin{bmatrix}
 \text{民主党得票率} \\
 \text{共和党得票率} \\
 \text{自由党得票率}
-\end{bmatrix}\nonumber
-\end{equation}
+\end{bmatrix}
 $$
 
 假设每年的选举结果只和上一年的结果有关，即选举向量构成的序列满足马尔可夫性质，是一个`马尔可夫链`。那么，像 {% post_link linear-algebra-5 上一章 %} 那个人口迁移的例子一样，我们可以用一个`状态迁移矩阵`来描述每年选举结果的变化情况。
 
 比如我们要研究某一年开始，该地区选举变化情况，而且已经得到了该地区选举变化的迁移矩阵 $\mathbf{P}$：
 $$
-\begin{equation}
 \mathbf{P}=
 \begin{bmatrix}
 0.5 & 0.2 & 0.3 \\
 0.3 & 0.8 & 0.3 \\
 0.2 & 0   & 0.4
-\end{bmatrix}\nonumber
-\end{equation}
+\end{bmatrix}
 $$
 
-假设在起始年，三个党的得票情况为：$$\mathbf{x}_0 = \begin{bmatrix}1\\ 0\\ 0 \end{bmatrix}$$。那么我们顺着迁移矩阵看一下接下来几年，这个地区的选举情况会发生怎么样的变化。通过递推公式 $$ \mathbf{x}_{i+1} = \mathbf{P} \mathbf{x}_i $$ 我们可以计算出
+假设在起始年，三个党的得票情况为：$\mathbf{x}_0 = \begin{bmatrix}1\\ 0\\ 0 \end{bmatrix}$。那么我们顺着迁移矩阵看一下接下来几年，这个地区的选举情况会发生怎么样的变化。通过递推公式 $\mathbf{x}_{i+1} = \mathbf{P} \mathbf{x}_i$ 我们可以计算出
 $$
-\begin{equation}
-\mathbf{x}_1 =  \begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}, \mathbf{x}_2 = \begin{bmatrix} 0.37 \\ 0.45 \\ 0.18 \end{bmatrix}, \mathbf{x}_3 =  \begin{bmatrix} 0.329 \\ 0.525 \\ 0.146 \end{bmatrix}, \cdots, \mathbf{x}_7 = \begin{bmatrix} 0.3016 \\ 0.5953 \\ 0.1031 \end{bmatrix}, \mathbf{x}_8 = \begin{bmatrix} 0.3008 \\ 0.5977 \\ 0.1016 \end{bmatrix}, \mathbf{x}_9 = \begin{bmatrix} 0.3004 \\ 0.5988 \\ 0.1008 \end{bmatrix} \cdots \nonumber
-\end{equation}
+\mathbf{x}_1 =  \begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}, \mathbf{x}_2 = \begin{bmatrix} 0.37 \\ 0.45 \\ 0.18 \end{bmatrix}, \mathbf{x}_3 =  \begin{bmatrix} 0.329 \\ 0.525 \\ 0.146 \end{bmatrix}, \cdots, \mathbf{x}_7 = \begin{bmatrix} 0.3016 \\ 0.5953 \\ 0.1031 \end{bmatrix}, \mathbf{x}_8 = \begin{bmatrix} 0.3008 \\ 0.5977 \\ 0.1016 \end{bmatrix}, \mathbf{x}_9 = \begin{bmatrix} 0.3004 \\ 0.5988 \\ 0.1008 \end{bmatrix} \cdots 
 $$
-我们可以发现，这个选举结果向量 $\mathbf{x}$ 越来越逼近于向量 $$\mathbf{q} = \begin{bmatrix}0.3\\ 0.6\\ 0.1\end{bmatrix}$$。事实上，当我们把迁移矩阵乘上这个向量：
+我们可以发现，这个选举结果向量 $\mathbf{x}$ 越来越逼近于向量 $\mathbf{q} = \begin{bmatrix}0.3\\ 0.6\\ 0.1\end{bmatrix}$。事实上，当我们把迁移矩阵乘上这个向量：
 $$
-\begin{equation}
 \mathbf{P}\mathbf{q}=
 \begin{bmatrix}
 0.5 & 0.2 & 0.3 \\
@@ -62,7 +55,6 @@ $$
 =
 \begin{bmatrix} 0.3\\ 0.6\\ 0.1 \end{bmatrix}
 = \mathbf{q}
-\end{equation}
 $$
 就会发现，不但选举结果越来越趋向某一个固定向量 $\mathbf{q}$，而且当结果达到和 $\mathbf{q}$ 一致时，这个系统便不再改变！这也就是我们所说的达到`平稳分布`。这个固定向量 $\mathbf{q}$ 就是 `稳态向量`。
 
@@ -71,7 +63,7 @@ $$
 # 二、特征值与特征向量
 当我们把一个矩阵看作是一个线性变换：$\mathbf{x} \mapsto \mathbf{A}\mathbf{x}$ 时，我们将矩阵理解成为一种运动，一种能使向量 $\mathbf{x}$ 向着向量 $\mathbf{A}\mathbf{x}$ 移动的「力」。一般来说，向量 $\mathbf{x}$ 经 $\mathbf{A}$ 进行变换有可能是朝着各个方向移动。然而，总有某些特殊向量，线性变换在这些向量上的作用是十分简单的。
 
-比如：已知向量 $$\mathbf{u}=\begin{bmatrix}-1\\ 1\end{bmatrix}, \mathbf{v}=\begin{bmatrix}2\\ 1\end{bmatrix}$$，矩阵 $$ \mathbf{A} = \begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}$$ 表示的线性变换分别应用于（即矩阵左乘）向量 $\mathbf{u}$ 和 $\mathbf{v}$ 后的结果如下图所示：
+比如：已知向量 $\mathbf{u}=\begin{bmatrix}-1\\ 1\end{bmatrix}, \mathbf{v}=\begin{bmatrix}2\\ 1\end{bmatrix}$，矩阵 $\mathbf{A} = \begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}$ 表示的线性变换分别应用于（即矩阵左乘）向量 $\mathbf{u}$ 和 $\mathbf{v}$ 后的结果如下图所示：
 
 {% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-6/eigenvector.png 线性变换应用于不同的向量 %}
 
@@ -96,23 +88,21 @@ $$
 
 我们已经知道 $\mathbf{x}_{i+1}=\mathbf{A}\mathbf{x}_k$，而如果我们找一个 $\mathbf{A}$ 的`特征值` $\lambda$ 及其对应的`特征向量` $\mathbf{x}_0$，则有
 $$
-\begin{equation}
 \mathbf{x}_1 = \mathbf{A}\mathbf{x}_0 = \lambda\mathbf{x}_0 \\
 \mathbf{x}_{i+1} = \mathbf{A}\mathbf{x}_i = \lambda\mathbf{x}_i = \lambda^i\mathbf{x}_0
-\end{equation}
 $$
 
 因此，如果我们已经知道一个马尔可夫链的转移矩阵 $\mathbf{A}$，我们不需要看它的初始状态是什么，只要找 $\mathbf{A}$ 的`特征值` $\lambda$ 及其对应的`特征向量` $\mathbf{x}_0$，那么我们就能通过计算得到这个马尔可夫链达到稳态时的状态。
 
-$\mathbf{x}_0$ 除了用一个`特征向量`外，也可以用多个`特征向量`的线性组合。比如 $\mathbf{A}$ 的`特征值`为 $\lambda_1, \lambda_2$，对应的两个`特征向量`为 $$\mathbf{v}_1, \mathbf{v}_2$$，那么我们可以用 $$c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2$$ 来表示 $$\mathbf{x}_0$$。这样得到的 $$\mathbf{x}_{i+1}$$ 为：
+$\mathbf{x}_0$ 除了用一个`特征向量`外，也可以用多个`特征向量`的线性组合。比如 $\mathbf{A}$ 的`特征值`为 $\lambda_1, \lambda_2$，对应的两个`特征向量`为 $\mathbf{v}_1, \mathbf{v}_2$，那么我们可以用 $c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2$ 来表示 $\mathbf{x}_0$。这样得到的 $\mathbf{x}_{i+1}$ 为：
 
 $$
-\begin{align}
-\mathbf{x}_1 &= \mathbf{A}\mathbf{x}_0 \nonumber\\
+\begin{aligned}
+\mathbf{x}_1 &= \mathbf{A}\mathbf{x}_0 \\
 &= c_1 \mathbf{A} \mathbf{v}_1 + c_2 \mathbf{A} \mathbf{v}_2 \\
-\mathbf{x}_{i+1} &= c_1 \mathbf{A}^i \mathbf{v}_1 + c_2 \mathbf{A}^i \mathbf{v}_2 \nonumber\\
+\mathbf{x}_{i+1} &= c_1 \mathbf{A}^i \mathbf{v}_1 + c_2 \mathbf{A}^i \mathbf{v}_2 \\
 &= c_1 \lambda_1^i \mathbf{v}_1 + c_2 \lambda_2^i \mathbf{v}_2
-\end{align}
+\end{aligned}
 $$
 
 ## 3.1 人口迁移例子
@@ -121,31 +111,27 @@ $$
 
 {% post_link linear-algebra-5 上一章 %}中，我们已经得出：
 $$
-\begin{equation}
 \mathbf{x}_0 = 
 \mathbf{x}_{i+1} = \begin{bmatrix} c_{i+1} \\ r_{i+1} \end{bmatrix}
 = \begin{bmatrix} 0.95 & 0.03 \\ 0.05 & 0.97 \end{bmatrix}\begin{bmatrix} c_i \\ r_i \end{bmatrix}
-\end{equation}
 $$
 
-即`迁移矩阵` $$\mathbf{A} = \begin{bmatrix} 0.95 & 0.03\\ 0.05 & 0.97 \end{bmatrix}$$。这次的套路是求解特征方程 $(\mathbf{A}-\lambda\mathbf{I})\mathbf{x}=0$（事实上，这里的2阶方阵通过计算行列式解 $\det\mathbf{A}=0$ 会更方便些。当然，手边有电脑的话直接交给 matlab、python 之类的就行 :D），得到特征值为 1 和 0.92，对应的特征向量分别为 $$ \mathbf{v}_1 = \begin{bmatrix} 3\\ 5 \end{bmatrix} $$ 和 $$ \mathbf{v}_2 = \begin{bmatrix} 1\\ -1 \end{bmatrix} $$ 的倍数。
+即`迁移矩阵` $\mathbf{A} = \begin{bmatrix} 0.95 & 0.03\\ 0.05 & 0.97 \end{bmatrix}$。这次的套路是求解特征方程 $(\mathbf{A}-\lambda\mathbf{I})\mathbf{x}=0$（事实上，这里的2阶方阵通过计算行列式解 $\det\mathbf{A}=0$ 会更方便些。当然，手边有电脑的话直接交给 matlab、python 之类的就行 :D），得到特征值为 1 和 0.92，对应的特征向量分别为 $\mathbf{v}_1 = \begin{bmatrix} 3\\ 5 \end{bmatrix}$ 和 $\mathbf{v}_2 = \begin{bmatrix} 1\\ -1 \end{bmatrix}$ 的倍数。
 
 由于有两个互不相等的特征值，我们可以知道它们对应的两个特征向量也线性无关，我们将初始向量 $\mathbf{x}_0$ 用两个特征向量的线性组合表示：
 
 $$
-\begin{equation}
 \mathbf{x}_0 = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2
 = [\mathbf{v}_1 \mathbf{v}_2] \begin{bmatrix} c_1\\ c_2 \end{bmatrix}
-\end{equation}
 $$
 
-假设我们已知 $$\mathbf{x}_0 = \begin{bmatrix} 0.6\\ 0.4 \end{bmatrix}$$ （单位：百万人），那么就可以解得 $c_1 = 0.125, c_2 = 0.225$.
+假设我们已知 $\mathbf{x}_0 = \begin{bmatrix} 0.6\\ 0.4 \end{bmatrix}$ （单位：百万人），那么就可以解得 $c_1 = 0.125, c_2 = 0.225$.
 
 所以，每年的人口分布为：
 $$
-\begin{array}
+\begin{array}{rl}
 \mathbf{x}_{i+1} = \mathbf{A}\mathbf{x}_i = \mathbf{A}^i\mathbf{x}_0 
-&= c_1 \mathbf{A}^i \mathbf{v}_1 + c_2 \mathbf{A}^i \mathbf{v}_2 \\\nonumber
+&= c_1 \mathbf{A}^i \mathbf{v}_1 + c_2 \mathbf{A}^i \mathbf{v}_2 \\
 &= c_1 \, 1^i \, \mathbf{v}_1 + c_2 \, 0.92^i \, \mathbf{v}_2
 \end{array}
 $$

@@ -30,13 +30,11 @@ date: 2016-05-03 22:55:27
 
 $$
 \left\{
-\begin{equation}\label{initial}
 \begin{array}{ccl}
 x_1 &-& 2x_2 &+& x_3 &= 0 \\
     && 2x_2 &-& 8x_3 &= 8 \\
 {-4x_1} &+& 5x_2 &+& 9x_3 &= {-9}
 \end{array}
-\end{equation}
 \right.
 $$
 
@@ -187,39 +185,31 @@ $$
 n 维空间中的点可用 n 维向量表示。
 
 向量之间可以线性组合：
-$$
-\begin{equation}
-\mathbf{y} = c_1 \mathbf{v_1} + \cdots + c_p \mathbf{v_p}
-\end{equation}
-$$
+$$\mathbf{y} = c_1 \mathbf{v_1} + \cdots + c_p \mathbf{v_p}$$
 
 那么，假如有三个向量：$\mathbf{a_1} = [1, -2, -5]^T, \mathbf{a_2} = [2, 5, 6]^T, \mathbf{b} = [7, 4, -3]^T$，想要知道 $\mathbf{b}$ 是否能通过 $\mathbf{a_1}$ 和 $\mathbf{a_2}$ 线性表示，实际上就是求线性方程 $x_1 \mathbf{a_1} + x_2 \mathbf{a_2} = \mathbf{b}$ 是否有解的问题。
 
 把这个方程展开来看，就是：
 $$
-\begin{equation}
 x_1 \begin{bmatrix}1\\-2\\-5\end{bmatrix} + x_2 \begin{bmatrix}2\\5\\6\end{bmatrix}
 = \begin{bmatrix}7\\4\\-3\end{bmatrix}
-\end{equation}
 $$
 
 等同于
 $$
-\begin{equation}
 \begin{bmatrix}x_1\\-2x_1\\-5x_1\end{bmatrix} +  \begin{bmatrix}2x_2\\5x_2\\6x_2\end{bmatrix}
 = \begin{bmatrix}7\\4\\-3\end{bmatrix}
-\end{equation}
+
 $$
 
 和
 $$
-\begin{equation}
 \begin{bmatrix}x_1 + 2x_2\\-2x_1+5x_2\\-5x_1+6x_2\end{bmatrix}
 = \begin{bmatrix}7\\4\\-3\end{bmatrix}
-\end{equation}
+
 $$
 
-所以这个问题其实和一个线性方程组是等价的，这个线性方程组对应的増广矩阵就是（$$[\mathbf{a_1}, \mathbf{a_2}, \mathbf{b}]$$）：
+所以这个问题其实和一个线性方程组是等价的，这个线性方程组对应的増广矩阵就是（$[\mathbf{a_1}, \mathbf{a_2}, \mathbf{b}]$）：
 
 $$
 \begin{bmatrix}
@@ -242,17 +232,16 @@ $$
 可以看出，这个线性方程组的解为 $x_1 = 3$ 和 $x_2 = 2$。继而我们就知道了 $\bf{b}$ 和 $\bf{a_1}$, $\bf{a_2}$ 的关系：
 
 $$
-\begin{equation}
 3 \begin{bmatrix}1\\-2\\-5\end{bmatrix} + 2 \begin{bmatrix}2\\5\\6\end{bmatrix}
 = \begin{bmatrix}7\\4\\-3\end{bmatrix}
-\end{equation}
+
 $$
 
 我们反过来回顾这一过程，可以发现，之前我们线性方程组的的增广矩阵表示形式，其实也可以看做是列向量组成的形式，在这个例子中，增广矩阵可以表示为 $$[\mathbf{a_1}, \mathbf{a_2}, \mathbf{b}]$$。**把增广矩阵按列拆开看，我们就可以得到线性方程组的向量方程表示形式。**
 
 向量方程是线性方程组另一种重要的表现形式，它能帮助我们将矩阵、线性方程组的抽象概念同几何的直观联系起来。
 
-在几何中，n 个向量 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 的所有线性组合 $c_1 \mathbf{v_1} + c_2 \mathbf{v_2} + \cdots + c_p \mathbf{v_p}$ 成为一个空间，称作由 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 张成的 $R^n$ 的子空间，记作 $$\operatorname{Span}\left\{\mathbf{v_1}, \cdots, \mathbf{v_p}\right\}$$。
+在几何中，n 个向量 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 的所有线性组合 $c_1 \mathbf{v_1} + c_2 \mathbf{v_2} + \cdots + c_p \mathbf{v_p}$ 成为一个空间，称作由 $\mathbf{v_1}, \mathbf{v_2}, \cdots, \mathbf{v_p}$ 张成的 $R^n$ 的子空间，记作 $\operatorname{Span}\left\{\mathbf{v_1}, \cdots, \mathbf{v_p}\right\}$。
 
 一个向量张成的空间是一根直线，两个向量张成的空间是一个平面。
 
@@ -260,24 +249,22 @@ $$
 向量的线性组合可以看作向量与矩阵的乘积，比如一个 $m\times n$ 的矩阵 $\mathbf{A}$，各列为 $\mathbf{a_1}, \cdots, \mathbf{a_n}$，而 $x$ 为 $n$ 维向量，则有：
 
 $$
-\begin{equation}
 \mathbf{A}\mathbf{x} = [\mathbf{a_1}\ \mathbf{a_2}\ \cdots \mathbf{a_n}]
 \begin{bmatrix}x_1\\ \vdots\\ x_n\end{bmatrix}
 = x_1 \mathbf{a_1} + x_2 \mathbf{a_2} + \cdots + x_n \mathbf{a_n}
-\end{equation}
+
 $$
 
 这种形如 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 的形式，就称为矩阵方程。
 
-由矩阵方程的定义，我们可以得出：**方程$\mathbf{A}\mathbf{x}=\mathbf{b}$有解当且仅当$\mathbf{b}$为$\mathbf{A}$中列的线性组合。**又因为我们之前提到，这些列向量的所有线性组合构成了$$\operatorname{Span}\left\{\mathbf{a_1}, \cdots, \mathbf{a_n}\right\}$$，向量 $\mathbf{b}$  是否存在于这个空间，就等价于 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有解。
+由矩阵方程的定义，我们可以得出：**方程$\mathbf{A}\mathbf{x}=\mathbf{b}$有解当且仅当$\mathbf{b}$为$\mathbf{A}$中列的线性组合。**又因为我们之前提到，这些列向量的所有线性组合构成了$\operatorname{Span}\left\{\mathbf{a_1}, \cdots, \mathbf{a_n}\right\}$，向量 $\mathbf{b}$  是否存在于这个空间，就等价于 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 有解。
 
 下面我们来讨论下任意 $\mathbf{b} \in R^m$ 的情况。
 
 设
 $$
-\begin{equation}
 \mathbf{A} = \begin{bmatrix}1&3&4\\ -4&2&-6\\ -3&-2&-7\end{bmatrix}, \mathbf{b} = \begin{bmatrix}b1\\b2\\b3\end{bmatrix}
-\end{equation}
+
 $$
 
 求方程 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 是否对 $b_1, b_2, b_3$ 的所有取值都有解？
@@ -316,20 +303,19 @@ $$b_1-\frac{1}{2}b_2+b_3=0$$
 
 ## 四、三种等价形式
 矩阵方程
-$$ \begin{equation}
+$$
 \mathbf{A}\mathbf{x} = \mathbf{b}
-\end{equation} $$
+$$
 
 和向量方程
-$$ \begin{equation}
+$$
 x_1 \mathbf{a_1} + x_2 \mathbf{a_2} + \cdots + x_n \mathbf{a_n} = \mathbf{b}
-\end{equation} $$
+$$
 
 以及下列增广矩阵对应的线性方程组具有相同的解集
-$$ \begin{equation}
+$$ 
 [\mathbf{a_1}\ \mathbf{a_2}\ \cdots\ \mathbf{a_n}\ \mathbf{b}]
-\end{equation} $$
-
+$$
 
 > 矩阵方程、向量方程和线性方程组是三种不同但却相互等价的形式。在现实生活中构造一个数学模型时，我们可以在任何情况下自由选择其中任何一种最自然、最便利的陈述形式。
 

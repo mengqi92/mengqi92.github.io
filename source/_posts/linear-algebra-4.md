@@ -37,46 +37,45 @@ mathjax: true
 
 当然我们可以考虑用向量来表示这个表格。将表格中的各行`向量化`，得到：
 
-\begin{align}
+$$
+\begin{aligned}
 O_c &= [0, 0.4, 0.6] \\
 O_e &= [0.6, 0.1, 0.2] \\
 O_s &= [0.4, 0.5, 0.2]
-\end{align}
+\end{aligned}
+$$
 
 其中，$O_c$, $O_e$, $O_s$ 分别表示煤炭、电力、钢铁各个部门消耗三种资源的量。
 
-各种资源的单位价格也可以用符号定义。例如用 $p_c$, $p_e$, $p_s$ 分别来表示煤炭、电力、钢铁三种资源的价格，那么煤炭部门的总支出就是 $$0 \cdot p_c+0.4 p_e+0.6 p_s = O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$$. 同理，电力部门和钢铁部门的总支出是 $$O_e \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}, O_s \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$$. 
+各种资源的单位价格也可以用符号定义。例如用 $p_c$, $p_e$, $p_s$ 分别来表示煤炭、电力、钢铁三种资源的价格，那么煤炭部门的总支出就是 $0 \cdot p_c+0.4 p_e+0.6 p_s = O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$. 同理，电力部门和钢铁部门的总支出是 $O_e \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}, O_s \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$. 
 
 也就是说，煤炭部门每生产出 1 单位价值为 $p_c$ 的煤炭，它就需要消耗价值为 $O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix}$ 的资源。要使煤炭部门收支平衡，就需要：
 
 $$
-\begin{equation}
 O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} = p_c
-\end{equation}
 $$
 
 同理，要使三个部门都达到收支平衡，需要：
 
 $$
-\begin{align}
+\begin{aligned}
 O_c \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= [0  , 0.4, 0.6] \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= p_c \\
 O_e \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= [0.6, 0.1, 0.2] \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= p_e \\
 O_s \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= [0.4, 0.5, 0.2] \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= p_s
-\end{align}
+\end{aligned}
 $$
 
 借助矩阵的封装，我们可以把这三个式子合并为一个式子：
 $$
-\begin{eqnarray}
-\mathbf{A} \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} \\
-\left( \mathbf{A} - \mathbf{I} \right) \cdot \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= \begin{bmatrix}0\\ 0\\ 0\end{bmatrix} \label{homogeneous}\\
-\end{eqnarray}
+\begin{array}{rccl}
+\mathbf{A} &\cdot &\begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= \begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} \\
+\left( \mathbf{A} - \mathbf{I} \right) &\cdot &\begin{bmatrix}p_c\\ p_e\\ p_s\end{bmatrix} &= \begin{bmatrix}0\\ 0\\ 0\end{bmatrix} \tag{1} \\
+\end{array}
 $$
 其中，3 x 3 矩阵 $\mathbf{A}$ 就是上面的那个表格。
 
-式子 $\eqref{homogeneous}$ 是我们熟悉的齐次线性方程组的形式。按照套路，我们化简增广矩阵：
+式子 (1) 是我们熟悉的齐次线性方程组的形式。按照套路，我们化简增广矩阵：
 $$
-\begin{equation}
 \begin{bmatrix}
 -1 & 0.4 & 0.6 & 0 \\
 0.6 & -0.9 & 0.2 & 0 \\
@@ -94,21 +93,18 @@ $$
 0 & 1 & -0.85 & 0 \\
 0 & 0 & 0 & 0
 \end{bmatrix}
-\end{equation}
 $$
 
 由此得到通解：$p_c = 0.94 p_s$, $p_e = 0.85 p_s$，$p_s$ 为自由变量。
 
 所以，各部门达到收支平衡时的平衡价格向量为：
 $$
-\begin{equation}
 \mathbf{p} = p_s
 \begin{bmatrix}
 0.94 \\
 0.85 \\
 1
 \end{bmatrix}
-\end{equation}
 $$
 
 也就是说，如果钢铁价格为100元，那么煤炭和电的价格分别为94元和和85元时，整个经济系统可以达到平衡。

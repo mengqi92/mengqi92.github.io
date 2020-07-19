@@ -23,7 +23,7 @@ date: 2016-05-14
 
 例：判断下列齐次方程组是否有非平凡解，表示其解集。
 $$
-\begin{array}
+\begin{array}{cccl}
 3x_1 &+& 5x_2 &-& 4x_3 &= 0 \\
 -3x_1 &-& 2x_2 &+& 4x_3 &= 0 \\
 6x_1 &+& x_2 &-& 8x_3 &= 0
@@ -32,7 +32,6 @@ $$
 
 对于这类求解集的问题，我们可以直接对增广矩阵化简，得到
 $$
-\begin{equation*}
 [\mathbf{A}\ \mathbf{0}] \sim
 \begin{bmatrix}
 3 & 5 & -4 & 0 \\
@@ -51,16 +50,15 @@ $$
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0
 \end{bmatrix}
-\end{equation*}
 $$
 
-从最后的行最简形式，我们可以得到解：$$x_1 = \frac{4}{3} x_3, x_2 =0$$，其中 $x_3$ 是自由变量。所以 $\mathbf{x}$ 的通解就是 $$\mathbf{x} = \begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix} = x_3\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix} = x_3\mathbf{v}$$。也就是说，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 的解是三维空间（因为向量 $\mathbf{v}$ 是三维的）中的一条直线（因为只有一个自由变量）。进一步推广，我们不难想象，如果解集中有 $p$ 个自由变量，则解集就是 $m$ 维空间（$m$ 为 $\mathbf{A}$ 的行数）中，$p$ 个向量张成的空间。**如果没有自由变量（也就是 $\mathbf{A}$ 各列线性无关），那么就有 0 个向量张成的空间，即 $\operatorname{Span}\{\mathbf{0}\}$，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 也就只有平凡解。**
+从最后的行最简形式，我们可以得到解：$x_1 = \frac{4}{3} x_3, x_2 =0$，其中 $x_3$ 是自由变量。所以 $\mathbf{x}$ 的通解就是 $\mathbf{x} = \begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix} = x_3\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix} = x_3\mathbf{v}$。也就是说，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 的解是三维空间（因为向量 $\mathbf{v}$ 是三维的）中的一条直线（因为只有一个自由变量）。进一步推广，我们不难想象，如果解集中有 $p$ 个自由变量，则解集就是 $m$ 维空间（$m$ 为 $\mathbf{A}$ 的行数）中，$p$ 个向量张成的空间。**如果没有自由变量（也就是 $\mathbf{A}$ 各列线性无关），那么就有 0 个向量张成的空间，即 $\operatorname{Span}\{\mathbf{0}\}$，$\mathbf{A}\mathbf{x}=\mathbf{0}$ 也就只有平凡解。**
 
 # 二、非齐次线性方程组
 `非齐次线性方程组`形如 $\mathbf{A}\mathbf{x}=\mathbf{b}$，
 为了方便对比，我们把上面那个例子改为一个非齐次方程组进行分析：
 $$
-\begin{array}
+\begin{array}{cccl}
 3x_1 &+& 5x_2 &-& 4x_3 &=& 7 \\
 -3x_1 &-& 2x_2 &+& 4x_3 &=& -1 \\ 
 6x_1 &+& x_2 &-& 8x_3 &=& -4 
@@ -87,27 +85,23 @@ $$
 \end{bmatrix}
 $$
 
-化简后可以得到方程组的解为：$$x_1 = -1 + \frac{4}{3}x_3，x_2 = 2$$，其中 $x_3$ 是自由变量。
+化简后可以得到方程组的解为：$x_1 = -1 + \frac{4}{3}x_3，x_2 = 2$，其中 $x_3$ 是自由变量。
 我们把这个解集用向量的形式表示出来就是：
 $$
-\begin{equation*}
 \mathbf{x} = \begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix}
 = \begin{bmatrix}-1+\frac{4}{3}x_3\\ 2\\ x_3\end{bmatrix}
 = \begin{bmatrix}-1\\ 2\\ 0\end{bmatrix} + x_3 \begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix}
-\end{equation*}
 $$
-注意到这个向量可分解为一个常数向量$$\begin{bmatrix}-1\\ 2\\ 0\end{bmatrix}$$和一个可任意伸缩的向量$$x_3\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix}$$，而且，常数向量就是行化简后矩阵的最后一列，而 $$\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix}$$ 同样是齐次方程组的解。这是因为非齐次方程组只是最后一列由$\mathbf{0}$换成了$\mathbf{b}$，而且最后一列不会影响前面三列，所以齐次和非齐次方程组行化简后，变量的对应系数是相同的（系数矩阵就是前三列），**非齐次方程组的解仅仅只比齐次方程组的解多了一个常数向量**。例如齐次方程组的解集为$\mathbf{x}=t\mathbf{v}$，则非齐次方程组的解集就是 $\mathbf{x}=\mathbf{p}+t\mathbf{v}$，其中 $t$ 为任意实数。从几何的角度来看，就是**齐次方程组的解集经向量 $\mathbf{p}$ 平移得到非齐次方程组的解集**。这个 $\mathbf{p}$ 的学名就叫做`特解`。
+注意到这个向量可分解为一个常数向量$\begin{bmatrix}-1\\ 2\\ 0\end{bmatrix}$和一个可任意伸缩的向量$x_3\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix}$，而且，常数向量就是行化简后矩阵的最后一列，而 $\begin{bmatrix}\frac{4}{3}\\ 0\\ 1\end{bmatrix}$ 同样是齐次方程组的解。这是因为非齐次方程组只是最后一列由$\mathbf{0}$换成了$\mathbf{b}$，而且最后一列不会影响前面三列，所以齐次和非齐次方程组行化简后，变量的对应系数是相同的（系数矩阵就是前三列），**非齐次方程组的解仅仅只比齐次方程组的解多了一个常数向量**。例如齐次方程组的解集为$\mathbf{x}=t\mathbf{v}$，则非齐次方程组的解集就是 $\mathbf{x}=\mathbf{p}+t\mathbf{v}$，其中 $t$ 为任意实数。从几何的角度来看，就是**齐次方程组的解集经向量 $\mathbf{p}$ 平移得到非齐次方程组的解集**。这个 $\mathbf{p}$ 的学名就叫做`特解`。
 
 注意，这里讲齐次方程组和非齐次方程组的解有一个前提，就是非齐次方程组首先要是有解的，如果$\mathbf{0}$变成$\mathbf{b}$ 导致方程组没有解，那么也就不能用齐次方程组的解集平移了。
 
 结合之前总结的齐次线性方程组解的性质，当方程组含有 $p$ 个自由变量时，齐次方程组的解集是 $p$ 个向量的张成空间，而非齐次方程组解集只是这个空间进行了平移（前提是非齐次方程组有解），并没有改变这个空间的基本性质（比如空间的维度）。
 
 # 三、列空间
-矩阵$$ \mathbf{A} = [\mathbf{a_1} \mathbf{a_2} \cdots \mathbf{a_n}] $$的各个列向量线性组合组成的集合，就是$\mathbf{A}$的列空间。记作 $\operatorname{Col}\mathbf{A}$，即
+矩阵$\mathbf{A} = [\mathbf{a_1} \mathbf{a_2} \cdots \mathbf{a_n}]$的各个列向量线性组合组成的集合，就是$\mathbf{A}$的列空间。记作 $\operatorname{Col}\mathbf{A}$，即
 $$
-\begin{equation*}
 \operatorname{Col} \mathbf{A} = \operatorname{Span}\{\mathbf{a_1}, \mathbf{a_2}, \cdots, \mathbf{a_n}\}
-\end{equation*}
 $$
 
 这个列空间，我们应该不陌生了，上一章中很多时候都是把矩阵看成列向量的排列，考虑 $\mathbf{A}\mathbf{x}=\mathbf{b}$ 的解的情况时其实就是在列向量中进行分析的。列空间在分析矩阵中各列向量的线性相关性时很有帮助：只有各列线性无关时，这 $n$ 个列才能张成 $n$ 维空间，这时就说这个矩阵的秩为 $n$；而假如这里面有 1 列和其他某列线性相关，那么这 $n$ 个列就只能张成 $n-1$ 维空间，这个矩阵的秩就是 $n-1$；也就是说，**矩阵的秩说明了这个矩阵的列向量最多能张成多少维**。
