@@ -26,7 +26,8 @@ mathjax: true
 
 而在 Logistic 回归中，我们使用一个函数来**限制假设函数的值域**，这个函数就叫做 Logistic 函数（Logistic Function，也叫 Sigmoid Function）。
 
-Logistic Function：$$g(z)=\frac{1}{1+e^{-z}}$$
+Logistic Function：
+$$g(z)=\frac{1}{1+e^{-z}}$$
 
 它的函数图像：
 {% image https://mengqistatic.azureedge.net/staticfiles/logistic-regression/Logistic-curve.png 逻辑回归函数图像 %}
@@ -75,7 +76,7 @@ $$Cost(h_\theta (x), y) = \frac{1}{2} (h_\theta (x)-y)^2 = \frac{1}{1+e^{-\theta
 
 Logistic 回归采用的损失函数为：
 $$Cost(h_\theta (x), y)=
-\begin{cases} -log(h_\theta (x)) &\text{if y=1} \\\
+\begin{cases} -log(h_\theta (x)) &\text{if y=1} \\
 -log(1-h_\theta (x)) &\text{if y=0} \end{cases}$$
 
 这两个函数 $-log(h_\theta (x))$，$-log(1-h_\theta (x))$ 的函数图像如下图所示。可以看出，当 y=1 时，随着 $h_\theta (x)$ 逐渐趋近于 0（即趋向于“分错类别”），损失函数将剧烈上升，趋向于 $\infty$，而当 $h_\theta (x)$ 逐渐趋近于 1（即趋向于“分对类别”） 时，损失函数则会逐渐减小到 0。当 y=0 时，情况类似。
@@ -92,8 +93,8 @@ $$Cost(h_\theta (x), y) = -ylog(h_\theta (x)) -(1-y)log(1-h_\theta (x))$$
 当 y=0 时，取后半段；当 y=1 时，取前半段。
 
 由此，我们终于得到了 Logistic 回归的目标函数$J(\theta)$：
-$$\begin{align} J(\theta) & = \frac{1}{m} \sum_{i=1}^m Cost(h_\theta(x^{(i)}), y^{(i)}) \\\
-& = -\frac{1}{m} [\sum_{i=1}^m y^{(i)}log h_\theta(x^{(i)}) + (1-y^{(i)})log (1-h_\theta (x^{(i)}))] \\\ \end{align}$$
+$$\begin{aligned} J(\theta) & = \frac{1}{m} \sum_{i=1}^m Cost(h_\theta(x^{(i)}), y^{(i)}) \\
+& = -\frac{1}{m} [\sum_{i=1}^m y^{(i)}log h_\theta(x^{(i)}) + (1-y^{(i)})log (1-h_\theta (x^{(i)}))] \\\ \end{aligned}$$
 
 ### 4.3 优化目标函数求参
 

@@ -20,7 +20,7 @@ mathjax: true
 ### 1.1 数学定义
 
 维基百科上，卷积的形式化定义如下：
-$$ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} $$
+$$ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1} $$
 
 ### 1.2 直观解释
 
@@ -46,26 +46,26 @@ $$ f(x)*g(x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau \tag{1}\label{1} $
 记天数为 $t$，每天输液的药量为 $\operatorname{m}(t)$, 药效函数为 $\operatorname{eff}(t)$，小明身上残留的药效为 $\operatorname{rest}(t)$
 其中药效函数：
 $$\operatorname{eff}(t) = 
-\begin{cases} 100 \% & \text{t=0}  \\\
-80 \% & \text{t=1}  \\\
-40 \% & \text{t=2}  \\\
-0  \% & \text{t>=3}  \\\
+\begin{cases} 100 \% & \text{t=0}  \\
+80 \% & \text{t=1}  \\
+40 \% & \text{t=2}  \\
+0  \% & \text{t>=3}  \\
 \end{cases}$$
 
 下面观察一下小明从第一天起，连续三天输液后身上所留下的药效（假设每天药量固定为10）。
-- 第一天，小明去医院输完液后，药效为 10（$ \operatorname{rest}(t) = \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。
+- 第一天，小明去医院输完液后，药效为 10（$\operatorname{rest}(t) = \operatorname{m}(t)\cdot \operatorname{eff}(0)$）。
 
 {% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day1.png 第一天累积的药效示意 %}
 
 - 第二天，小明去医院准备输液
-    - 输液前，他身上带着前一天的药效，此时已经衰减为 10$\cdot$ 80%=8，即 $ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $。
-    - 输液后，他身上携带的药效为：8 + 10 = 18（$ \operatorname{rest}(t) = \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）
+    - 输液前，他身上带着前一天的药效，此时已经衰减为 10$\cdot$ 80%=8，即 $\operatorname{m}(t-1)\cdot \operatorname{eff}(1)$。
+    - 输液后，他身上携带的药效为：8 + 10 = 18（$\operatorname{rest}(t) = \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0)$）
 
 {% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day2.png 第二天累积的药效示意 %}
 
 - 第三天，小明去医院准备输液
-    - 输液前，他身上带着前两天的药效，第一天的此时已衰减为 10$\cdot$ 40%=4（$ \operatorname{m}(t-2)\cdot \operatorname{eff}(2) $），第二天的此时衰减为 10$\cdot$ 80%=8（$ \operatorname{m}(t-1)\cdot \operatorname{eff}(1) $）。
-    - 输液后，他身上携带的药效为：4 + 8 + 10 = 22（$ \operatorname{rest}(t) = \operatorname{m}(t-2)\cdot \operatorname{eff}(2) + \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0) $）。
+    - 输液前，他身上带着前两天的药效，第一天的此时已衰减为 10$\cdot$ 40%=4（$\operatorname{m}(t-2)\cdot \operatorname{eff}(2)$），第二天的此时衰减为 10$\cdot$ 80%=8（$\operatorname{m}(t-1)\cdot \operatorname{eff}(1)$）。
+    - 输液后，他身上携带的药效为：4 + 8 + 10 = 22（$\operatorname{rest}(t) = \operatorname{m}(t-2)\cdot \operatorname{eff}(2) + \operatorname{m}(t-1)\cdot \operatorname{eff}(1) + \operatorname{m}(t)\cdot \operatorname{eff}(0)$）。
 
 {% image https://mengqistatic.azureedge.net/staticfiles/convolution/conv-effect-day3.png 第三天累积的药效示意 %}
 
@@ -75,11 +75,11 @@ $$\operatorname{eff}(t) =
 
 ### 1.5 总结
 
-我之前对卷积概念的困惑主要是因为对公式 $\ref{1}$ 的那个 $\tau$ 的意义理解错了，总以为 $\tau$ 是随着坐标轴变化的量。 事实上，在上面举的例子中，**$\tau$ 是作为沿着纵坐标遍历的量：它的作用是对“纵向”上，历次函数 $\operatorname{eff}(t)$ 在当前点($t$)残余量($\operatorname{rest}(t)$)的求和。积分也是对纵向上的积分，而非横向上沿自变量的积分**。
+我之前对卷积概念的困惑主要是因为对公式 (1) 的那个 $\tau$ 的意义理解错了，总以为 $\tau$ 是随着坐标轴变化的量。 事实上，在上面举的例子中，**$\tau$ 是作为沿着纵坐标遍历的量：它的作用是对「纵向」上，历次函数 $\operatorname{eff}(t)$ 在当前点($t$)残余量($\operatorname{rest}(t)$)的求和。积分也是对纵向上的积分，而非横向上沿自变量的积分**。
 
 横坐标变化的量始终为 $t$，而且在卷积中并没有明显体现出 $t$ 的变化。
 
-最后重新回顾一下上面的整个过程：比较三天以来的示意图可以发现，如果我们以“当天”而不是第 $t$ 天为参考的话，就会看到 $\operatorname{eff}(t)$ 随着时间是在向左平移（深蓝的线表示当天，前几天的线都在其左边），然后各天衰落后的药量残余等于 $\operatorname{eff}(t)$ 值乘上初始的药量值，最后将各天的药量残余求个和。整个过程的核心就是**“（反转），移动，乘积，求和”**，这里面“反转”的概念也好理解，就是本来 $\operatorname{eff}(t)$ 是**“朝着右边”**走的函数，$t=0,t=1,\cdots$，$\operatorname{eff}(t)$ 是形容**t 天后的药量的**，然而实际例子中我们是以当天为参考系，我们是在**“朝着左边”**看的，因而要“反转”。我认为这个“反转”是一个很自然的过程，不算是整个卷积的核心。 此外，在计算机领域，至少我接触到的图像处理、机器学习方面用到的卷积，其卷积核（就是例子中不断平移的函数 $\operatorname{eff}(t)$）一般是对称的，所以这个反转的概念也不是那么必要。
+最后重新回顾一下上面的整个过程：比较三天以来的示意图可以发现，如果我们以「当天」而不是第 $t$ 天为参考的话，就会看到 $\operatorname{eff}(t)$ 随着时间是在向左平移（深蓝的线表示当天，前几天的线都在其左边），然后各天衰落后的药量残余等于 $\operatorname{eff}(t)$ 值乘上初始的药量值，最后将各天的药量残余求个和。整个过程的核心就是 **「（反转），移动，乘积，求和」**，这里面「反转」的概念也好理解，就是本来 $\operatorname{eff}(t)$ 是 **「朝着右边」** 走的函数，$t=0,t=1,\cdots$，$\operatorname{eff}(t)$ 是形容 **t 天后的药量的**，然而实际例子中我们是以当天为参考系，我们是在 **「朝着左边」** 看的，因而要「反转」。我认为这个「反转」是一个很自然的过程，不算是整个卷积的核心。 此外，在计算机领域，至少我接触到的图像处理、机器学习方面用到的卷积，其卷积核（就是例子中不断平移的函数 $\operatorname{eff}(t)$）一般是对称的，所以这个反转的概念也不是那么必要。
 
 ## 二、二维卷积
 
@@ -95,14 +95,14 @@ $$ f[x,y] * g[x,y] = \sum_{n_1=-\infty}^\infty \sum_{n_2=-\infty}^\infty f[n_1, 
 
 二维卷积就是一维卷积的扩展，原理差不多。核心还是**（反转），移动，乘积，求和**。这里二维的反转就是将卷积核沿反对角线翻转，比如：
 $$\begin{bmatrix} 
-    a & b & c \\\
-    d & e & f \\\
-    g & h & i \\\
+    a & b & c \\
+    d & e & f \\
+    g & h & i \\
     \end{bmatrix}
 \text{翻转为} \begin{bmatrix}
-    i & h & g \\\
-    f & e & d \\\
-    c & b & a \\\
+    i & h & g \\
+    f & e & d \\
+    c & b & a \\
     \end{bmatrix}$$
 
 之后，卷积核在二维平面上平移，并且卷积核的每个元素与被卷积图像对应位置相乘，再求和。通过卷积核的不断移动，我们就有了一个新的图像，这个图像完全由卷积核在各个位置时的乘积求和的结果组成。
@@ -110,25 +110,25 @@ $$\begin{bmatrix}
 举一个最简单的均值滤波的例子：
 $$ \text{这是一个 3x3 的均值滤波核，也就是卷积核：}
 \begin{bmatrix}
-    1/9 & 1/9 & 1/9 \\\
-    1/9 & 1/9 & 1/9 \\\
-    1/9 & 1/9 & 1/9 \\\
-\end{bmatrix} \\\
+    1/9 & 1/9 & 1/9 \\
+    1/9 & 1/9 & 1/9 \\
+    1/9 & 1/9 & 1/9 \\
+\end{bmatrix} \\
 \text{这是被卷积图像，这里简化为一个二维 5x5 矩阵：}
 \begin{bmatrix}
-    3 & 3 & 3 & 3 & 3 \\\
-    4 & 4 & 4 & 4 & 4 \\\
-    5 & 5 & 5 & 5 & 5 \\\
-    6 & 6 & 6 & 6 & 6 \\\
-    7 & 7 & 7 & 7 & 7 \\\
-\end{bmatrix} \\\
+    3 & 3 & 3 & 3 & 3 \\
+    4 & 4 & 4 & 4 & 4 \\
+    5 & 5 & 5 & 5 & 5 \\
+    6 & 6 & 6 & 6 & 6 \\
+    7 & 7 & 7 & 7 & 7 \\
+\end{bmatrix} \\
 $$
 
 当卷积核运动到图像右下角处（卷积中心和图像对应图像第 4 行第 4 列）时，它和图像卷积的结果如下图所示：
 
 {% image https://mengqistatic.azureedge.net/staticfiles/convolution/2d-convolution.png 二维卷积示例 %}
 
-可以看出，二维卷积在图像中的效果就是：对图像的每个像素的邻域（邻域大小就是核的大小）加权求和得到该像素点的输出值。滤波器核在这里是作为一个“权重表”来使用的。
+可以看出，二维卷积在图像中的效果就是：对图像的每个像素的邻域（邻域大小就是核的大小）加权求和得到该像素点的输出值。滤波器核在这里是作为一个「权重表」来使用的。
 
 参考资料：
 ---
