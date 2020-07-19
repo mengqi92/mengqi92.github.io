@@ -47,7 +47,8 @@ Gabor 特征主要依靠 Gabor 核在频率域上对信号进行加窗，从而�
 
 ### 2.1.1 一维傅里叶变换
 一维傅里叶变化定义如下：
-$$\hat{f}(\xi)=\int_{-\infty}^\infty f(t) e^{-i2\pi t \xi}\, dt,\quad \xi \text{为任意实数} \tag{1}\label{1}$$
+
+$$\hat{f}(\xi)=\int_{-\infty}^\infty f(t) e^{-i2\pi t \xi}\, dt,\quad \xi \text{为任意实数} \tag{1}$$
 
 其中，f 为输入信号，$\xi$ 表示分解得到的各个波的频率，$\hat{f}(f, \xi)$ 为变换后的信号。公式中的 $e^{-i2\pi x \xi}$ 表示一个复数波，关于复数波的解释可以看我{% post_link  complex 之前的一篇文章 %}
 
@@ -55,39 +56,42 @@ $$\hat{f}(\xi)=\int_{-\infty}^\infty f(t) e^{-i2\pi t \xi}\, dt,\quad \xi \text{
     
 ### 2.1.2 一维 Gabor 核
 一维Gabor核由一个高斯核与一个复数波的乘积定义：
-$$ Gabor(t) = ke^{i\theta} \omega(at) s(t) \tag{2}\label{2}$$
+$$ Gabor(t) = ke^{i\theta} \omega(at) s(t) \tag{2}$$
 
 其中，
+
 $$\begin{cases}
-\omega(t)=e^{-\pi t^2} \\\
-s(t) = e^{i(2\pi f_0 t)} \\\
+\omega(t)=e^{-\pi t^2} \\
+s(t) = e^{i(2\pi f_0 t)} \\
 \end{cases}$$
 这里，$f_0$ 是复数波$s(t)$的频率。
 
-将复数波$s(t) = e^{i(2\pi f_0 t)}$代入$\ref{2}$式中，得到：
-$$\begin{align}
-Gabor(t) & = k \omega(at) e^{i(2\pi f_0 t + \theta)} \\\
+将复数波$s(t) = e^{i(2\pi f_0 t)}$代入 (2) 式中，得到：
+
+$$\begin{aligned}
+Gabor(t) & = k \omega(at) e^{i(2\pi f_0 t + \theta)} \\
      & = k \omega(at) \left[ \cos(2\pi f_0 t+\theta) + i\sin(2\pi f_0 t+\theta) \right]
-\end{align}$$
+\end{aligned}$$
 
 上面最后一步得到了 Gabor 核的复数表示，我们就可以按实部和虚部将其拆分为实核和虚核，在很多应用中，我们只需要应用 Gabor核的实数部分即可：
+
 $$\begin{cases}
-Gabor_{real}(t) = \omega(at)\cos(2\pi f_0 t + \theta) \\\
+Gabor_{real}(t) = \omega(at)\cos(2\pi f_0 t + \theta) \\
 Gabor_{imag}(t) = \omega(at)\sin(2\pi f_0 t + \theta)
 \end{cases}$$
 
 ### 2.1.3 Gabor 核的傅里叶变换
-将 Gabor 核（式$\ref{2}$）套入一维傅里叶变换（式$\ref{1}$）中，得到 Gabor 核的傅里叶变换：
-$$\begin{align}
+将 Gabor 核（式(2)）套入一维傅里叶变换（式(1)）中，得到 Gabor 核的傅里叶变换：
+$$\begin{aligned}
 \hat{Gabor}(f)
-& = ke^{i\theta} \int_{-\infty}^{\infty} e^{-i 2\pi f t} \omega(at) s(t) \,dt \\\
-& = ke^{i\theta} \int_{-\infty}^{\infty} e^{-i2\pi (f-f_0)t} \omega(at) \,dt \\\
-& = (k/a) \cdot e^{i\theta} \cdot \hat{\omega}\left( (f-f_0)/a \right) \\\
-\end{align} \tag{3}\label{3}$$
+& = ke^{i\theta} \int_{-\infty}^{\infty} e^{-i 2\pi f t} \omega(at) s(t) \,dt \\
+& = ke^{i\theta} \int_{-\infty}^{\infty} e^{-i2\pi (f-f_0)t} \omega(at) \,dt \\
+& = (k/a) \cdot e^{i\theta} \cdot \hat{\omega}\left( (f-f_0)/a \right) \\
+\end{aligned} \tag{3}$$
 
 上式中出现了 $\hat{\omega}(\frac{f-f_0}{a})$ 的形式，这里需要补充高斯核一个很有趣的性质：$\hat{\omega}(f) = \omega(f) = e^{-\pi f^2}$，这个性质这里就不证明了，有兴趣的同学可以自己推导一下。根据这个性质，上式中的 $\hat{\omega}(\frac{f-f_0}{a})$ 也可以写作 $\omega(\frac{f-f_0}{a})$，二者可以自由转换。
 
-此外，$\ref{3}$式中的末尾，我们知道了Gabor核傅里叶变换后是这样一个形式：$\frac{k}{a} e^{i\theta} \hat{\omega}(\frac{f-f_0}{a})$，这个形式可以看做是一个复数波，它的幅度
+此外，(3)式中的末尾，我们知道了Gabor核傅里叶变换后是这样一个形式：$\frac{k}{a} e^{i\theta} \hat{\omega}(\frac{f-f_0}{a})$，这个形式可以看做是一个复数波，它的幅度
 $$A = \left\lVert \hat{Gabor}(f) \right\rVert = \frac{k}{a} \hat{\omega}(\frac{f-f_0}{a}) = \frac{k}{a} \omega(\frac{f-f_0}{a})  $$
 
 也就是说，Gabor核相当于在频率域应用了一个高斯核窗口。假设我们这时有了一个信号的频率域：$f_{in}(f)$，那么我们直接用频率域的Gabor核 $\hat{Gabor}$ 与其相乘，就实现了对 $f_0$ 频率邻域范围内的滤波效果：输入信号频率离这个 Gabor 核的 $f_0$ 越远，则乘上Gabor核之后的结果就越小，尤其是当 $f_{in}$ 在 $f_0$ 的 $3\sigma$ 区间外时，这个频率几乎可以忽略不计。于是，最终能保留下来的信号就都是 $f_0$ 频率附近的信号了。
@@ -112,7 +116,7 @@ $$Gabor * f_{in} = \hat{Gabor} \cdot \hat{f_{in}} $$
 $$ \hat{f}(\xi_x, \xi_y) = \iint f(x,y) e^{-i2\pi (\xi_x x + \xi_y y)}\, dx dy$$
 
 为了简洁，改用 $(u_0, v_0)$ 来代替 $(\xi_x, \xi_y)$，则上式可写为：
-$$ \hat{f}(u_0, v_0) = \iint f(x, y) \exp {\left( -i2\pi {\left( u_0 x + v_0 y\right) }\right) } \, dxdy \tag{4}\label{4}$$
+$$ \hat{f}(u_0, v_0) = \iint f(x, y) \exp {\left( -i2\pi {\left( u_0 x + v_0 y\right) }\right) } \, dxdy \tag{4}$$
 提醒一下，这里 $(x, y)$ 表示空域坐标，$(u_0, v_0)$ 表示频域坐标。
 
 ### 2.2.2 二维复数波
@@ -124,12 +128,13 @@ $$ s(x,y) = \exp \left(i \left(2\pi (u_0 x + v_0 y) \right) \right) $$
 
 ### 2.2.3 二维高斯函数
 二维高斯函数定义如下：
-$$ \omega(x, y, \sigma_x, \sigma_y) = K \exp\left(-\pi \left( (x-x_0)^2 / \sigma_x^2 + (y-y_0)^2 / \sigma_y^2 \right) \right) \tag{5}\label{5}$$
+$$ \omega(x, y, \sigma_x, \sigma_y) = K \exp\left(-\pi \left( (x-x_0)^2 / \sigma_x^2 + (y-y_0)^2 / \sigma_y^2 \right) \right) \tag{5}$$
 其中，$\sigma_x, \sigma_y$ 分别为两个方向上的尺度参数（scaling parameters），用来控制高斯函数在两个方向上的“展布”形状。$(x_0, y_0)$ 为高斯函数的中心点。$K$ 为常数。
 
 考虑全面的话，高斯函数还要有（顺时针）旋转，即：
+
 $$\begin{cases}
-(x-x_0)_r = (x-x_0)\cos \theta + (y-y_0)\sin \theta \\\
+(x-x_0)_r = (x-x_0)\cos \theta + (y-y_0)\sin \theta \\
 (y-y_0)_r = -(x-x_0)\sin \theta + (y-y_0)\cos \theta
 \end{cases}$$
 
@@ -144,11 +149,12 @@ $$ \omega_r(x, y, \theta, \sigma_x, \sigma_y) = K \exp\left(-\pi \left( (x-x_0)_
 
 ### 2.2.4 Gabor 滤波器核
 类似一维 Gabor 核，我们将二维高斯函数与二维复数波相乘，就得到了二维的Gabor核：
-$$\begin{align}
+
+$$\begin{aligned}
 Gabor(x_0, y_0, \theta, \sigma_x, \sigma_y, u_0, v_0)  
-& = s(x,y) \omega_r(x,y) \\\
-& = K \exp\left(-\pi \left( (x-x_0)_r^2/\sigma_x^2 + (y-y_0)_r^2/\sigma_y^2 \right) \right) \exp\left(i 2\pi (u_0 x + v_0 y) \right) \\\
-\end{align}$$
+& = s(x,y) \omega_r(x,y) \\
+& = K \exp\left(-\pi \left( (x-x_0)_r^2/\sigma_x^2 + (y-y_0)_r^2/\sigma_y^2 \right) \right) \exp\left(i 2\pi (u_0 x + v_0 y) \right) \\
+\end{aligned}$$
 
 它的各个参数含义如下：
 - $(x_0, y_0)$: 高斯核的中心点
