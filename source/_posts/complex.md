@@ -24,7 +24,7 @@ mathjax: true
 
 ## 一、复数的直角坐标表示
 
-首先，复数基本单位是 $i=\sqrt{-1}$，有了这个单位，复数空间中的每个数都可以表示为 $a+bi$ 的形式。其中，a 被称为“实部（real part）”，b 被称为“虚部（imaginary part）”。
+首先，复数基本单位是 $i=\sqrt{-1}$，有了这个单位，复数空间中的每个数都可以表示为 $a+bi$ 的形式。其中，a 被称为「实部（real part）」，b 被称为「虚部（imaginary part）」。
 
 复数可以在复平面（complex plane）上表示，复平面横纵坐标分别为实部和虚部，下图就是复数 $2+3i$ 在复平面上的表示。
 
@@ -40,7 +40,7 @@ mathjax: true
 
 {% image https://mengqistatic.azureedge.net/staticfiles/complex/complex-polar-plane.png 复数的极坐标表示 %}
 
-这里，复数极坐标表示的长度 $r$ 也被称为“强度（magnitude）”，角度 $\theta$ 也被称为“相位（phase）”。
+这里，复数极坐标表示的长度 $r$ 也被称为「强度（magnitude）」，角度 $\theta$ 也被称为「相位（phase）」。
 
 ### 2.1 由复数极坐标得到直角坐标
 

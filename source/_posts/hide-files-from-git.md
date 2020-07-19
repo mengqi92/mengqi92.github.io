@@ -76,7 +76,7 @@ git ls-files -v | Select-String -Pattern /path/to/file
     - **局限**：如果项目已经存在远程仓库，即使被加入 .gitignore，仍然可以进行修改并提交。本地的修改会显示在 `git status` 结果中。 
 - .git/info/exclude
     - **说明**：显式地阻止提交文件。
-    - **优势**：exclude 文件本身不会提交至远程仓库，因此适合放一些个人定制的 “gitignore” 项目。
+    - **优势**：exclude 文件本身不会提交至远程仓库，因此适合放一些个人定制的 「gitignore」 项目。
     - **局限**：和 .gitignore 存在同样地局限。文件若已存在远程仓库，则本地修改仍可以提交至远程仓库。本地的修改会显示在 `git status` 结果中。
 - assume-unchanged
     - **说明**：声明本地远程都**不会修改**这个文件。
