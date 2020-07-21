@@ -21,9 +21,9 @@ $$\text{Rate of Return} = \frac{当前净值 - 初始净值}{初始净值} \time
 
 回报率需要注意的几点：
 
-1. **回报率对时间因素的考虑比较粗糙。**它只是基于投资起止两个时间点，而不是按照多个时间片计算的。
+1. **回报率对时间因素的考虑比较粗糙。** 它只是基于投资起止两个时间点，而不是按照多个时间片计算的。
 [复合年化增长率](https://www.investopedia.com/terms/c/cagr.asp)（就是年化收益率，Compound Annual Growth Rate）则是将时间因素考虑在内。
-2. **回报率对[货币因素](https://www.investopedia.com/terms/t/timevalueofmoney.asp)的考虑也比较粗糙。**它没有考虑通货膨胀。
+2. **回报率对[货币因素](https://www.investopedia.com/terms/t/timevalueofmoney.asp)的考虑也比较粗糙。** 它没有考虑通货膨胀。
 没有考虑通胀的回报率被称作「名义回报率」（Nominal Rate of Return），考虑了通胀的回报率被称作「真实回报率」（Real Rate of Return）。
 
 可以看到，年化收益率计入了时间因素，但没计入货币因素；真实回报率计入了货币因素但没计入时间因素。那么我们将这两个因素同时考虑在内呢？这就是引入了折现率（[discount rate](https://www.investopedia.com/terms/d/discountrate.asp)）的[内部回报率](https://www.investopedia.com/terms/i/irr.asp)（Internal Rate of Return, IRR）。
