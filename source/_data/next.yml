@@ -123,6 +123,7 @@ menu:
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   commonweal: /404/ || fa fa-heartbeat
+  quotes: /analects/ || fa fa-scroll
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -202,6 +203,7 @@ links_settings:
 
 links:
   #Title: http://yoursite.com
+  中国哲学书电子化计划: https://ctext.org/zhs
   切问录: http://www.fuzihao.org
   Wenqi's Blog: https://buwenqi.github.io
 
