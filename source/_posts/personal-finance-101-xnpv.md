@@ -3,7 +3,7 @@ title: 个人财务 101 - NPV 的实现与改进
 tags:
   - 个人财务
   - 投资
-  - 笔记
+  - Excel
 category: 个人财务
 mathjax: true
 date: 2021-02-23 22:27:19
@@ -16,6 +16,10 @@ date: 2021-02-23 22:27:19
 $$NPV=\sum^n_{t=1}\frac{R_t}{(1+i)^t}$$
 
 其中，t 为期数，i 为折现率。
+
+NPV 是一个很方便的值，利用它，我们可以排除通货膨胀率（或者备选投资回报率）的干扰，将跨越时间的投资现金流投影到此时此刻，是真正收益还是亏损，看得清清楚楚。此外，NPV 的计算也能帮助我们理解内部回报率（IRR）的计算。这一篇，我们就先来尝试一下通过代码计算 NPV。
+
+<!-- more -->
 
 ## 代码实现
 根据公式，我们可以用这样的 Python 代码来计算 NPV：
@@ -31,17 +35,17 @@ def npv(cashflows: List[float], rate: float) -> float:
 
 用这个 Python 函数计算就是：
 ```python
-> cashflows = [25_000 for _ in range(60)]
-# 预期年化 8% 换算成每期（月）收益率为 0.64%
-> rate = 0.0064  
-> npv(cashflows, rate)
+>>> cashflows = [25_000 for _ in range(60)]
+>>> # 预期年化 8% 换算成每期（月）收益率为 0.64%
+>>> rate = 0.0064  
+>>> npv(cashflows, rate)
 1242322.8221563739
 ```
 这段代码跑出来的结果是未来 60 期现金流的折现值，再加上期初的投入 -￥1,000,000 正是 ￥242,322.82，和我们上一期计算的一致。
 
 我们也可以在 Excel 里进行验算：将每期收益 ￥25,000 填入表格，这里为了方便截图，我填入了五列数据，每列12行，代表五年中每个月的收益。在最后一个单元格后通过公式 `NPV(0.0064, $A1:$A12, $B1:$B12, $C1:$C12, $D1:$D12, $E1:$E12)` 计算 NPV 值。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-NPV.png %}
+{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-NPV.png Excel NPV 计算 %}
 
 
 可以发现，Excel 给出的值是 ¥1,242,322.82，减去投资成本 ￥1,000,000 正好就是我们算出来的 ￥242,322.82！ 
@@ -84,7 +88,7 @@ def npv(cashflows: List[float], rate: float) -> float:
 当然我们大可不必自己手算期数，直接利用 Python 中的 `datetime` 即可：
 
 ```python
-> (datetime.date(2021, 2, 1) - datetime.date(2021, 1, 1)).days
+>>> (datetime.date(2021, 2, 1) - datetime.date(2021, 1, 1)).days
 31
 ```
 
@@ -129,10 +133,10 @@ def xnpv(dates: List[datetime.datetime], cashflows: List[float], rate: float) ->
 
 我们运行一下这个函数，计算一下小明这一通操作的 NPV（备选投资的回报率取 8%）：
 ```python
-> dates = [datetime.date(2021, 1, 1), datetime.date(2021, 2, 1), datetime.date(2021, 2, 26)]
-> cashflows = [-1000, 550, 600]
-> rate = 0.08  # 这里取年化收益率 8%
-> xnpv(dates, cashflows, rate)
+>>> dates = [datetime.date(2021, 1, 1), datetime.date(2021, 2, 1), datetime.date(2021, 2, 26)]
+>>> cashflows = [-1000, 550, 600]
+>>> rate = 0.08  # 这里取年化收益率 8%
+>>> xnpv(dates, cashflows, rate)
 139.37372400893355
 ```
 
@@ -142,6 +146,11 @@ def xnpv(dates: List[datetime.datetime], cashflows: List[float], rate: float) ->
 
 另外，聪明的你可能已经发现了，改写后的 `npv` 函数，我采用了 `xnpv` 作为名字，这个命名正是来自于 Excel 的同名公式 [XNPV](https://support.microsoft.com/en-us/office/xnpv-function-1b42bbf6-370f-4532-a0eb-d67c16b664b7)。那么接下来我们再到 Excel 里用 `XNPV` 进行一下检验：
 
-{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-XNPV.png %}
+{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-XNPV.png Excel XNPV 计算  %}
 
 成功！Excel 给出了和我们的 xnpv 实现相同的结果。撒花~
+
+# 版权声明
+<span>题图来自 <span>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Winkler</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+本文所有文字和图片除声明外，版权均属本人所有，如需转载请注明来源。
