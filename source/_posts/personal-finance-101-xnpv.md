@@ -6,7 +6,9 @@ tags:
   - 笔记
 category: 个人财务
 mathjax: true
+date: 2021-02-23 22:27:19
 ---
+
 {% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/banner.jpg %}
 
 在{% post_link personal-finance-101-rate-of-return 上一篇文章 %}，我们介绍了净现值 NPV，用来表示未来现金流在当前时刻的折现值。它的公式是：
