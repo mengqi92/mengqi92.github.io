@@ -17,7 +17,7 @@ $$NPV=\sum^n_{t=1}\frac{R_t}{(1+i)^t}$$
 
 其中，t 为期数，i 为折现率。
 
-NPV 是一个很方便的值，利用它，我们可以排除通货膨胀率（或者备选投资回报率）的干扰，将跨越时间的投资现金流投影到此时此刻，是真正收益还是亏损，看得清清楚楚。此外，NPV 的计算也能帮助我们理解内部回报率（IRR）的计算。这一篇，我们就先来尝试一下通过代码计算 NPV。
+NPV 是一个很方便的值，利用它，我们可以排除通货膨胀率（或者备选投资回报率）的干扰，将跨越时间的投资现金流投影到此时此刻，是真正收益还是亏损，看得清清楚楚。此外，NPV 的计算也能帮助我们理解内部回报率（IRR）的计算。这一篇，我们就尝试一下通过代码计算 NPV。
 
 <!-- more -->
 
@@ -31,24 +31,27 @@ def npv(cashflows: List[float], rate: float) -> float:
     return sum([(cashflow / (1+rate) ** t) for t, cashflow in zip(ts, cashflows)])
 ```
 
-比如我们上一篇介绍的那个购买设备的例子：买入一台价值 ￥1,000,000 的设备，这台设备能用 5 年，这 5 年中每个月能创造 ￥25,000 的收入。与此同时，这 ￥1,000,000 也可以选择投入到一个预期年化 8% 的股票市场里。假如作为公司经理，你改如何选择？
+比如我们上一篇介绍的那个购买设备的例子：
+
+> 买入一台价值 ￥1,000,000 的设备，这台设备能用 5 年，这 5 年中每个月能创造 ￥25,000 的收入。与此同时，这 ￥1,000,000 也可以选择投入到一个预期年化 8% 的股票市场里。假如作为公司经理，你改如何选择？
+
 
 用这个 Python 函数计算就是：
 ```python
 >>> cashflows = [25_000 for _ in range(60)]
 >>> # 预期年化 8% 换算成每期（月）收益率为 0.64%
->>> rate = 0.0064  
+>>> rate = 0.0064
 >>> npv(cashflows, rate)
 1242322.8221563739
 ```
 这段代码跑出来的结果是未来 60 期现金流的折现值，再加上期初的投入 -￥1,000,000 正是 ￥242,322.82，和我们上一期计算的一致。
 
-我们也可以在 Excel 里进行验算：将每期收益 ￥25,000 填入表格，这里为了方便截图，我填入了五列数据，每列12行，代表五年中每个月的收益。在最后一个单元格后通过公式 `NPV(0.0064, $A1:$A12, $B1:$B12, $C1:$C12, $D1:$D12, $E1:$E12)` 计算 NPV 值。
+我们也可以在 Excel 里进行验算：将每期收益 ￥25,000 填入表格，这里为了方便截图，我填入了五列数据，每列 12 行，代表五年中每个月的收益。在最后一个单元格后通过公式 `NPV(0.0064, $A1:$A12, $B1:$B12, $C1:$C12, $D1:$D12, $E1:$E12)` 计算 NPV 值。
 
 {% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-NPV.png Excel NPV 计算 %}
 
 
-可以发现，Excel 给出的值是 ¥1,242,322.82，减去投资成本 ￥1,000,000 正好就是我们算出来的 ￥242,322.82！ 
+可以发现，Excel 给出的值是 ¥1,242,322.82，减去投资成本 ￥1,000,000 正好就是我们算出来的 ￥242,322.82！
 
 > 这里需要我们手动减去成本是因为 Excel 计算 NPV 时填入的参数只能是各个定期收益（即每月收益），只是实现细节问题，不影响计算的准确性。
 
@@ -62,8 +65,8 @@ def npv(cashflows: List[float], rate: float) -> float:
 其实，对于不定长时间段的现金流，我们假如取更细粒度的时间段作为每期时长（比如每期一天或者一小时），那么这个现金流就又变成了定长时间段。因此这种情况下 NPV 的计算同样可以直接套用之前的公式，只不过我们需要预先对时间段做一些处理。
 
 举个例子，比如小明
-* 在 2021 年元旦以 ￥100 价格买入了 10 股股票 A
-* 在春节前夕（2月1日）以 ￥110 的单价卖出其中 5 股（共得现金 ￥600，不考虑手续费佣金）回家过年
+* 在 2021 年元旦以 ￥100 价格买入了 10 股股票 A；
+* 在春节前夕（2月1日）以 ￥110 的单价卖出其中 5 股（共得现金 ￥600，不考虑手续费佣金）回家过年；
 * 之后又在元宵节（2月26日）以 ￥120 的价格清仓（共得现金 ￥600，不考虑手续费佣金）。
 
 那么小明的这段投资现金流可以表示为：
@@ -75,9 +78,9 @@ def npv(cashflows: List[float], rate: float) -> float:
 |2021-02-26|   600|
 
 我们以每一天作为一期，那么
-* 元旦那天就可以作为第 0 期 
-* 2月1日就是第 31 期
-* 2月26日就是第 31 + (26 - 1) = 56 期
+* 元旦那天是第 0 期；
+* 2月1日就是第 31 期；
+* 2月26日就是第 31 + (26 - 1) = 56 期。
 
 |    时间   |期数| 现金流|
 |----------|----|------|
@@ -112,7 +115,7 @@ def xnpv(dates: List[datetime.datetime], cashflows: List[float], rate: float) ->
     return sum([(cashflow / (1+rate) ** t) for t, cashflow in zip(ts, cashflows)])
 ```
 
-为了方便计算，我们可以规定传入的 rate 为年化收益率，再在函数内部将其转换为每期（即每天）的收益率：
+为了方便计算，我们可以规定传入的 `rate` 为年化收益率，再在函数内部将其转换为每期（即每天）的收益率：
 
 $$\text{每期收益率} = (1+\text{年化收益率})^{\frac{1}{365}} - 1$$
 
@@ -148,7 +151,7 @@ def xnpv(dates: List[datetime.datetime], cashflows: List[float], rate: float) ->
 
 {% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-XNPV.png Excel XNPV 计算  %}
 
-成功！Excel 给出了和我们的 xnpv 实现相同的结果。撒花~
+成功！Excel 给出了和我们的 `xnpv` 实现相同的结果。撒花~
 
 # 版权声明
 <span>题图来自 <span>Photo by <a href="https://unsplash.com/@markuswinkler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Winkler</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
