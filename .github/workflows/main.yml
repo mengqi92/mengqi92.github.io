@@ -1,12 +1,54 @@
-name: CI
+name: Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - blog-reloaded
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    name: A job to deploy blog.
     steps:
-    - name: GitHub Action for hexo
-      uses: heowc/action-hexo@1.0.2
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        ref: 'blog-reloaded'
+        submodules: true # Checkout private submodules(themes or something else).
+
+    - name: Use Node.js 10.9
+      uses: actions/setup-node@v2
+      with:
+        node-version: '10.9'
+
+    # Install third party dependencies
+    - name: Install Dependencies
+      run:
+        - sudo apt install -y graphviz
+        - wget https://github.com/jgm/pandoc/releases/download/2.8.0.1/pandoc-2.8.0.1-1-amd64.deb
+        - sudo dpkg -i pandoc-2.8.0.1-1-amd64.deb
+    
+    # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.)
+    - name: Cache node modules
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+    
+    # Deploy hexo blog website.
+    - name: Deploy
+      id: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+    # Use the output from the `deploy` step(use for test action)
+    - name: Get the output
+      run: |
+        echo "${{ steps.deploy.outputs.notify }}"
