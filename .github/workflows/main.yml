@@ -23,10 +23,10 @@ jobs:
 
     # Install third party dependencies
     - name: Install Dependencies
-      run:
-        - sudo apt install -y graphviz
-        - wget https://github.com/jgm/pandoc/releases/download/2.8.0.1/pandoc-2.8.0.1-1-amd64.deb
-        - sudo dpkg -i pandoc-2.8.0.1-1-amd64.deb
+      run: |
+        sudo apt install -y graphviz
+        wget https://github.com/jgm/pandoc/releases/download/2.8.0.1/pandoc-2.8.0.1-1-amd64.deb
+        sudo dpkg -i pandoc-2.8.0.1-1-amd64.deb
     
     # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.)
     - name: Cache node modules
