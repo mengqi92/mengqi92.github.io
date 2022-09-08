@@ -40,6 +40,9 @@ jobs:
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
+
+    - name: Build
+      run: npm run build
     
     # Deploy hexo blog website.
     - name: Deploy
