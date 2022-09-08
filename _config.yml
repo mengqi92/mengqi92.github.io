@@ -92,7 +92,7 @@ search:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  theme: next
+  # theme: next-reloaded
   repository: git@github.com:mengqi92/mengqi92.github.io.git
   branch: master
 
