@@ -53,7 +53,7 @@ git update-index --no-skip-worktree /path/to/file
 ```
 
 ### 查看被忽略的文件项目
-如果时间久了，忘了哪些文件被忽略了，那么可以通过 `git ls-files -v` 来查看，其结果中第一列打 `H` 标记的项目就是被忽略（Hide）的项目。我们可以通过 `grep` 或是 PowerShell 中的 `Select-String` 来将这些项目过滤出来。
+如果时间久了，忘了哪些文件被忽略了，那么可以通过 `git ls-files -v` 来查看，其结果中第一列打 `S` 标记的项目就是被忽略（Skip-worktree）的项目（关于符号的更多说明可以参考[官方文档](https://git-scm.com/docs/git-ls-files)）。我们可以通过 `grep` 或是 PowerShell 中的 `Select-String` 来将这些项目过滤出来。
 ```sh
 git ls-files -v | grep -E -i /path/to/file
 git ls-files -v | Select-String -Pattern /path/to/file
