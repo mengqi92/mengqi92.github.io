@@ -9,7 +9,7 @@ mathjax: true
 date: 2021-02-23 22:27:19
 ---
 
-{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/banner.jpg %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/personal-finance-101-xnpv/banner.jpg %}
 
 在{% post_link personal-finance-101-rate-of-return 上一篇文章 %}，我们介绍了净现值 NPV，用来表示未来现金流在当前时刻的折现值。它的公式是：
 
@@ -48,7 +48,7 @@ def npv(cashflows: List[float], rate: float) -> float:
 
 我们也可以在 Excel 里进行验算：将每期收益 ￥25,000 填入表格，这里为了方便截图，我填入了五列数据，每列 12 行，代表五年中每个月的收益。在最后一个单元格后通过公式 `NPV(0.0064, $A1:$A12, $B1:$B12, $C1:$C12, $D1:$D12, $E1:$E12)` 计算 NPV 值。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-NPV.png Excel NPV 计算 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/personal-finance-101-xnpv/Excel-NPV.png Excel NPV 计算 %}
 
 
 可以发现，Excel 给出的值是 ¥1,242,322.82，减去投资成本 ￥1,000,000 正好就是我们算出来的 ￥242,322.82！
@@ -149,7 +149,7 @@ def xnpv(dates: List[datetime.datetime], cashflows: List[float], rate: float) ->
 
 另外，聪明的你可能已经发现了，改写后的 `npv` 函数，我采用了 `xnpv` 作为名字，这个命名正是来自于 Excel 的同名公式 [XNPV](https://support.microsoft.com/en-us/office/xnpv-function-1b42bbf6-370f-4532-a0eb-d67c16b664b7)。那么接下来我们再到 Excel 里用 `XNPV` 进行一下检验：
 
-{% image https://mengqistatic.azureedge.net/staticfiles/personal-finance-101-xnpv/Excel-XNPV.png Excel XNPV 计算  %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/personal-finance-101-xnpv/Excel-XNPV.png Excel XNPV 计算  %}
 
 成功！Excel 给出了和我们的 `xnpv` 实现相同的结果。撒花~
 

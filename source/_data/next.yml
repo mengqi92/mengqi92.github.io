@@ -40,12 +40,12 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 favicon:
-  small: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-16x16.png
-  medium: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-32x32.png
-  apple_touch_icon: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/apple-icon.png
-  safari_pinned_tab: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/favicon-16x16.png
-  android_manifest: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/manifest.json
-  ms_browserconfig: https://mengqistatic.azureedge.net/staticfiles/avatar/favicon/browserconfig.xml
+  small: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/favicon-16x16.png
+  medium: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/favicon-32x32.png
+  apple_touch_icon: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/apple-icon.png
+  safari_pinned_tab: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/favicon-16x16.png
+  android_manifest: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/manifest.json
+  ms_browserconfig: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/favicon/browserconfig.xml
 
 # Show multilingual switcher in footer.
 language_switcher: false
@@ -163,7 +163,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: https://mengqistatic.azureedge.net/staticfiles/avatar/astronaut.png
+  url: https://d1aeqfcn0xwy4s.cloudfront.net/avatar/astronaut.png
   # If true, the avatar will be dispalyed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.

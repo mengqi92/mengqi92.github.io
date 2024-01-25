@@ -9,7 +9,7 @@ tags:
 category: 线性代数
 mathjax: true
 ---
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-5/banner.jpeg %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-5/banner.jpeg %}
 
 {% post_link linear-algebra-2 上一章 %}用了一个经济学的例子，介绍了现实中的线性方程组，那个例子里，我们借助矩阵「封装」的作用，将解三个方程组的问题转换为解：
 $$\mathbf{A} \mathbf{x} = \mathbf{0}$$

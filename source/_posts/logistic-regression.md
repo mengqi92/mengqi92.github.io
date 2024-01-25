@@ -30,7 +30,7 @@ Logistic Function：
 $$g(z)=\frac{1}{1+e^{-z}}$$
 
 它的函数图像：
-{% image https://mengqistatic.azureedge.net/staticfiles/logistic-regression/Logistic-curve.png 逻辑回归函数图像 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/logistic-regression/Logistic-curve.png 逻辑回归函数图像 %}
 
 从图像中可以看出，逻辑回归函数将输入的$(-\infty, \infty)$空间映射到了$(0,1)$空间，即将值域限制在了$(0,1)$之内。 限制后的假设函数为：
 
@@ -68,7 +68,7 @@ $$Cost(h_\theta (x), y) = \frac{1}{2} (h_\theta (x)-y)^2 = \frac{1}{1+e^{-\theta
 
 然而，这样的损失函数代入$J(\theta )=\frac{1}{m} \sum\limits_{i=1}^m Cost(h_\theta x, y)$ 中，得到的目标函数 $J(\theta )$ 并非凸函数，其函数图像类似下图的左子图。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/logistic-regression/convex-function.png 非凸函数和凸函数 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/logistic-regression/convex-function.png 非凸函数和凸函数 %}
 
 只有目标函数是凸函数时，我们才能通过各种优化方法（如梯度下降、牛顿法等）找到极值点，进而得到最优值对应的参数。 因此，Logistic 回归需要调整其损失函数形式，以使得目标函数为凸函数。
 
@@ -83,7 +83,7 @@ $$Cost(h_\theta (x), y)=
 
 可见，当分错类别时，这个损失函数会得到一个比较大的损失，进而来惩罚分类算法。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/logistic-regression/cost-function.png 损失函数 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/logistic-regression/cost-function.png 损失函数 %}
 
 ##### 简化损失函数
 

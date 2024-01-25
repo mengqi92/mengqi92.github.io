@@ -9,7 +9,7 @@ tags:
   - 数学
 mathjax: true
 ---
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-6/banner.jpeg %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-6/banner.jpeg %}
 
 {% post_link linear-algebra-5 上一章 %}最后，我们引入了`马尔可夫链`。`马尔可夫链`简单来说就是一个个状态组成的链，其中每个状态只于前一个状态有关。然而，除了这个简单定义之外，`马尔可夫链`还有一个有趣的性质：`平稳分布`。要解释`平稳分布`是什么，我们先从一个例子讲起。
 
@@ -65,7 +65,7 @@ $$
 
 比如：已知向量 $\mathbf{u}=\begin{bmatrix}-1\\ 1\end{bmatrix}, \mathbf{v}=\begin{bmatrix}2\\ 1\end{bmatrix}$，矩阵 $\mathbf{A} = \begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}$ 表示的线性变换分别应用于（即矩阵左乘）向量 $\mathbf{u}$ 和 $\mathbf{v}$ 后的结果如下图所示：
 
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-6/eigenvector.png 线性变换应用于不同的向量 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-6/eigenvector.png 线性变换应用于不同的向量 %}
 
 事实上，$\mathbf{A}\mathbf{v} = 2\mathbf{v}$，从图像上看就是拉伸了向量 $\mathbf{v}$。
 
@@ -78,11 +78,11 @@ $$
 
 不同`特征值`对应的`特征向量`线性无关，而同一个`特征值`对应的不同`特征向量`能张成整个`特征空间`。如果一个`特征值`只对应一个`特征向量`，那么这个`特征值`对应的`特征空间`就是一条一维直线；而如果一个`特征值`对应两个`特征向量`，那么这个`特征值`对应的`特征空间`将是一个二维平面。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-6/eigenspace.png 两个一维特征向量张成两个一维特征空间 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-6/eigenspace.png 两个一维特征向量张成两个一维特征空间 %}
 
 由于 $\mathbf{A}\mathbf{x}=\lambda\mathbf{x}$，因而线性变换 $\mathbf{A}$ 对于`特征空间`只起到「扩张」的作用（扩张后还是同样的`特征空间`）。
 
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-6/span.png 特征空间的扩张 %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-6/span.png 特征空间的扩张 %}
 
 # 三、特征向量与马尔可夫链
 

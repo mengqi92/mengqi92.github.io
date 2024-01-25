@@ -10,7 +10,7 @@ categories: 线性代数
 mathjax: true
 ---
 
-{% image https://mengqistatic.azureedge.net/staticfiles/linear-algebra-4/banner.jpeg %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-4/banner.jpeg %}
 
 由于这段时间科研任务较重，加上 hexo 升级后总出现一些奇怪的问题，所以有一段时间没更新这个系列了，今天忙里偷闲补上一篇。
 

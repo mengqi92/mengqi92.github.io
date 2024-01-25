@@ -17,7 +17,7 @@ date: 2016-06-23 15:32:58
 
 <!-- more -->
 # 愿望思维
-{% image https://mengqistatic.azureedge.net/staticfiles/wishful-thinking/puzzle.jpg %}
+{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/wishful-thinking/puzzle.jpg %}
 > 要把大象装冰箱，总共分几步？
 
 某年春晚小品里，宋丹丹提出了这个问题，最一开始听得时候我像小品里的赵本山一样也是摸不着头脑，这就好像我们拿到一个任务需求，对方提出了一个非常宏大的愿景，然而作为具体实现者的我们，却发现不知道从哪里开始。生活中的这种情况十分常见，尤其是当你还处在学习阶段，还不能达到熟练应用技能的地步，面对一个看起来十分复杂的问题，往往无从下手。这个时候我们不妨放轻松，先不去考虑具体实现细节，而是站在一定高度，把任务分解。
