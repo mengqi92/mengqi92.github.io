@@ -10,7 +10,7 @@ mathjax: true
 date: 2016-05-03 22:55:27
 ---
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/linear-algebra-1/banner.jpeg %}
+{% image https://blog.mengqi.life/images/linear-algebra-1/banner.jpeg %}
 
 # 前言
 线性代数在各大理工科，乃至经济金融领域的使用之广泛，毋庸置疑。 一直以来，我虽也知道线性代数的重要，但从内心上其实一直是犯怵的（尤其是学习论文、算法中，基本只要看到对方把算法向量化之后就蒙圈了），当年在学校学习过程中很多也是靠着死记硬背过来的，对它的直观意义一直都没能有很好的理解。

@@ -9,7 +9,7 @@ mathjax: true
 date: 2020-07-19 20:30:36
 ---
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/personal-finance-101-rate-of-return/Banner.jpg %}
+{% image https://blog.mengqi.life/images/personal-finance-101-rate-of-return/Banner.jpg %}
 
 作为经济社会的一员，我们必不可少地需要掌握投资理财的知识和技能。然而遗憾地发现，个人财务方面免费靠谱的中文资料比较匮乏，对于我这种几乎零基础的自学者来说，很难找到免费系统的对一些基础概念的解释。后来发现了 [Investopedia](https://www.investopedia.com) 这个宝藏，不仅有全面的词条，而且很多概念的解释都有公式和例子搭配，十分方便自学。因此特将学习笔记记录于此，希望能帮助到其他和我有同样困扰的小伙伴。
 

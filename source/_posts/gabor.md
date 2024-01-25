@@ -11,7 +11,7 @@ category: 图像处理
 mathjax: true
 date: 2015-10-11 17:02:00
 ---
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/gabor/banner.jpeg %}
+{% image https://blog.mengqi.life/images/gabor/banner.jpeg %}
 
 Gabor 特征是一种可以用来描述图像纹理信息的特征，Gabor 滤波器的频率和方向与人类的视觉系统类似，特别适合于纹理表示与判别。
 
@@ -141,7 +141,7 @@ $$\begin{cases}
 加入旋转参数后的二维高斯函数为：
 $$ \omega_r(x, y, \theta, \sigma_x, \sigma_y) = K \exp\left(-\pi \left( (x-x_0)_r^2 / \sigma_x^2 + (y-y_0)_r^2 / \sigma_y^2\right) \right)$$
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/gabor/2d-gaussian.png 二维高斯 %}
+{% image https://blog.mengqi.life/images/gabor/2d-gaussian.png 二维高斯 %}
 
 上图即是一个二维高斯核的图像，该高斯核中，$(x_0, y_0) = (0, 0)$，$(\sigma_x^2, \sigma_y^2) = (50, 40)$，$\theta = -45°$
 
@@ -163,11 +163,11 @@ Gabor(x_0, y_0, \theta, \sigma_x, \sigma_y, u_0, v_0)
 - $(u_0, v_0)$: 频域坐标
 - $K$: 高斯核的幅度（magnitude）的比例
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/gabor/gabor-filter-frequency.png Gabor 核频率域图示 %}
+{% image https://blog.mengqi.life/images/gabor/gabor-filter-frequency.png Gabor 核频率域图示 %}
 
 上图为Gabor核在频率域中的图示，这个Gabor核就是从之前那个高斯核得到的，其参数分别为：$u_0 = v_0 = 1/80$，$x_0 = y_0 = 0$，$\sigma_x^2 = 50$，$\sigma_y^2 = 40$，$\theta = -45°$，$F_0 = \sqrt{2}/80$，$\omega_0=45°$。
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/gabor/gabor-filter-spatial.png Gabor 核空间域图示 %}
+{% image https://blog.mengqi.life/images/gabor/gabor-filter-spatial.png Gabor 核空间域图示 %}
 
 上图为Gabor核在空间域中的图示，参数和上面那个Gabor核一样。图像左边是实部，右边是虚部。这样的Gabor核与图像进行卷积，我们便能得到图像在$(u_0, v_0)$频率附近的响应情况。在图像处理中，通常使用Gabor的实部进行卷积就可以。
 
@@ -175,7 +175,7 @@ Gabor(x_0, y_0, \theta, \sigma_x, \sigma_y, u_0, v_0)
 
 通过上面的分析，我们知道了，一个Gabor核能获取到图像某个频率邻域的响应情况，这个响应结果可以看做是图像的一个特征。那么，我们如果用多个不同频率的Gabor核去获取图像在不同频率邻域的响应情况，最后就能形成图像在各个频率段的特征，这个特征就可以描述图像的频率信息了
 
- {% image https://d1aeqfcn0xwy4s.cloudfront.net/images/gabor/gabor-filter-banks.png  一系列 Gabor 核 %}
+ {% image https://blog.mengqi.life/images/gabor/gabor-filter-banks.png  一系列 Gabor 核 %}
 
 上图展示了一系列具有不同频率的 Gabor 核，用这些核与图像卷积，我们就能得到图像上每个点和其附近区域的频率分布情况。
 

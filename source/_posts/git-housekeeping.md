@@ -7,7 +7,7 @@ category: 编程
 date: 2018-09-18 23:09:02
 ---
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/git-housekeeping/banner.jpg %}
+{% image https://blog.mengqi.life/images/git-housekeeping/banner.jpg %}
 
 Git 可以说是目前最受欢迎的版本管理工具了，很多团队也都在用它来管理自己的项目代码。在一个多人协作的项目中，往往采用的是一个分支一个特性进行开发，随着每天的代码提交、合并，仓库中会有越来越多的冗余分支。这么多死分支不仅会掩盖真正在使用的分支，而且也为管理带来不便。如果你像我一样，也经常被淹没在 `git branch` 或 `git branch -r` 返回的分支大海中，那么，就是时候考虑给你的 git 仓库做一次大扫除了！
 

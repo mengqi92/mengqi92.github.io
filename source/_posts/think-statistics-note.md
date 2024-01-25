@@ -111,7 +111,7 @@ KDE 估计密度函数可用于：
 
 ### PMF、CDF、PDF 的关系
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/think-statistics-note/pmf-cdf-pdf.jpg 分布函数的关系框架 %}
+{% image https://blog.mengqi.life/images/think-statistics-note/pmf-cdf-pdf.jpg 分布函数的关系框架 %}
 
 PMF：一组**离散值**的概率。PDF 累加得到 CDF。
 CDF：累积概率。
@@ -226,7 +226,7 @@ Pearson相关系数值的值域为$[-1, +1]$。如果$\rho >0$则两个变量正
 
 **注意，Pearson相关系数接近0时，并不能代表变量之间没有相关关系，因为Peason相关系数只度量了线性关系。如果变量之间存在非线性关系，那么用$\rho$度量相关性就不那么准确了**。下图为一些具有非线性关系的变量的散点图，然而它们的相关系数都为0。
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/think-statistics-note/nonlinear-correlation-example.png 非线性关系变量散点图及其相关系数 %}
+{% image https://blog.mengqi.life/images/think-statistics-note/nonlinear-correlation-example.png 非线性关系变量散点图及其相关系数 %}
 
 图片来源：[英文维基百科/Correlation and dependence](http://www.wikiwand.com/en/Correlation_and_dependence)
 

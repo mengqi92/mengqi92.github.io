@@ -28,7 +28,7 @@ mathjax: true
 
 复数可以在复平面（complex plane）上表示，复平面横纵坐标分别为实部和虚部，下图就是复数 $2+3i$ 在复平面上的表示。
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/complex/complex-plane.png  复平面 %}
+{% image https://blog.mengqi.life/images/complex/complex-plane.png  复平面 %}
 
 我们可以发现，这个复平面和实数空间的直角坐标系类似。那可不可以用极坐标的方法表示复数呢？
 
@@ -38,7 +38,7 @@ mathjax: true
 
 例如，复数 $4+3i$ 的复平面直角坐标表示是$(4, 3)$，原点指向该点的向量长度 $r=\sqrt{3^2+4^2}=5$，向量的角度 $\theta = arctan(\frac{3}{4})$。
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/complex/complex-polar-plane.png 复数的极坐标表示 %}
+{% image https://blog.mengqi.life/images/complex/complex-polar-plane.png 复数的极坐标表示 %}
 
 这里，复数极坐标表示的长度 $r$ 也被称为「强度（magnitude）」，角度 $\theta$ 也被称为「相位（phase）」。
 
@@ -46,7 +46,7 @@ mathjax: true
 
 上面我们用复数的直角坐标计算出了极坐标，那么是不是也可以由极坐标推出直角坐标呢？我们还是从复平面中来看：
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/complex/complex-polar-transform.png  复数两种表示形式之间的转换 %}
+{% image https://blog.mengqi.life/images/complex/complex-polar-transform.png  复数两种表示形式之间的转换 %}
 
 从上图可以看出，当我们有复数极坐标 $(r, \theta)$ 时，我们可以得到其直角坐标 $(r \cos(\theta), r \sin(\theta))$，即该复数为 $r\cos\theta + r*i\sin\theta$。
 
@@ -64,7 +64,7 @@ $$e^{i\pi}+1=0$$
 
 实数波我们比较熟悉，就是 $\sin\theta$ 或 $\cos\theta$ 形式。而复数波则是由 $e^{i\theta}$ 来定义，实数波和复数波的示意图如下：
 
-{% image https://d1aeqfcn0xwy4s.cloudfront.net/images/complex/real-wave-complex-wave.png  实数波和复数波示意 %}
+{% image https://blog.mengqi.life/images/complex/real-wave-complex-wave.png  实数波和复数波示意 %}
 
 从示意图中，可以看出，当俯视复数波时，观察到的投影即是一个实数波，即是 $e^{i\theta}=\cos\theta + i* \sin\theta$ 的实部：$\cos\theta$；当从左侧侧视复数波时，得到的投影即是其虚部：$\sin\theta$。
 
