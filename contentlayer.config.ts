@@ -85,11 +85,7 @@ export default makeSource({
             rehypeKatex as any,
             [rehypeAutolinkHeadings, 'after'],
             [rehypePrettyCode, {
-                theme: 'material-theme-lighter',
-                // themes: {
-                //     light: 'red',
-                //     dark: 'github-dark'
-                // },
+                theme: 'solarized-light',
                 onVisitLine(node: { children: string | any[] }) {
                     // Prevent lines from collapsing in `display: grid` mode, and allow empty
                     // lines to be copy/pasted
