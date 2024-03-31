@@ -39,9 +39,9 @@ jobs:
         with:
           name: html
           path: html-out
+        run: zip -r build.zip html-out/
 
       - name: Release artifact
-        run: zip -r build.zip html-out/
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build.zip"
