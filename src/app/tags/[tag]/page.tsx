@@ -42,17 +42,6 @@ export default function page({ params }: { params: { tag: string } }) {
     );
 }
 
-// export async function generateStaticParams() {
-//     let allTags: string[] = [];
-//     allDocuments.forEach(doc => {
-//         allTags = allTags.concat(doc.tags)
-//     });
-
-//     return allTags.map(tag => ({
-//         tag: tag
-//     }));
-// }
-
 export async function generateStaticParams() {
     const allTags = new Set<string>();
 
@@ -61,12 +50,8 @@ export async function generateStaticParams() {
             allTags.add(tag);
         });
     });
-    console.log(Array.from(allTags).map(tag => ({
-        params: { tag }
-    })));
 
     return Array.from(allTags).map(tag => ({
         tag: tag
     }));
-
 }
