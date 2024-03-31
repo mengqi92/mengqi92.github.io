@@ -30,7 +30,7 @@ export function PostHeader({ post }: Props) {
           </div>
         </div>
       </div>
-      { post.coverImage && <Image src={post.coverImage!} width={756} height={504} sizes="320 640 750" alt="Cover image of the post" layout="responsive"/> }
+      {/* { post.coverImage && <Image src={post.coverImage!} width={756} height={504} sizes="320 640 750" alt="Cover image of the post" layout="responsive"/> } */}
       <hr className="mt-4 mb-10 border-gray-200 dark:border-gray-700" />
     </>
   );
