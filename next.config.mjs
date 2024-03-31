@@ -3,6 +3,7 @@ import { withContentlayer } from 'next-contentlayer';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    trailingSlash: true,
     output: 'export',
     // show remote images
     images: {
