@@ -5,7 +5,7 @@
     "cl-dev": "contentlayer dev",
     "dev": "next dev",
     "postinstall": "npx playwright install --with-deps",
-    "prebuild": "contentlayer build",
+    "prebuild": "npx playwright install --with-deps && contentlayer build",
     "build": "next build",
     "start": "next start"
   },
