@@ -14,7 +14,7 @@ const components: MDXComponents = {
     li: ({ children }) => <li className="leading-7 list-outside list-decimal">{children}</li>,
     pre: ({ className, children, ...props }) => {
         return (
-            <pre className={clsx("p-0 my-4 px-4 py-4 bg-transparent rounded", className)} {...props}>
+            <pre className={clsx("p-0 my-4 px-4 py-4 bg-transparent rounded overflow-x-auto", className)} {...props}>
                 {children}
             </pre>
         )
