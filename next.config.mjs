@@ -6,6 +6,7 @@ const nextConfig = {
     output: 'export',
     // show remote images
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
