@@ -34,19 +34,6 @@ jobs:
           name: html
           path: ./out
 
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: html
-          path: html-out
-
-      - run: zip -r build.zip html-out/
-
-      - name: Release artifact
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build.zip"
-
   deploy:
     environment:
       name: github-pages
