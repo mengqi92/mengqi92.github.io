@@ -12,7 +12,7 @@ body {
 }
 
 .font-serif {
-  font-family: HiraMinProN-W6, "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", serif;
+  font-family: "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", HiraMinProN-W6, serif;
 }
 
 @layer base {
