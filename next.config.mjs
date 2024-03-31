@@ -17,5 +17,4 @@ const nextConfig = {
     pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
 }
 
-// export default withContentlayer(nextConfig);
-export default nextConfig;
+export default withContentlayer(nextConfig);
