@@ -11,10 +11,6 @@ body {
   background-size: 14px 14px;
 }
 
-.font-serif {
-  font-family: "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", HiraMinProN-W6, serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
