@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const GA_TRACKING_ID = 'GTM-WFHB7GT6';
+const GA_TRACKING_ID = 'GTM-WXHZMHWL';
 const GoogleAnalytics = () => (
     <>
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
