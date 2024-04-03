@@ -12,7 +12,7 @@ const components: MDXComponents = {
     blockquote: ({ children }) => <blockquote className="mt-6 bg-slate-50 py-2 border-l-2 pl-6 italic">{children}</blockquote>,
     ul: ({ children }) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
     li: ({ children }) => <li className="leading-7 list-outside list-decimal">{children}</li>,
-    pre: ({ className, children, raw, ...props}) => <CodeBlock children={children} raw={raw} className={className} {...props}/>,
+    pre: CodeBlock,
     code: ({ children }) => <code className="relative my-4 px-[0.3rem] py-[0.2rem] font-mono text-sm">{children}</code>,
     lead: ({ children }) => <p className="text-xl text-muted-foreground">{children}</p>,
     a: ({ children, href }) => (

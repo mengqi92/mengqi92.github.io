@@ -2,10 +2,12 @@
 
 import clsx from "clsx";
 import ClipboardCopy from "./clipboard-copy";
-// import './clipboard-copy.css'
 
-const CodeBlock = ({ className, children, raw, ...props }) => {
-    console.log('raw: ', raw);
+interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement>{
+    raw?: string
+}
+
+const CodeBlock: React.FC<CodeBlockProps> = ({ className, children, raw, ...props }: CodeBlockProps) => {
     return (
         <>
             <div className="copyCode">
