@@ -19,7 +19,7 @@ export default function page({ params }) {
 }
 
 export function generateMetadata(params: { params: { slug: string; }; }) {
-  return generatePostMetadata(params);
+    return generatePostMetadata(params);
 }
 
 export async function generateStaticParams() {
