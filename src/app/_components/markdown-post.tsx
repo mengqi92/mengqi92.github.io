@@ -13,7 +13,7 @@ const components: MDXComponents = {
     ul: ({ children }) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
     li: ({ children }) => <li className="leading-7 list-outside list-decimal">{children}</li>,
     pre: CodeBlock,
-    code: ({ children }) => <code className="relative my-4 px-[0.3rem] py-[0.2rem] font-mono text-sm">{children}</code>,
+    code: ({ children }) => <code className="relative bg-muted my-4 px-[0.3rem] py-[0.2rem] font-mono text-sm">{children}</code>,
     lead: ({ children }) => <p className="text-xl text-muted-foreground">{children}</p>,
     a: ({ children, href }) => (
         <a href={href} className="text-red-500 underline decoration-red-400 underline-offset-4 hover:text-red-700 hover:decoration-red-700 hover:decoration-2">{children}</a>
