@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkMermaid from 'remark-mermaidjs'
+import { preProcess, postProcess } from './src/lib/rehype-utils'
 
 const Post = defineDocumentType(() => ({
     name: 'Post',
@@ -81,25 +82,27 @@ export default makeSource({
             remarkMermaid as any
         ],
         rehypePlugins: [
+            preProcess,
             rehypeSlug,
             rehypeKatex as any,
             [rehypeAutolinkHeadings, 'after'],
             [rehypePrettyCode, {
                 theme: 'solarized-light',
-                onVisitLine(node: { children: string | any[] }) {
-                    // Prevent lines from collapsing in `display: grid` mode, and allow empty
-                    // lines to be copy/pasted
-                    if (node.children.length === 0) {
-                        node.children = [{ type: "text", value: " " }]
-                    }
-                },
-                onVisitHighlightedLine(node: { properties: { className: string[] } }) {
-                    node.properties.className.push("line--highlighted")
-                },
-                onVisitHighlightedWord(node: { properties: { className: string[] } }) {
-                    node.properties.className = ["word--highlighted"]
-                },
+                // onVisitLine(node: { children: string | any[] }) {
+                //     // Prevent lines from collapsing in `display: grid` mode, and allow empty
+                //     // lines to be copy/pasted
+                //     if (node.children.length === 0) {
+                //         node.children = [{ type: "text", value: " " }]
+                //     }
+                // },
+                // onVisitHighlightedLine(node: { properties: { className: string[] } }) {
+                //     node.properties.className.push("line--highlighted")
+                // },
+                // onVisitHighlightedWord(node: { properties: { className: string[] } }) {
+                //     node.properties.className = ["word--highlighted"]
+                // },
             }],
+            postProcess
         ]
     }
 })

@@ -1,6 +1,6 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { MDXComponents } from "mdx/types";
-import clsx from "clsx";
+import CodeBlock from "./code-block";
 
 const components: MDXComponents = {
     // Allows customizing built-in components, e.g. to add styling.
@@ -12,24 +12,18 @@ const components: MDXComponents = {
     blockquote: ({ children }) => <blockquote className="mt-6 bg-slate-50 py-2 border-l-2 pl-6 italic">{children}</blockquote>,
     ul: ({ children }) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
     li: ({ children }) => <li className="leading-7 list-outside list-decimal">{children}</li>,
-    pre: ({ className, children, ...props }) => {
-        return (
-            <pre className={clsx("p-0 my-4 px-4 py-4 bg-transparent rounded overflow-x-auto", className)} {...props}>
-                {children}
-            </pre>
-        )
-    },
-    code: ({children}) => <code className="relative my-4 px-[0.3rem] py-[0.2rem] font-mono text-sm">{children}</code>,
+    pre: ({ className, children, raw, ...props}) => <CodeBlock children={children} raw={raw} className={className} {...props}/>,
+    code: ({ children }) => <code className="relative my-4 px-[0.3rem] py-[0.2rem] font-mono text-sm">{children}</code>,
     lead: ({ children }) => <p className="text-xl text-muted-foreground">{children}</p>,
     a: ({ children, href }) => (
         <a href={href} className="text-red-500 underline decoration-red-400 underline-offset-4 hover:text-red-700 hover:decoration-red-700 hover:decoration-2">{children}</a>
     ),
-    table: ({children}) => <table className="table-auto my-2 w-full text-sm text-right rtl:text-left text-gray-500 dark:text-gray-400">{children}</table>,
-    tbody: ({children}) => <tbody className="bg-slate-100 dark:bg-white-700 text-gray-700 dark:text-gray-400">{children}</tbody>,
-    thead: ({children}) => <thead className="text-gray-700 uppercase bg-sky-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-b-gray-500">{children}</thead>,
-    th: ({children}) => <th className="px-4 py-3">{children}</th>,
-    td: ({children}) => <td className="px-4 py-4">{children}</td>,
-    tr: ({children}) => <tr className="divide-y [&:not(:last-child)]:border-b-2 border-b-slate-200">{children}</tr>
+    table: ({ children }) => <table className="table-auto my-2 w-full text-sm text-right rtl:text-left text-gray-500 dark:text-gray-400">{children}</table>,
+    tbody: ({ children }) => <tbody className="bg-slate-100 dark:bg-white-700 text-gray-700 dark:text-gray-400">{children}</tbody>,
+    thead: ({ children }) => <thead className="text-gray-700 uppercase bg-sky-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-b-gray-500">{children}</thead>,
+    th: ({ children }) => <th className="px-4 py-3">{children}</th>,
+    td: ({ children }) => <td className="px-4 py-4">{children}</td>,
+    tr: ({ children }) => <tr className="divide-y [&:not(:last-child)]:border-b-2 border-b-slate-200">{children}</tr>
 };
 
 interface MarkdownPostProps {
