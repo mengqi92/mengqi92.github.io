@@ -11,6 +11,7 @@ import Clarity from "./_components/microsoft-clarity";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mengqi92.github.io'),
   title: `Mengqi's Blog`,
   description: `Mengqi's blog`,
   keywords: ['图像处理', 'git', '线性代数', '机器学习', '编程', '个人财务']
