@@ -4,7 +4,6 @@ import { useState } from "react";
 
 function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
-    console.info('copyText passed in:', copyText);
 
     // This is the function we wrote earlier
     async function copyTextToClipboard(text) {
@@ -20,7 +19,6 @@ function ClipboardCopy({ copyText }) {
         // Asynchronously call copyTextToClipboard
         copyTextToClipboard(copyText)
             .then(() => {
-                console.info('Copied successfully: ', copyText);
                 // If successful, update the isCopied state value
                 setIsCopied(true);
                 setTimeout(() => {

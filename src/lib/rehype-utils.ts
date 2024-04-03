@@ -26,7 +26,7 @@ export const postProcess = () => (tree) => {
                 }
             }
             node.properties['raw'] = node.raw
-            console.log('PostProcessed: ', node); // here to see if you're getting the raw text
+            // console.log('PostProcessed: ', node); // here to see if you're getting the raw text
         }
     })
 }
