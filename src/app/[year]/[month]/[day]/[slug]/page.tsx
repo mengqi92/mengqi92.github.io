@@ -1,18 +1,8 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { MarkdownPost } from "@/app/_components/markdown-post";
-import { allDocuments } from 'contentlayer/generated';
 import '@/lib/katex/katex.min.css'
 import Container from "@/app/_components/container";
 import { PostHeader } from "@/app/_components/post-header";
-
-function getPostBySlug(slug: string) {
-    const doc = allDocuments.find((doc) => doc.slugAsParams === slug);
-
-    if (!doc) notFound()
-
-    return doc;
-}
+import { generatePostMetadata, getPostBySlug } from "@/lib/post-utils";
 
 export default function page({ params }) {
     const post = getPostBySlug(params.slug);
@@ -28,30 +18,8 @@ export default function page({ params }) {
     )
 }
 
-export function generateMetadata({ params }): Metadata {
-    const post = getPostBySlug(params.slug);
-
-    if (!post) {
-        return notFound();
-    }
-
-    return {
-        title: post.title,
-        description: post.description,
-        openGraph: {
-            type: 'article',
-            title: post.title,
-            description: post.description,
-            images: post.coverImage ? [post.coverImage] : [],
-        },
-        keywords: post.tags,
-        twitter: {
-            card: 'summary',
-            site: '@mengqipei',
-            creator: 'Mengqi Pei',
-            images: post.coverImage ? [post.coverImage] : [],
-        }
-    };
+export function generateMetadata(params: { params: { slug: string; }; }) {
+  return generatePostMetadata(params);
 }
 
 export async function generateStaticParams() {
