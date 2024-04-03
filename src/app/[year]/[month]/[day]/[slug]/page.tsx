@@ -5,7 +5,6 @@ import { allDocuments } from 'contentlayer/generated';
 import '@/lib/katex/katex.min.css'
 import Container from "@/app/_components/container";
 import { PostHeader } from "@/app/_components/post-header";
-import { parseISO } from "date-fns";
 
 function getPostBySlug(slug: string) {
     const doc = allDocuments.find((doc) => doc.slugAsParams === slug);
