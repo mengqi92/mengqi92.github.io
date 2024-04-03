@@ -15,12 +15,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ className, children, raw, ...prop
     children.props.className = children.props.className.replace(/ bg-\w+/, '');
     return (
         <>
-            <div className="copyCode">
-                <pre className={clsx("relative my-2 max-h-[650px] pl-4 overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900", className)} {...props}>
-                    {children}
-                    <ClipboardCopy copyText={raw}/>
-                </pre>
-            </div>
+            <ClipboardCopy copyText={raw}/>
+            <pre className={clsx("relative my-2 max-h-[650px] pl-4 overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900", className)} {...props}>
+                {children}
+            </pre>
         </>
     )
 }
