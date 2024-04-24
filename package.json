@@ -5,14 +5,15 @@
     "cl-dev": "contentlayer dev",
     "dev": "next dev",
     "postinstall": "npx playwright install --with-deps",
-    "prebuild": "npx playwright install --with-deps && contentlayer build",
-    "build": "next build",
+    "prebuild": "npx playwright install --with-deps",
+    "build": "contentlayer build && next build",
     "start": "next start"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.1.2",
+    "@playwright/test": "^1.43.1",
     "@types/mdx": "^2.0.11",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
