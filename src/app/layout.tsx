@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8258722689100385" crossOrigin="anonymous"></script>
         <GoogleAnalytics />
         <Clarity />
         <link
