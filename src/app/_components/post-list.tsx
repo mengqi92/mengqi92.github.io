@@ -35,17 +35,14 @@ export function PostList({ posts }: Props) {
         sortedYears.map((year: number) => {
           const posts = groupedPosts[year];
           return (
-            <section key={year} className="pb-4">
-              <h2 className="mt-4 text-3xl">{year}</h2>
-              {posts.map((post: Post) => (
-                <PostPreview
-                  key={post.slug}
-                  title={post.title}
-                  date={post.createdDate}
-                  slug={post.slugAsParams}
-                  previewText="{post.previewText}"
-                />))}
-            </section>
+            posts.map((post: Post) => (
+              <PostPreview
+                key={post.slug}
+                title={post.title}
+                date={post.createdDate}
+                slug={post.slugAsParams}
+                previewText="{post.previewText}"
+              />))
           )
         })
       }
